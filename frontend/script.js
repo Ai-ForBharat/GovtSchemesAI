@@ -1,10 +1,9 @@
-// ========== CONFIG ==========
+
 const API_BASE = 'http://localhost:5000';
 let currentLanguage = 'en';
 let allResults = [];
 let userFormData = {};
 
-// ========== INDIAN STATES ==========
 const INDIAN_STATES = [
     "Andhra Pradesh", "Arunachal Pradesh", "Assam", "Bihar",
     "Chhattisgarh", "Delhi", "Goa", "Gujarat", "Haryana",
@@ -17,8 +16,6 @@ const INDIAN_STATES = [
     "Andaman and Nicobar Islands",
     "Dadra and Nagar Haveli and Daman and Diu", "Lakshadweep"
 ];
-
-// ========== INITIALIZATION ==========
 document.addEventListener('DOMContentLoaded', () => {
     populateStates();
     console.log('🏛️ GovScheme AI Loaded');
@@ -34,32 +31,25 @@ function populateStates() {
     });
 }
 
-// ========== LANGUAGE ==========
 function changeLanguage(lang) {
     currentLanguage = lang;
     console.log(`🌐 Language changed to: ${lang}`);
 }
 
-// ========== NAVIGATION ==========
 function scrollToForm() {
     document.getElementById('formSection').scrollIntoView({
         behavior: 'smooth'
     });
 }
 
-// ========== FORM STEPS ==========
 function nextStep(step) {
-    // Validate current step before moving
     if (step === 2 && !validateStep1()) return;
     if (step === 3 && !validateStep2()) return;
 
-    // Hide all steps
     document.querySelectorAll('.form-step').forEach(s => s.classList.add('hidden'));
 
-    // Show target step
     document.getElementById(`step${step}`).classList.remove('hidden');
 
-    // Update progress bar
     updateProgress(step);
 }
 
@@ -82,7 +72,6 @@ function updateProgress(currentStep) {
     });
 }
 
-// ========== VALIDATION ==========
 function validateStep1() {
     const name = document.getElementById('name').value.trim();
     const age = document.getElementById('age').value;
@@ -116,14 +105,12 @@ function validateStep2() {
 }
 
 function showAlert(message) {
-    alert(message); // Simple alert - can be replaced with toast
+    alert(message); 
 }
 
-// ========== FORM SUBMISSION ==========
 async function submitForm(event) {
     event.preventDefault();
 
-    // Collect all form data
     userFormData = {
         name: document.getElementById('name').value.trim(),
         age: parseInt(document.getElementById('age').value),
@@ -144,7 +131,6 @@ async function submitForm(event) {
 
     console.log('📤 Sending user data:', userFormData);
 
-    // Show loading
     document.getElementById('formSection').classList.add('hidden');
     document.getElementById('heroSection').classList.add('hidden');
     document.getElementById('loadingSection').classList.remove('hidden');
@@ -172,27 +158,21 @@ async function submitForm(event) {
         console.error('❌ Error:', error);
         showAlert('Error connecting to server. Make sure backend is running on port 5000.');
 
-        // Show form again
         document.getElementById('loadingSection').classList.add('hidden');
         document.getElementById('heroSection').classList.remove('hidden');
         document.getElementById('formSection').classList.remove('hidden');
     }
 }
 
-// ========== DISPLAY RESULTS ==========
 function displayResults(schemes, totalCount) {
-    // Hide loading, show results
     document.getElementById('loadingSection').classList.add('hidden');
     document.getElementById('resultsSection').classList.remove('hidden');
 
-    // Update count
     document.getElementById('resultsCount').textContent =
         `Found ${totalCount} schemes matching your profile`;
 
-    // Render scheme cards
     renderSchemeCards(schemes);
 
-    // Scroll to results
     document.getElementById('resultsSection').scrollIntoView({
         behavior: 'smooth'
     });
@@ -252,7 +232,6 @@ function createSchemeCard(scheme, index) {
         </div>
     `;
 
-    // Add entrance animation delay
     div.style.animationDelay = `${index * 0.1}s`;
 
     return div;
@@ -263,9 +242,7 @@ function formatCategory(cat) {
     return cat.replace(/_/g, ' ').replace(/\b\w/g, c => c.toUpperCase());
 }
 
-// ========== FILTER RESULTS ==========
 function filterResults(type) {
-    // Update active button
     document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
     event.target.classList.add('active');
 
@@ -276,7 +253,6 @@ function filterResults(type) {
     renderSchemeCards(filtered);
 }
 
-// ========== MODAL ==========
 function openModal(scheme) {
     const modal = document.getElementById('schemeModal');
     const content = document.getElementById('modalContent');
@@ -341,32 +317,26 @@ function closeModal() {
     document.getElementById('schemeModal').classList.add('hidden');
 }
 
-// Close modal on overlay click
 document.getElementById('schemeModal')?.addEventListener('click', (e) => {
     if (e.target === document.getElementById('schemeModal')) {
         closeModal();
     }
 });
 
-// ========== RESET ==========
 function resetForm() {
     document.getElementById('resultsSection').classList.add('hidden');
     document.getElementById('heroSection').classList.remove('hidden');
     document.getElementById('formSection').classList.remove('hidden');
 
-    // Reset to step 1
     document.querySelectorAll('.form-step').forEach(s => s.classList.add('hidden'));
     document.getElementById('step1').classList.remove('hidden');
     updateProgress(1);
 
-    // Clear form
     document.getElementById('userForm').reset();
 
-    // Scroll to top
     window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
-// ========== CHATBOT ==========
 function toggleChat() {
     const chatWindow = document.getElementById('chatWindow');
     chatWindow.classList.toggle('hidden');
@@ -377,11 +347,9 @@ async function sendChat() {
     const message = input.value.trim();
     if (!message) return;
 
-    // Add user message to chat
     addChatMessage(message, 'user');
     input.value = '';
 
-    // Show typing indicator
     const typingId = addChatMessage('Thinking... 🤔', 'bot');
 
     try {
@@ -397,10 +365,8 @@ async function sendChat() {
 
         const data = await response.json();
 
-        // Remove typing indicator
         document.getElementById(typingId)?.remove();
 
-        // Add bot response
         addChatMessage(data.response || 'Sorry, I could not process that.', 'bot');
 
     } catch (error) {
@@ -418,13 +384,11 @@ function addChatMessage(text, sender) {
     msgDiv.innerHTML = `<p>${text}</p>`;
     messagesDiv.appendChild(msgDiv);
 
-    // Scroll to bottom
     messagesDiv.scrollTop = messagesDiv.scrollHeight;
 
     return msgId;
 }
 
-// ========== KEYBOARD SHORTCUTS ==========
 document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') {
         closeModal();
