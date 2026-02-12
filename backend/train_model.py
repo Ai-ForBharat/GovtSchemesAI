@@ -25,8 +25,8 @@ def load_training_data():
 
 def prepare_data(data):
     """Convert dataset into training format"""
-    texts = []      # Input sentences
-    labels = []     # Intent tags
+    texts = []     
+    labels = []     
 
     for intent in data['intents']:
         tag = intent['tag']
@@ -43,25 +43,22 @@ def train_and_save():
     print("🧠 GovScheme AI - Model Training")
     print("=" * 50)
 
-    # Step 1: Load data
     print("\n📂 Loading training data...")
     data = load_training_data()
     texts, labels = prepare_data(data)
     print(f"   ✅ Loaded {len(texts)} training samples")
     print(f"   ✅ Found {len(set(labels))} intent categories")
 
-    # Step 2: Create TF-IDF Vectorizer
     print("\n🔤 Creating TF-IDF vectors...")
     vectorizer = TfidfVectorizer(
         max_features=1000,
-        ngram_range=(1, 2),     # Use single words + word pairs
+        ngram_range=(1, 2),    
         stop_words='english',
         lowercase=True
     )
     X = vectorizer.fit_transform(texts)
     print(f"   ✅ Vocabulary size: {len(vectorizer.vocabulary_)}")
 
-    # Step 3: Train Model
     print("\n🏋️ Training Logistic Regression model...")
     model = LogisticRegression(
         max_iter=1000,
@@ -71,13 +68,11 @@ def train_and_save():
     )
     model.fit(X, labels)
 
-    # Step 4: Evaluate
     print("\n📊 Evaluating model...")
     predictions = model.predict(X)
     accuracy = accuracy_score(labels, predictions)
     print(f"   ✅ Training Accuracy: {accuracy * 100:.1f}%")
 
-    # Test with sample inputs
     print("\n🧪 Testing with sample queries:")
     test_queries = [
         "tell me about pm kisan",
@@ -98,7 +93,6 @@ def train_and_save():
         confidence = max(model.predict_proba(query_vec)[0]) * 100
         print(f"   '{query}' → {pred} ({confidence:.0f}%)")
 
-    # Step 5: Save model
     print("\n💾 Saving trained model...")
     model_data = {
         'model': model,
