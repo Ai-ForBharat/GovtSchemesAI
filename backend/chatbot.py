@@ -48,7 +48,6 @@ class GovSchemeBot:
         else:
             response = self._fallback_response(user_message)
 
-        # Translate if needed
         if language != 'en':
             try:
                 from utils import translate_text
@@ -61,25 +60,25 @@ class GovSchemeBot:
     def _predict_response(self, message, context):
         """Use trained model to predict intent and return response"""
 
-        # Vectorize input
+        
         message_vec = self.vectorizer.transform([message.lower().strip()])
 
-        # Predict intent
+        
         predicted_tag = self.model.predict(message_vec)[0]
         confidence = max(self.model.predict_proba(message_vec)[0])
 
         print(f"   🤖 Query: '{message}' → Intent: {predicted_tag} ({confidence:.0%})")
 
-        # If confidence too low, give generic response
+        
         if confidence < 0.3:
             return self._low_confidence_response(context)
 
-        # Find matching intent and pick random response
+        
         for intent in self.intents:
             if intent['tag'] == predicted_tag:
                 response = random.choice(intent['responses'])
 
-                # Add context-aware suggestions
+                
                 if context and predicted_tag == 'eligibility':
                     response += self._add_context_info(context)
 
@@ -163,7 +162,7 @@ class GovSchemeBot:
         return "I can help with government schemes! Try asking about:\n• PM-KISAN, Ayushman Bharat, Mudra Loan\n• Schemes for farmers/women/students\n• How to apply\n• Documents needed\n\nOr fill the form above! 😊"
 
 
-# Quick test
+
 if __name__ == '__main__':
     bot = GovSchemeBot()
     print("\n🤖 Chatbot Test Mode (type 'quit' to exit)\n")
