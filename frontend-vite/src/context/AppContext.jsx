@@ -1,4 +1,4 @@
-import React, { createContext, useState, useContext } from 'react';
+import React, { createContext, useState, useContext, useEffect } from 'react';
 
 const AppContext = createContext();
 export const useApp = () => useContext(AppContext);
@@ -12,6 +12,34 @@ export const AppProvider = ({ children }) => {
   const [searchQuery, setSearchQuery] = useState('');
   const [searchResults, setSearchResults] = useState([]);
   const [activeExplorerTab, setActiveExplorerTab] = useState('categories');
+  const [darkMode, setDarkMode] = useState(false);
+
+  // Apply dark mode to document
+  useEffect(() => {
+    if (darkMode) {
+      document.documentElement.setAttribute('data-theme', 'dark');
+    } else {
+      document.documentElement.removeAttribute('data-theme');
+    }
+  }, [darkMode]);
+
+  // Check system preference on load
+  useEffect(() => {
+    const saved = localStorage.getItem('govscheme-darkmode');
+    if (saved !== null) {
+      setDarkMode(saved === 'true');
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+      setDarkMode(true);
+    }
+  }, []);
+
+  const toggleDarkMode = () => {
+    setDarkMode(prev => {
+      const next = !prev;
+      localStorage.setItem('govscheme-darkmode', String(next));
+      return next;
+    });
+  };
 
   const LANGUAGES = [
     { code: 'en', name: 'English', native: 'English', flag: '🇬🇧' },
@@ -41,21 +69,21 @@ export const AppProvider = ({ children }) => {
   ];
 
   const CATEGORIES = [
-    { name: 'Agriculture, Rural & Environment', count: 827, icon: '🌾', color: '#22c55e' },
-    { name: 'Banking, Financial Services & Insurance', count: 319, icon: '🏦', color: '#3b82f6' },
-    { name: 'Business & Entrepreneurship', count: 712, icon: '💼', color: '#f97316' },
-    { name: 'Education & Learning', count: 1090, icon: '🎓', color: '#8b5cf6' },
-    { name: 'Health & Wellness', count: 282, icon: '🏥', color: '#ef4444' },
-    { name: 'Housing & Shelter', count: 130, icon: '🏠', color: '#06b6d4' },
-    { name: 'Public Safety, Law & Justice', count: 29, icon: '⚖️', color: '#64748b' },
-    { name: 'Science, IT & Communications', count: 102, icon: '💻', color: '#6366f1' },
-    { name: 'Skills & Employment', count: 374, icon: '🔧', color: '#d946ef' },
-    { name: 'Social Welfare & Empowerment', count: 1466, icon: '🤝', color: '#ec4899' },
-    { name: 'Sports & Culture', count: 255, icon: '🏅', color: '#f59e0b' },
-    { name: 'Transport & Infrastructure', count: 96, icon: '🚗', color: '#14b8a6' },
-    { name: 'Travel & Tourism', count: 91, icon: '✈️', color: '#0ea5e9' },
-    { name: 'Utility & Sanitation', count: 58, icon: '🚿', color: '#84cc16' },
-    { name: 'Women and Child', count: 463, icon: '👩‍👧', color: '#f43f5e' },
+    { name: 'Agriculture, Rural & Environment', count: 827, icon: '🌾', color: '#16a34a' },
+    { name: 'Banking, Financial Services & Insurance', count: 319, icon: '🏦', color: '#059669' },
+    { name: 'Business & Entrepreneurship', count: 712, icon: '💼', color: '#16a34a' },
+    { name: 'Education & Learning', count: 1090, icon: '🎓', color: '#15803d' },
+    { name: 'Health & Wellness', count: 282, icon: '🏥', color: '#22c55e' },
+    { name: 'Housing & Shelter', count: 130, icon: '🏠', color: '#059669' },
+    { name: 'Public Safety, Law & Justice', count: 29, icon: '⚖️', color: '#166534' },
+    { name: 'Science, IT & Communications', count: 102, icon: '💻', color: '#16a34a' },
+    { name: 'Skills & Employment', count: 374, icon: '🔧', color: '#15803d' },
+    { name: 'Social Welfare & Empowerment', count: 1466, icon: '🤝', color: '#22c55e' },
+    { name: 'Sports & Culture', count: 255, icon: '🏅', color: '#059669' },
+    { name: 'Transport & Infrastructure', count: 96, icon: '🚗', color: '#16a34a' },
+    { name: 'Travel & Tourism', count: 91, icon: '✈️', color: '#166534' },
+    { name: 'Utility & Sanitation', count: 58, icon: '🚿', color: '#15803d' },
+    { name: 'Women and Child', count: 463, icon: '👩‍👧', color: '#22c55e' },
   ];
 
   const MINISTRIES = [
@@ -141,6 +169,7 @@ export const AppProvider = ({ children }) => {
     searchQuery, setSearchQuery,
     searchResults, setSearchResults,
     activeExplorerTab, setActiveExplorerTab,
+    darkMode, toggleDarkMode,
     resetApp,
     LANGUAGES, STATES, CATEGORIES, MINISTRIES, STATE_DATA,
   };

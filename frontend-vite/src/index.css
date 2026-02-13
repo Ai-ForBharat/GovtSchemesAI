@@ -1,27 +1,45 @@
-/* ========== GLOBAL STYLES ========== */
+/* ========== THEME VARIABLES ========== */
 :root {
-  --primary: #1e40af;
-  --primary-light: #3b82f6;
-  --primary-dark: #1e3a8a;
-  --primary-gradient: linear-gradient(135deg, #1e40af, #4338ca, #1e3a8a);
-  --secondary: #f97316;
-  --secondary-light: #fb923c;
+  /* Green Theme */
+  --primary: #16a34a;
+  --primary-light: #22c55e;
+  --primary-dark: #15803d;
+  --primary-darker: #166534;
+  --primary-gradient: linear-gradient(135deg, #16a34a, #15803d);
+  --primary-glow: rgba(22, 163, 74, 0.4);
+
+  --secondary: #059669;
+  --accent: #10b981;
+
   --success: #22c55e;
-  --success-dark: #16a34a;
-  --warning: #eab308;
+  --warning: #f59e0b;
   --danger: #ef4444;
-  --bg: #f0f4ff;
-  --bg-dark: #e8eeff;
-  --card: #ffffff;
+  --info: #0ea5e9;
+
+  /* Light Mode */
+  --bg: #ffffff;
+  --bg-secondary: #f8faf9;
+  --bg-card: #ffffff;
+  --bg-hover: #f0fdf4;
+  --bg-input: #f9fafb;
+
   --text: #1e293b;
+  --text-secondary: #475569;
   --text-light: #64748b;
   --text-lighter: #94a3b8;
+
   --border: #e2e8f0;
   --border-light: #f1f5f9;
-  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.06);
-  --shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-  --shadow-lg: 0 10px 40px rgba(0, 0, 0, 0.12);
-  --shadow-xl: 0 20px 60px rgba(0, 0, 0, 0.15);
+
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.04);
+  --shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 10px 40px rgba(0, 0, 0, 0.08);
+  --shadow-xl: 0 20px 60px rgba(0, 0, 0, 0.1);
+
+  --navbar-bg: linear-gradient(135deg, #15803d, #16a34a, #166534);
+  --hero-bg: linear-gradient(135deg, #166534 0%, #15803d 40%, #16a34a 70%, #166534 100%);
+  --footer-bg: linear-gradient(135deg, #166534, #15803d);
+
   --radius: 12px;
   --radius-lg: 16px;
   --radius-xl: 24px;
@@ -29,6 +47,33 @@
   --font: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
+/* ========== DARK MODE ========== */
+[data-theme="dark"] {
+  --bg: #0f172a;
+  --bg-secondary: #1e293b;
+  --bg-card: #1e293b;
+  --bg-hover: #1a3a2a;
+  --bg-input: #334155;
+
+  --text: #f1f5f9;
+  --text-secondary: #cbd5e1;
+  --text-light: #94a3b8;
+  --text-lighter: #64748b;
+
+  --border: #334155;
+  --border-light: #1e293b;
+
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.2);
+  --shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  --shadow-lg: 0 10px 40px rgba(0, 0, 0, 0.4);
+  --shadow-xl: 0 20px 60px rgba(0, 0, 0, 0.5);
+
+  --navbar-bg: linear-gradient(135deg, #0f172a, #1e293b, #0f172a);
+  --hero-bg: linear-gradient(135deg, #0f172a 0%, #1e293b 40%, #0f172a 70%, #1e293b 100%);
+  --footer-bg: linear-gradient(135deg, #0f172a, #1e293b);
+}
+
+/* ========== RESET ========== */
 * {
   margin: 0;
   padding: 0;
@@ -42,6 +87,7 @@ body {
   line-height: 1.6;
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
+  transition: background 0.3s ease, color 0.3s ease;
 }
 
 ::-webkit-scrollbar {
@@ -53,7 +99,7 @@ body {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--primary-light);
+  background: var(--primary);
   border-radius: 10px;
 }
 
@@ -62,37 +108,21 @@ body {
   color: white;
 }
 
-a {
-  text-decoration: none;
-  color: inherit;
-}
+a { text-decoration: none; color: inherit; }
+button { cursor: pointer; font-family: var(--font); }
+input, select, textarea { font-family: var(--font); }
+img { max-width: 100%; height: auto; }
 
-button {
-  cursor: pointer;
-  font-family: var(--font);
-}
-
-input, select, textarea {
-  font-family: var(--font);
-}
-
-img {
-  max-width: 100%;
-  height: auto;
-}
-
-/* ========== APP LAYOUT ========== */
+/* ========== APP ========== */
 .app {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
 }
 
-.app-content {
-  flex: 1;
-}
+.app-content { flex: 1; }
 
-/* ========== CHAT FAB BUTTON ========== */
+/* ========== CHAT FAB ========== */
 .chat-fab {
   position: fixed;
   bottom: 25px;
@@ -100,7 +130,7 @@ img {
   width: 60px;
   height: 60px;
   border-radius: 50%;
-  background: linear-gradient(135deg, #1e40af, #4338ca);
+  background: var(--primary-gradient);
   color: white;
   border: none;
   cursor: pointer;
@@ -108,26 +138,27 @@ img {
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 4px 25px rgba(30, 64, 175, 0.5);
+  box-shadow: 0 4px 25px var(--primary-glow);
   z-index: 1500;
-  transition: all 0.3s ease;
+  transition: var(--transition);
 }
 
 .chat-fab:hover {
   transform: scale(1.1);
-  box-shadow: 0 6px 30px rgba(30, 64, 175, 0.6);
+  box-shadow: 0 6px 30px var(--primary-glow);
 }
 
 .fab-badge {
   position: absolute;
   top: -3px;
   right: -3px;
-  background: linear-gradient(135deg, #f97316, #ea580c);
+  background: var(--primary-dark);
   font-size: 10px;
   font-weight: 900;
   padding: 3px 7px;
   border-radius: 10px;
   letter-spacing: 0.5px;
+  border: 2px solid var(--bg);
 }
 
 /* ========== ANIMATIONS ========== */
@@ -156,90 +187,19 @@ img {
   100% { background-position: 0% 50%; }
 }
 
-/* ==========================================================
-   RESPONSIVE BREAKPOINTS
-   Mobile:  < 480px
-   Tablet:  480px - 768px
-   Small:   768px - 900px
-   Desktop: > 900px
-   ========================================================== */
-
-/* ========== NAVBAR RESPONSIVE ========== */
-
-/* Hide desktop nav links & lang on small screens, show hamburger */
+/* ========== RESPONSIVE NAVBAR ========== */
 @media (max-width: 900px) {
-  /* Hide desktop nav links */
-  nav > div > div:nth-child(3) {
-    display: none !important;
-  }
-
-  /* Hide desktop language selector */
-  nav > div > div:nth-child(4) {
-    display: none !important;
-  }
-
-  /* Show mobile menu button */
-  nav > div > button:last-child {
-    display: flex !important;
-  }
-
-  /* Make search bar take more space */
-  nav > div > form {
-    max-width: 100% !important;
-    flex: 1 !important;
-  }
+  nav > div > div:nth-child(3) { display: none !important; }
+  nav > div > div:nth-child(4) { display: none !important; }
+  nav > div > button:last-child { display: flex !important; }
+  nav > div > form { max-width: 100% !important; flex: 1 !important; }
 }
 
 @media (max-width: 480px) {
-  /* Smaller brand on mobile */
-  nav > div {
-    padding: 8px 12px !important;
-    gap: 10px !important;
-  }
+  nav > div { padding: 8px 12px !important; gap: 10px !important; }
+  nav > div > div:first-child h1 { font-size: 16px !important; }
+  nav > div > div:first-child span:first-child { font-size: 22px !important; }
 
-  nav > div > div:first-child h1 {
-    font-size: 16px !important;
-  }
-
-  nav > div > div:first-child span:first-child {
-    font-size: 22px !important;
-  }
-
-  nav > div > form {
-    padding: 0 8px !important;
-  }
-
-  nav > div > form input {
-    padding: 8px 6px !important;
-    font-size: 12px !important;
-  }
-}
-
-/* ========== HERO RESPONSIVE ========== */
-@media (max-width: 768px) {
-  .hero-section {
-    padding: 50px 16px 70px !important;
-  }
-}
-
-@media (max-width: 480px) {
-  .hero-section {
-    padding: 40px 12px 60px !important;
-  }
-}
-
-/* ========== CHATBOT RESPONSIVE ========== */
-@media (max-width: 480px) {
-  .chat-fab {
-    width: 52px;
-    height: 52px;
-    font-size: 22px;
-    bottom: 16px;
-    right: 16px;
-  }
-
-  .fab-badge {
-    font-size: 8px;
-    padding: 2px 5px;
-  }
+  .chat-fab { width: 52px; height: 52px; font-size: 22px; bottom: 16px; right: 16px; }
+  .fab-badge { font-size: 8px; padding: 2px 5px; }
 }
