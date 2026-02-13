@@ -3,7 +3,8 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { useApp } from '../context/AppContext';
 import {
   FaThList, FaMapMarkedAlt, FaLandmark,
-  FaChevronDown, FaChevronUp, FaMapMarkerAlt, FaSearch
+  FaChevronDown, FaChevronUp, FaMapMarkerAlt,
+  FaSearch, FaTimes, FaCheckCircle
 } from 'react-icons/fa';
 
 const SchemeExplorer = () => {
@@ -20,7 +21,7 @@ const SchemeExplorer = () => {
 
   const tabs = [
     { key: 'categories', label: 'Categories', icon: <FaThList />, color: '#22c55e' },
-    { key: 'states', label: 'States/UTs', icon: <FaMapMarkedAlt />, color: '#16a34a' },
+    { key: 'states', label: 'States/UTs', icon: <FaMapMarkedAlt />, color: '#3b82f6' },
     { key: 'central', label: 'Central Ministries', icon: <FaLandmark />, color: '#8b5cf6' },
   ];
 
@@ -60,24 +61,37 @@ const SchemeExplorer = () => {
 
   return (
     <section id="scheme-explorer" style={styles.section}>
+      <div style={styles.bgDecor1} />
+      <div style={styles.bgDecor2} />
+
       <div style={styles.container}>
 
-        {/* ========== HEADER ========== */}
+        {/* HEADER */}
         <motion.div
           style={styles.header}
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
         >
           <span style={styles.label}>🔍 Explore Schemes</span>
           <h2 style={styles.heading}>
-            Discover Government Schemes <br />
+            Discover Government Schemes{' '}
             <span style={{ color: activeTabData.color }}>Your Way</span>
           </h2>
+          <p style={styles.headerDesc}>
+            Browse schemes by categories, states, or central ministries
+          </p>
         </motion.div>
 
-        {/* ========== TABS ========== */}
-        <div style={styles.tabsWrapper}>
+        {/* TABS + SEARCH */}
+        <motion.div
+          style={styles.tabsWrapper}
+          initial={{ opacity: 0, y: 15 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.2 }}
+        >
           <div style={styles.tabsContainer}>
             {tabs.map((tab) => (
               <motion.button
@@ -85,10 +99,10 @@ const SchemeExplorer = () => {
                 style={{
                   ...styles.tab,
                   ...(activeTab === tab.key ? {
-                    background: `linear-gradient(135deg, ${tab.color}, ${tab.color}dd)`,
-                    color: 'white',
+                    background: `linear-gradient(135deg, ${tab.color}, ${tab.color}cc)`,
+                    color: '#ffffff',
                     borderColor: tab.color,
-                    boxShadow: `0 4px 15px ${tab.color}40`,
+                    boxShadow: `0 4px 20px ${tab.color}30`,
                   } : {}),
                 }}
                 onClick={() => {
@@ -103,8 +117,10 @@ const SchemeExplorer = () => {
                 <span>{tab.label}</span>
                 <span style={{
                   ...styles.tabCount,
-                  background: activeTab === tab.key ? 'rgba(255,255,255,0.25)' : `${tab.color}15`,
-                  color: activeTab === tab.key ? 'white' : tab.color,
+                  background: activeTab === tab.key
+                    ? 'rgba(255,255,255,0.2)'
+                    : `${tab.color}15`,
+                  color: activeTab === tab.key ? '#ffffff' : tab.color,
                 }}>
                   {tab.key === 'categories' ? CATEGORIES.length :
                     tab.key === 'states' ? STATE_DATA.length : MINISTRIES.length}
@@ -113,9 +129,9 @@ const SchemeExplorer = () => {
             ))}
           </div>
 
-          {/* ========== SEARCH WITHIN TAB ========== */}
+          {/* Search */}
           <div style={styles.searchBar}>
-            <FaSearch style={{ color: 'var(--text-lighter)', fontSize: '14px', flexShrink: 0 }} />
+            <FaSearch style={styles.searchIcon} />
             <input
               style={styles.searchInput}
               placeholder={`Search ${activeTab === 'categories' ? 'categories' : activeTab === 'states' ? 'states' : 'ministries'}...`}
@@ -126,17 +142,31 @@ const SchemeExplorer = () => {
               }}
             />
             {searchFilter && (
-              <button
+              <motion.button
                 onClick={() => { setSearchFilter(''); setShowAll(false); }}
                 style={styles.clearSearch}
+                initial={{ scale: 0 }}
+                animate={{ scale: 1 }}
+                whileTap={{ scale: 0.8 }}
               >
-                ✕
-              </button>
+                <FaTimes />
+              </motion.button>
             )}
           </div>
-        </div>
 
-        {/* ========== CONTENT ========== */}
+          {/* Results count */}
+          {searchFilter && (
+            <motion.span
+              style={styles.resultsCount}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+            >
+              Found <strong style={{ color: activeTabData.color }}>{filteredData.length}</strong> results
+            </motion.span>
+          )}
+        </motion.div>
+
+        {/* CONTENT */}
         <AnimatePresence mode="wait">
           <motion.div
             key={activeTab}
@@ -146,7 +176,7 @@ const SchemeExplorer = () => {
             transition={{ duration: 0.3 }}
           >
 
-            {/* ===== CATEGORIES TAB ===== */}
+            {/* CATEGORIES */}
             {activeTab === 'categories' && (
               <div style={styles.gridCategories}>
                 {filteredData.map((cat, i) => (
@@ -158,27 +188,38 @@ const SchemeExplorer = () => {
                     transition={{ delay: i * 0.03 }}
                     whileHover={{
                       y: -6,
-                      boxShadow: `0 12px 30px ${cat.color}20`,
-                      borderColor: cat.color,
+                      boxShadow: `0 15px 40px ${cat.color}15`,
+                      borderColor: `${cat.color}40`,
                     }}
                   >
-                    <div style={{ ...styles.catIcon, background: `${cat.color}12` }}>
-                      <span style={{ fontSize: '30px' }}>{cat.icon}</span>
+                    <div style={{
+                      ...styles.catIcon,
+                      background: `${cat.color}10`,
+                      border: `1px solid ${cat.color}20`,
+                    }}>
+                      <span style={{ fontSize: '28px' }}>{cat.icon}</span>
                     </div>
                     <h3 style={styles.catName}>{cat.name}</h3>
                     <div style={{
-                      ...styles.badge,
-                      background: `${cat.color}12`,
+                      ...styles.catBadge,
+                      background: `${cat.color}10`,
                       color: cat.color,
+                      borderColor: `${cat.color}25`,
                     }}>
                       {cat.count} Schemes
                     </div>
+
+                    {/* Bottom accent */}
+                    <div style={{
+                      ...styles.catAccent,
+                      background: `linear-gradient(90deg, ${cat.color}, transparent)`,
+                    }} />
                   </motion.div>
                 ))}
               </div>
             )}
 
-            {/* ===== STATES TAB ===== */}
+            {/* STATES */}
             {activeTab === 'states' && (
               <div style={styles.gridStates}>
                 {filteredData.map((state, i) => (
@@ -190,13 +231,13 @@ const SchemeExplorer = () => {
                     transition={{ delay: i * 0.03 }}
                     whileHover={{
                       y: -5,
-                      boxShadow: '0 10px 30px rgba(249,115,22,0.12)',
-                      borderColor: '#16a34a',
+                      boxShadow: '0 12px 35px rgba(59,130,246,0.12)',
+                      borderColor: 'rgba(59,130,246,0.4)',
                     }}
                   >
                     <div style={styles.stateTop}>
                       <div style={styles.stateIconBox}>
-                        <FaMapMarkerAlt style={{ color: '#16a34a', fontSize: '18px' }} />
+                        <FaMapMarkerAlt style={{ color: '#3b82f6', fontSize: '16px' }} />
                       </div>
                       <div style={{ flex: 1 }}>
                         <h3 style={styles.stateName}>{state.name}</h3>
@@ -207,15 +248,30 @@ const SchemeExplorer = () => {
                     </div>
                     <div style={styles.stateStats}>
                       {state.type === 'UT' ? (
-                        <span style={{ ...styles.statBadge, background: '#fef3c7', color: '#92400e' }}>
+                        <span style={{
+                          ...styles.statBadge,
+                          background: 'rgba(245,158,11,0.1)',
+                          color: '#f59e0b',
+                          borderColor: 'rgba(245,158,11,0.25)',
+                        }}>
                           {state.ut} UT Schemes
                         </span>
                       ) : (
-                        <span style={{ ...styles.statBadge, background: '#dcfce7', color: '#16a34a' }}>
+                        <span style={{
+                          ...styles.statBadge,
+                          background: 'rgba(59,130,246,0.1)',
+                          color: '#3b82f6',
+                          borderColor: 'rgba(59,130,246,0.25)',
+                        }}>
                           {state.state} State Schemes
                         </span>
                       )}
-                      <span style={{ ...styles.statBadge, background: '#dcfce7', color: '#16a34a' }}>
+                      <span style={{
+                        ...styles.statBadge,
+                        background: 'rgba(34,197,94,0.1)',
+                        color: '#22c55e',
+                        borderColor: 'rgba(34,197,94,0.25)',
+                      }}>
                         {state.central} Central
                       </span>
                     </div>
@@ -224,7 +280,7 @@ const SchemeExplorer = () => {
               </div>
             )}
 
-            {/* ===== CENTRAL MINISTRIES TAB ===== */}
+            {/* CENTRAL MINISTRIES */}
             {activeTab === 'central' && (
               <div style={styles.gridCentral}>
                 {filteredData.map((ministry, i) => (
@@ -236,14 +292,14 @@ const SchemeExplorer = () => {
                     transition={{ delay: i * 0.03 }}
                     whileHover={{
                       y: -5,
-                      boxShadow: '0 10px 30px rgba(139,92,246,0.12)',
-                      borderColor: '#8b5cf6',
+                      boxShadow: '0 12px 35px rgba(139,92,246,0.12)',
+                      borderColor: 'rgba(139,92,246,0.4)',
                     }}
                   >
                     <div style={styles.ministryIcon}>
-                      <FaLandmark style={{ fontSize: '20px', color: '#8b5cf6' }} />
+                      <FaLandmark style={{ fontSize: '18px', color: '#8b5cf6' }} />
                     </div>
-                    <div style={{ flex: 1 }}>
+                    <div style={{ flex: 1, minWidth: 0 }}>
                       <h3 style={styles.ministryName}>{ministry.name}</h3>
                     </div>
                     <span style={styles.ministryCount}>{ministry.count} Schemes</span>
@@ -252,32 +308,43 @@ const SchemeExplorer = () => {
               </div>
             )}
 
-            {/* ===== NO RESULTS ===== */}
+            {/* NO RESULTS */}
             {filteredData.length === 0 && (
-              <div style={styles.noResults}>
-                <span style={{ fontSize: '48px', marginBottom: '16px', display: 'block' }}>😔</span>
-                <p style={{ fontSize: '18px', fontWeight: 600, color: 'var(--text-secondary)', marginBottom: '8px' }}>
-                  No results found for "{searchFilter}"
+              <motion.div
+                style={styles.noResults}
+                initial={{ opacity: 0, scale: 0.95 }}
+                animate={{ opacity: 1, scale: 1 }}
+              >
+                <div style={styles.noResultsIcon}>🔍</div>
+                <h3 style={styles.noResultsTitle}>No results found</h3>
+                <p style={styles.noResultsText}>
+                  No matches for "<strong>{searchFilter}</strong>". Try different keywords.
                 </p>
-                <p style={{ fontSize: '14px', color: 'var(--text-lighter)' }}>
-                  Try different keywords
-                </p>
-              </div>
+                <motion.button
+                  style={styles.noResultsBtn}
+                  onClick={() => { setSearchFilter(''); setShowAll(false); }}
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  Clear Search
+                </motion.button>
+              </motion.div>
             )}
 
           </motion.div>
         </AnimatePresence>
 
-        {/* ========== VIEW ALL / SHOW LESS BUTTON ========== */}
+        {/* VIEW ALL / SHOW LESS */}
         {!searchFilter && getTotalCount() > getDefaultVisible() && (
           <div style={{ textAlign: 'center', marginTop: '32px' }}>
             <motion.button
               style={{
                 ...styles.viewAllBtn,
                 background: `linear-gradient(135deg, ${activeTabData.color}, ${activeTabData.color}cc)`,
+                boxShadow: `0 6px 20px ${activeTabData.color}30`,
               }}
               onClick={() => setShowAll(!showAll)}
-              whileHover={{ scale: 1.05 }}
+              whileHover={{ scale: 1.05, boxShadow: `0 10px 30px ${activeTabData.color}40` }}
               whileTap={{ scale: 0.95 }}
             >
               {showAll ? (
@@ -289,25 +356,32 @@ const SchemeExplorer = () => {
           </div>
         )}
 
-        {/* ========== SUMMARY STATS BAR ========== */}
+        {/* SUMMARY BAR */}
         <motion.div
           style={styles.summaryBar}
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
+          transition={{ delay: 0.3 }}
         >
           {[
-            { num: '7,500+', label: 'Total Schemes' },
-            { num: '36', label: 'States & UTs' },
-            { num: '22+', label: 'Ministries' },
-            { num: '15', label: 'Categories' },
+            { num: '7,500+', label: 'Total Schemes', color: '#22c55e' },
+            { num: '36', label: 'States & UTs', color: '#3b82f6' },
+            { num: '22+', label: 'Ministries', color: '#8b5cf6' },
+            { num: '15', label: 'Categories', color: '#f59e0b' },
           ].map((item, i) => (
             <React.Fragment key={item.label}>
               {i > 0 && <div style={styles.summaryDivider} />}
-              <div style={styles.summaryItem}>
-                <span style={styles.summaryNum}>{item.num}</span>
+              <motion.div
+                style={styles.summaryItem}
+                initial={{ opacity: 0, y: 10 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.4 + i * 0.1 }}
+              >
+                <span style={{ ...styles.summaryNum, color: item.color }}>{item.num}</span>
                 <span style={styles.summaryLabel}>{item.label}</span>
-              </div>
+              </motion.div>
             </React.Fragment>
           ))}
         </motion.div>
@@ -318,54 +392,85 @@ const SchemeExplorer = () => {
 };
 
 const styles = {
-  // ===== SECTION =====
   section: {
-    padding: '80px 24px',
-    background: 'linear-gradient(180deg, #f8faff 0%, white 50%, #f8faff 100%)',
+    padding: 'clamp(60px, 10vw, 100px) 24px',
+    background: '#0f172a',
+    position: 'relative',
+    overflow: 'hidden',
   },
+
+  bgDecor1: {
+    position: 'absolute',
+    top: '-150px',
+    right: '-150px',
+    width: '400px',
+    height: '400px',
+    borderRadius: '50%',
+    background: 'radial-gradient(circle, rgba(34,197,94,0.05) 0%, transparent 70%)',
+    pointerEvents: 'none',
+  },
+  bgDecor2: {
+    position: 'absolute',
+    bottom: '-100px',
+    left: '-100px',
+    width: '350px',
+    height: '350px',
+    borderRadius: '50%',
+    background: 'radial-gradient(circle, rgba(139,92,246,0.04) 0%, transparent 70%)',
+    pointerEvents: 'none',
+  },
+
   container: {
     maxWidth: '1200px',
     margin: '0 auto',
+    position: 'relative',
+    zIndex: 1,
   },
 
-  // ===== HEADER =====
+  /* Header */
   header: {
     textAlign: 'center',
-    marginBottom: '40px',
+    marginBottom: 'clamp(32px, 5vw, 44px)',
   },
   label: {
     display: 'inline-block',
-    background: '#f0fdf4',
+    background: 'rgba(34,197,94,0.1)',
+    border: '1px solid rgba(34,197,94,0.3)',
     color: '#22c55e',
     padding: '6px 20px',
     borderRadius: '50px',
-    fontSize: '14px',
+    fontSize: '13px',
     fontWeight: 600,
     marginBottom: '16px',
   },
   heading: {
-    fontSize: 'clamp(28px, 4vw, 42px)',
-    fontWeight: 900,
-    color: 'var(--text)',
+    fontSize: 'clamp(26px, 4vw, 40px)',
+    fontWeight: 800,
+    color: '#ffffff',
     lineHeight: 1.2,
+    marginBottom: '12px',
+  },
+  headerDesc: {
+    fontSize: 'clamp(13px, 2.5vw, 15px)',
+    color: '#64748b',
+    fontWeight: 500,
   },
 
-  // ===== TABS =====
+  /* Tabs */
   tabsWrapper: {
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
-    gap: '16px',
-    marginBottom: '36px',
+    gap: '14px',
+    marginBottom: '32px',
   },
   tabsContainer: {
     display: 'flex',
-    gap: '10px',
-    background: 'var(--bg-card)',
-    padding: '8px',
+    gap: '8px',
+    background: '#020617',
+    padding: '6px',
     borderRadius: '16px',
-    boxShadow: '0 4px 20px rgba(0,0,0,0.06)',
-    border: '1px solid var(--border)',
+    border: '1px solid #1e293b',
     flexWrap: 'wrap',
     justifyContent: 'center',
   },
@@ -373,16 +478,16 @@ const styles = {
     display: 'flex',
     alignItems: 'center',
     gap: '8px',
-    padding: '12px 24px',
+    padding: '10px 20px',
     borderRadius: '12px',
     border: '2px solid transparent',
     background: 'transparent',
-    fontSize: '14px',
+    fontSize: '13px',
     fontWeight: 600,
     cursor: 'pointer',
     transition: 'all 0.3s ease',
     fontFamily: 'Inter, sans-serif',
-    color: 'var(--text-light)',
+    color: '#94a3b8',
     whiteSpace: 'nowrap',
   },
   tabCount: {
@@ -392,100 +497,119 @@ const styles = {
     fontWeight: 700,
   },
 
-  // ===== SEARCH =====
+  /* Search */
   searchBar: {
     display: 'flex',
     alignItems: 'center',
     gap: '10px',
-    background: 'var(--bg-card)',
-    padding: '10px 18px',
+    background: '#020617',
+    padding: '0 16px',
     borderRadius: '12px',
-    border: '2px solid var(--border)',
+    border: '1px solid #1e293b',
     width: '100%',
     maxWidth: '400px',
-    boxShadow: '0 2px 10px rgba(0,0,0,0.03)',
     transition: 'border-color 0.3s',
+  },
+  searchIcon: {
+    color: '#475569',
+    fontSize: '13px',
+    flexShrink: 0,
   },
   searchInput: {
     border: 'none',
     outline: 'none',
-    fontSize: '14px',
+    fontSize: '13px',
     width: '100%',
     fontFamily: 'Inter, sans-serif',
-    color: 'var(--text)',
+    color: '#ffffff',
     background: 'transparent',
+    padding: '12px 0',
   },
   clearSearch: {
-    background: '#f1f5f9',
+    background: '#1e293b',
     border: 'none',
-    color: 'var(--text-lighter)',
+    color: '#94a3b8',
     cursor: 'pointer',
-    fontSize: '12px',
-    width: '24px',
-    height: '24px',
-    borderRadius: '50%',
+    fontSize: '10px',
+    width: '22px',
+    height: '22px',
+    borderRadius: '6px',
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
     flexShrink: 0,
     fontFamily: 'Inter, sans-serif',
-    transition: 'all 0.2s',
+  },
+  resultsCount: {
+    fontSize: '12px',
+    color: '#64748b',
+    fontWeight: 500,
   },
 
-  // ===== CATEGORIES GRID =====
+  /* Categories Grid */
   gridCategories: {
     display: 'grid',
-    gridTemplateColumns: 'repeat(auto-fill, minmax(200px, 1fr))',
-    gap: '16px',
+    gridTemplateColumns: 'repeat(auto-fill, minmax(190px, 1fr))',
+    gap: '14px',
   },
   categoryCard: {
-    background: 'var(--bg-card)',
+    background: '#020617',
     borderRadius: '16px',
     padding: '24px 18px',
     textAlign: 'center',
-    border: '2px solid var(--border)',
+    border: '1px solid #1e293b',
     transition: 'all 0.3s ease',
     cursor: 'pointer',
+    position: 'relative',
+    overflow: 'hidden',
   },
   catIcon: {
-    width: '60px',
-    height: '60px',
+    width: '56px',
+    height: '56px',
     borderRadius: '16px',
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    margin: '0 auto 14px',
+    margin: '0 auto 12px',
   },
   catName: {
     fontSize: '13px',
     fontWeight: 700,
-    color: 'var(--text)',
+    color: '#e2e8f0',
     marginBottom: '10px',
     lineHeight: 1.3,
-    minHeight: '36px',
+    minHeight: '34px',
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
   },
-  badge: {
+  catBadge: {
     display: 'inline-block',
     padding: '4px 14px',
     borderRadius: '50px',
-    fontSize: '12px',
+    fontSize: '11px',
     fontWeight: 700,
+    border: '1px solid',
+  },
+  catAccent: {
+    position: 'absolute',
+    bottom: 0,
+    left: 0,
+    width: '100%',
+    height: '2px',
   },
 
-  // ===== STATES GRID =====
+  /* States Grid */
   gridStates: {
     display: 'grid',
-    gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))',
-    gap: '14px',
+    gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))',
+    gap: '12px',
   },
   stateCard: {
-    background: 'var(--bg-card)',
+    background: '#020617',
     borderRadius: '14px',
-    padding: '18px',
-    border: '2px solid var(--border)',
+    padding: '16px',
+    border: '1px solid #1e293b',
     transition: 'all 0.3s ease',
     cursor: 'pointer',
   },
@@ -496,10 +620,11 @@ const styles = {
     marginBottom: '12px',
   },
   stateIconBox: {
-    width: '42px',
-    height: '42px',
+    width: '40px',
+    height: '40px',
     borderRadius: '10px',
-    background: '#fff7ed',
+    background: 'rgba(59,130,246,0.1)',
+    border: '1px solid rgba(59,130,246,0.2)',
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
@@ -508,12 +633,12 @@ const styles = {
   stateName: {
     fontSize: '14px',
     fontWeight: 700,
-    color: 'var(--text)',
+    color: '#e2e8f0',
     lineHeight: 1.2,
   },
   stateType: {
     fontSize: '11px',
-    color: 'var(--text-lighter)',
+    color: '#64748b',
     fontWeight: 500,
     marginTop: '2px',
     display: 'block',
@@ -528,30 +653,32 @@ const styles = {
     borderRadius: '50px',
     fontSize: '11px',
     fontWeight: 700,
+    border: '1px solid',
   },
 
-  // ===== CENTRAL GRID =====
+  /* Central Grid */
   gridCentral: {
     display: 'grid',
-    gridTemplateColumns: 'repeat(auto-fill, minmax(350px, 1fr))',
-    gap: '14px',
+    gridTemplateColumns: 'repeat(auto-fill, minmax(320px, 1fr))',
+    gap: '12px',
   },
   ministryCard: {
-    background: 'var(--bg-card)',
+    background: '#020617',
     borderRadius: '14px',
-    padding: '18px',
+    padding: '16px',
     display: 'flex',
     alignItems: 'center',
     gap: '14px',
-    border: '2px solid var(--border)',
+    border: '1px solid #1e293b',
     transition: 'all 0.3s ease',
     cursor: 'pointer',
   },
   ministryIcon: {
-    width: '46px',
-    height: '46px',
+    width: '44px',
+    height: '44px',
     borderRadius: '12px',
-    background: '#ede9fe',
+    background: 'rgba(139,92,246,0.1)',
+    border: '1px solid rgba(139,92,246,0.2)',
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
@@ -560,32 +687,63 @@ const styles = {
   ministryName: {
     fontSize: '13px',
     fontWeight: 600,
-    color: 'var(--text)',
+    color: '#e2e8f0',
     lineHeight: 1.3,
+    margin: 0,
   },
   ministryCount: {
     fontSize: '11px',
     fontWeight: 700,
     color: '#8b5cf6',
-    background: '#ede9fe',
+    background: 'rgba(139,92,246,0.1)',
+    border: '1px solid rgba(139,92,246,0.25)',
     padding: '4px 12px',
     borderRadius: '50px',
     whiteSpace: 'nowrap',
     flexShrink: 0,
   },
 
-  // ===== NO RESULTS =====
+  /* No Results */
   noResults: {
     textAlign: 'center',
-    padding: '60px 20px',
+    padding: 'clamp(40px, 8vw, 60px) 20px',
+    background: '#020617',
+    border: '1px solid #1e293b',
+    borderRadius: '20px',
   },
-
-  // ===== VIEW ALL BUTTON =====
-  viewAllBtn: {
-    padding: '14px 32px',
-    color: 'white',
+  noResultsIcon: {
+    fontSize: '44px',
+    marginBottom: '12px',
+  },
+  noResultsTitle: {
+    fontSize: '18px',
+    fontWeight: 700,
+    color: '#e2e8f0',
+    marginBottom: '6px',
+  },
+  noResultsText: {
+    fontSize: '13px',
+    color: '#64748b',
+    marginBottom: '18px',
+  },
+  noResultsBtn: {
+    padding: '10px 24px',
+    background: 'linear-gradient(135deg, #3b82f6, #2563eb)',
+    color: '#ffffff',
     border: 'none',
     borderRadius: '50px',
+    fontSize: '13px',
+    fontWeight: 700,
+    cursor: 'pointer',
+    fontFamily: 'Inter, sans-serif',
+  },
+
+  /* View All Button */
+  viewAllBtn: {
+    padding: '14px 32px',
+    color: '#ffffff',
+    border: 'none',
+    borderRadius: '14px',
     fontSize: '14px',
     fontWeight: 700,
     cursor: 'pointer',
@@ -593,21 +751,21 @@ const styles = {
     alignItems: 'center',
     gap: '8px',
     fontFamily: 'Inter, sans-serif',
-    boxShadow: '0 4px 15px rgba(0,0,0,0.15)',
   },
 
-  // ===== SUMMARY BAR =====
+  /* Summary Bar */
   summaryBar: {
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
-    gap: '32px',
-    marginTop: '50px',
-    padding: '24px 32px',
-    background: 'linear-gradient(135deg, #1e3a8a, #3730a3)',
+    gap: 'clamp(20px, 4vw, 40px)',
+    marginTop: 'clamp(40px, 6vw, 60px)',
+    padding: 'clamp(20px, 4vw, 28px) clamp(20px, 4vw, 36px)',
+    background: '#020617',
+    border: '1px solid #1e293b',
     borderRadius: '20px',
     flexWrap: 'wrap',
-    boxShadow: '0 10px 30px rgba(30,64,175,0.2)',
+    boxShadow: '0 10px 40px rgba(0,0,0,0.3)',
   },
   summaryItem: {
     display: 'flex',
@@ -616,21 +774,20 @@ const styles = {
     gap: '2px',
   },
   summaryNum: {
-    fontSize: '28px',
+    fontSize: 'clamp(24px, 4vw, 30px)',
     fontWeight: 900,
-    color: '#fbbf24',
   },
   summaryLabel: {
-    fontSize: '12px',
-    color: 'rgba(255,255,255,0.7)',
-    fontWeight: 500,
+    fontSize: '11px',
+    color: '#64748b',
+    fontWeight: 600,
     textTransform: 'uppercase',
     letterSpacing: '0.5px',
   },
   summaryDivider: {
     width: '1px',
-    height: '40px',
-    background: 'rgba(255,255,255,0.15)',
+    height: '36px',
+    background: '#1e293b',
   },
 };
 
