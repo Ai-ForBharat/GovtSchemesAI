@@ -1,130 +1,263 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { useApp } from '../context/AppContext';
-import { FaArrowLeft, FaRobot, FaLanguage, FaShieldAlt, FaUsers, FaHeart, FaBullseye, FaLightbulb } from 'react-icons/fa';
+import { FaArrowLeft, FaBullseye, FaEye } from 'react-icons/fa';
 
 const AboutPage = () => {
   const { resetApp } = useApp();
 
   return (
     <div style={styles.page}>
-      <motion.div style={styles.container} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
 
-        <button onClick={resetApp} style={styles.backBtn}><FaArrowLeft /> Back to Home</button>
+      {/* HERO SECTION */}
+      <div style={styles.hero}>
+        <h1 style={styles.heroTitle}>About Us</h1>
+        <p style={styles.breadcrumb}>Home  ›  About Us</p>
+      </div>
 
-        <h1 style={styles.title}>🏛️ About GovScheme AI</h1>
+      {/* VISION + MISSION SECTION */}
+      <div style={styles.section}>
+        <div style={styles.grid}>
 
-        <div style={styles.card}>
-          <h2 style={styles.sectionTitle}><FaBullseye style={{ color: '#22c55e' }} /> Our Mission</h2>
-          <p style={styles.text}>
-            GovScheme AI is a platform that aims to offer <strong>one-stop search and discovery</strong> of
-            Government schemes. We believe every Indian citizen deserves to know about the benefits
-            the government has designed for them.
-          </p>
-          <p style={styles.text}>
-            It provides an innovative, <strong>technology-based solution</strong> to discover scheme information
-            based upon the eligibility of the citizen. No more visiting multiple websites or
-            standing in long queues just to find which schemes you qualify for.
-          </p>
-        </div>
+          {/* LEFT IMAGE PLACEHOLDER */}
+          <motion.div
+            style={styles.imageBox}
+            initial={{ opacity: 0, x: -40 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+          >
+            {/* Decorative frame only */}
+          </motion.div>
 
-        <div style={styles.card}>
-          <h2 style={styles.sectionTitle}><FaLightbulb style={{ color: '#16a34a' }} /> How It Works</h2>
-          <ol style={styles.list}>
-            <li>User fills a simple multi-step form with personal details</li>
-            <li>Our AI matching engine analyzes the profile against 200+ schemes</li>
-            <li>Each scheme receives a relevance score (0-100%)</li>
-            <li>Results are displayed with full details and apply links</li>
-            <li>Everything is available in 12 Indian languages</li>
-            <li>AI chatbot helps answer follow-up questions</li>
-          </ol>
-        </div>
-
-        <div style={styles.card}>
-          <h2 style={styles.sectionTitle}><FaRobot style={{ color: '#8b5cf6' }} /> Technology</h2>
-          <div style={styles.techGrid}>
-            {[
-              { label: 'Frontend', value: 'React + Vite', icon: '⚛️' },
-              { label: 'Backend', value: 'Python Flask', icon: '🐍' },
-              { label: 'AI/ML', value: 'scikit-learn', icon: '🧠' },
-              { label: 'Translation', value: 'Google Translate', icon: '🌐' },
-              { label: 'Database', value: 'JSON (No Setup)', icon: '📦' },
-              { label: 'Chatbot', value: 'TF-IDF + LogReg', icon: '🤖' },
-            ].map(t => (
-              <div key={t.label} style={styles.techItem}>
-                <span style={{ fontSize: '24px' }}>{t.icon}</span>
-                <div>
-                  <div style={{ fontSize: '12px', color: 'var(--text-lighter)', fontWeight: 500 }}>{t.label}</div>
-                  <div style={{ fontSize: '14px', fontWeight: 700, color: 'var(--text)' }}>{t.value}</div>
-                </div>
+          {/* RIGHT CONTENT */}
+          <motion.div
+            initial={{ opacity: 0, x: 40 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+          >
+            <div style={styles.visionBlock}>
+              <FaEye style={styles.icon} />
+              <div>
+                <h3 style={styles.heading}>Our Vision</h3>
+                <p style={styles.text}>
+                  Our vision is to make citizens' lives easier.
+                </p>
               </div>
-            ))}
+            </div>
+
+            <div style={styles.visionBlock}>
+              <FaBullseye style={styles.icon} />
+              <div>
+                <h3 style={styles.heading}>Our Mission</h3>
+                <p style={styles.text}>
+                  Our mission is to streamline the government-user interface 
+                  for government schemes and benefits.
+                </p>
+                <p style={styles.text}>
+                  Reduce time and effort required to find and avail 
+                  a government scheme.
+                </p>
+              </div>
+            </div>
+          </motion.div>
+
+        </div>
+      </div>
+
+      {/* ABOUT DESCRIPTION SECTION */}
+      <div style={styles.darkSection}>
+        <div style={styles.contentWrapper}>
+          <div style={styles.textColumn}>
+            <p style={styles.bigText}>
+              myScheme is a National Platform that aims to offer one-stop search 
+              and discovery of the Government schemes.
+            </p>
+
+            <p style={styles.bigText}>
+              It provides an innovative, technology-based solution to discover 
+              scheme information based upon the eligibility of the citizen.
+            </p>
+
+            <p style={styles.bigText}>
+              The platform helps the citizen to find the right Government schemes 
+              for them. It also guides on how to apply for different Government schemes. 
+              Thus no need to visit multiple Government websites.
+            </p>
+          </div>
+
+          <div style={styles.illustrationBox}>
+            {/* optional illustration placeholder */}
           </div>
         </div>
+      </div>
 
-        <div style={styles.card}>
-          <h2 style={styles.sectionTitle}><FaHeart style={{ color: '#ef4444' }} /> Key Features</h2>
-          <div style={styles.featuresGrid}>
-            {[
-              { icon: <FaRobot />, title: 'AI Powered', desc: 'Smart matching engine with ML-based chatbot', color: '#22c55e' },
-              { icon: <FaLanguage />, title: '12 Languages', desc: 'Hindi, Tamil, Telugu, Bengali, and more', color: '#8b5cf6' },
-              { icon: <FaShieldAlt />, title: '100% Free', desc: 'No registration, no fees, no hidden charges', color: '#22c55e' },
-              { icon: <FaUsers />, title: 'For Everyone', desc: 'Farmers, students, women, elderly, disabled', color: '#16a34a' },
-            ].map(f => (
-              <div key={f.title} style={styles.featureCard}>
-                <div style={{ ...styles.featureIcon, background: `${f.color}15`, color: f.color }}>{f.icon}</div>
-                <h4 style={{ fontSize: '15px', fontWeight: 700, marginBottom: '4px' }}>{f.title}</h4>
-                <p style={{ fontSize: '13px', color: 'var(--text-light)' }}>{f.desc}</p>
-              </div>
-            ))}
-          </div>
+      {/* FEATURES SECTION */}
+      <div style={styles.featuresSection}>
+        <div style={styles.featuresGrid}>
+          <Feature
+            title="Eligibility Check"
+            desc="You can check your eligibility for schemes using different criteria and personal attribute"
+          />
+          <Feature
+            title="Scheme Finder"
+            desc="Fast and easy searching with filter based drill downs for various Government Schemes"
+          />
+          <Feature
+            title="Scheme in detail"
+            desc="Deep dive into dedicated scheme pages for fine grained scheme details before you apply"
+          />
         </div>
+      </div>
 
-      </motion.div>
+      <button onClick={resetApp} style={styles.backBtn}>
+        <FaArrowLeft /> Back to Home
+      </button>
+
     </div>
   );
 };
 
+const Feature = ({ title, desc }) => (
+  <div style={styles.featureCard}>
+    <h3 style={styles.featureTitle}>{title}</h3>
+    <p style={styles.featureDesc}>{desc}</p>
+  </div>
+);
+
 const styles = {
-  page: { padding: '40px 24px', maxWidth: '900px', margin: '0 auto' },
-  container: { display: 'flex', flexDirection: 'column', gap: '24px' },
-  backBtn: {
-    display: 'inline-flex', alignItems: 'center', gap: '8px',
-    padding: '10px 20px', background: '#f1f5f9', border: 'none',
-    borderRadius: '10px', fontSize: '14px', fontWeight: 600,
-    cursor: 'pointer', color: 'var(--text-secondary)', fontFamily: 'Inter, sans-serif',
-    width: 'fit-content',
+  page: {
+    fontFamily: 'Inter, sans-serif',
+    background: '#0f172a',
+    color: 'white'
   },
-  title: { fontSize: '36px', fontWeight: 900, color: 'var(--text)' },
-  card: {
-    background: 'var(--bg-card)', borderRadius: '20px', padding: '32px',
-    border: '1px solid var(--border)', boxShadow: '0 4px 20px rgba(0,0,0,0.04)',
+
+  hero: {
+    textAlign: 'center',
+    padding: '100px 20px 60px',
+    background: 'linear-gradient(180deg,#0f172a,#111827)',
   },
-  sectionTitle: {
-    fontSize: '20px', fontWeight: 700, color: 'var(--text)',
-    marginBottom: '16px', display: 'flex', alignItems: 'center', gap: '10px',
+
+  heroTitle: {
+    fontSize: '48px',
+    fontWeight: 800,
+    marginBottom: '10px'
   },
-  text: { fontSize: '15px', color: 'var(--text-secondary)', lineHeight: 1.8, marginBottom: '12px' },
-  list: { paddingLeft: '20px', fontSize: '15px', color: 'var(--text-secondary)', lineHeight: 2 },
-  techGrid: {
-    display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(180px, 1fr))', gap: '12px',
+
+  breadcrumb: {
+    color: '#22c55e',
+    fontSize: '14px'
   },
-  techItem: {
-    display: 'flex', alignItems: 'center', gap: '12px',
-    padding: '14px', background: 'var(--bg-secondary)', borderRadius: '12px', border: '1px solid var(--border)',
+
+  section: {
+    padding: '80px 20px'
   },
+
+  grid: {
+    maxWidth: '1200px',
+    margin: '0 auto',
+    display: 'grid',
+    gridTemplateColumns: '1fr 1fr',
+    gap: '60px',
+    alignItems: 'center'
+  },
+
+  imageBox: {
+    height: '350px',
+    borderRadius: '20px',
+    background: '#1f2937',
+    border: '2px solid #334155',
+    boxShadow: '0 20px 60px rgba(0,0,0,0.5)'
+  },
+
+  visionBlock: {
+    display: 'flex',
+    gap: '20px',
+    marginBottom: '40px'
+  },
+
+  icon: {
+    fontSize: '28px',
+    color: '#22c55e',
+    marginTop: '5px'
+  },
+
+  heading: {
+    fontSize: '24px',
+    fontWeight: 700,
+    marginBottom: '10px'
+  },
+
+  text: {
+    color: '#cbd5e1',
+    lineHeight: 1.8,
+    fontSize: '16px'
+  },
+
+  darkSection: {
+    padding: '100px 20px',
+    background: '#111827'
+  },
+
+  contentWrapper: {
+    maxWidth: '1200px',
+    margin: '0 auto',
+    display: 'grid',
+    gridTemplateColumns: '1fr 1fr',
+    gap: '60px'
+  },
+
+  bigText: {
+    fontSize: '18px',
+    color: '#e5e7eb',
+    lineHeight: 1.9,
+    marginBottom: '24px'
+  },
+
+  illustrationBox: {
+    background: '#1f2937',
+    borderRadius: '20px',
+    height: '300px'
+  },
+
+  featuresSection: {
+    padding: '80px 20px',
+    background: '#0f172a'
+  },
+
   featuresGrid: {
-    display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px',
+    maxWidth: '1200px',
+    margin: '0 auto',
+    display: 'grid',
+    gridTemplateColumns: 'repeat(auto-fit,minmax(280px,1fr))',
+    gap: '40px'
   },
+
   featureCard: {
-    padding: '20px', background: 'var(--bg-secondary)', borderRadius: '14px',
-    border: '1px solid var(--border)',
+    textAlign: 'center',
+    padding: '30px',
   },
-  featureIcon: {
-    width: '40px', height: '40px', borderRadius: '10px',
-    display: 'flex', alignItems: 'center', justifyContent: 'center',
-    fontSize: '18px', marginBottom: '12px',
+
+  featureTitle: {
+    fontSize: '22px',
+    fontWeight: 700,
+    marginBottom: '12px'
   },
+
+  featureDesc: {
+    color: '#cbd5e1',
+    lineHeight: 1.8
+  },
+
+  backBtn: {
+    margin: '40px auto 80px',
+    display: 'block',
+    padding: '12px 28px',
+    background: '#22c55e',
+    border: 'none',
+    borderRadius: '8px',
+    fontWeight: 600,
+    cursor: 'pointer'
+  }
 };
 
 export default AboutPage;

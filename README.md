@@ -295,22 +295,3 @@ English, Hindi, Tamil, Telugu, Bengali, Marathi, Gujarati, Kannada, Malayalam, P
 
 
 
-Find                          Replace With
-────────────────────────────────────────────────
-
-color: 'var(--text)'              color: 'var(--text)'
-color: 'var(--text-secondary)'              color: 'var(--text-secondary)'
-color: 'var(--text-light)'              color: 'var(--text-light)'
-color: 'var(--text-lighter)'              color: 'var(--text-lighter)'
-border: '1px solid var(--border)'   border: '1px solid var(--border)'
-border: '2px solid var(--border)'   border: '2px solid var(--border)'
-
-'#22c55e'                     '#22c55e'
-'#16a34a'                     '#16a34a'
-'#15803d'                     '#15803d'
-'#1e3a8a'                     '#166534'
-'#4338ca'                     '#15803d'
-'#dcfce7'                     '#dcfce7'
-'#f0fdf4'                     '#f0fdf4'
-'#16a34a'                     '#16a34a'
-'#ea580c'                     '#15803d'

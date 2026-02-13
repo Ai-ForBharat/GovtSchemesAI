@@ -1,14 +1,10 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { useApp } from '../context/AppContext';
 import { sendChatMessage } from '../api/api';
-import { FaTimes, FaPaperPlane, FaRobot } from 'react-icons/fa';
+import { FaTimes, FaPaperPlane, FaRobot, FaMicrophone } from 'react-icons/fa';
 
 const ChatBot = ({ onClose }) => {
-  const { language, userProfile } = useApp();
-  const [messages, setMessages] = useState([
-    { text: "Namaste! 🙏 I'm your GovScheme AI Assistant. Ask me anything about Indian government schemes!", sender: 'bot' }
-  ]);
+  const [messages, setMessages] = useState([]);
   const [input, setInput] = useState('');
   const [loading, setLoading] = useState(false);
   const messagesEndRef = useRef(null);
@@ -17,25 +13,32 @@ const ChatBot = ({ onClose }) => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
   }, [messages]);
 
-  const handleSend = async () => {
-    if (!input.trim() || loading) return;
+  const suggestions = [
+    "Tell me about DPIIT Internship Scheme",
+    "Eligibility criteria for Pradhan Mantri Awas Yojana",
+    "Application process of Kisan Credit Scheme",
+    "Schemes for students?"
+  ];
 
-    const userMsg = input.trim();
+  const handleSend = async (text = input) => {
+    if (!text.trim() || loading) return;
+
+    const userMsg = text.trim();
     setInput('');
     setMessages(prev => [...prev, { text: userMsg, sender: 'user' }]);
     setLoading(true);
 
     try {
-      const data = await sendChatMessage(userMsg, language, userProfile);
-      setMessages(prev => [...prev, {
-        text: data.response || "Sorry, I couldn't process that.",
-        sender: 'bot'
-      }]);
-    } catch (error) {
-      setMessages(prev => [...prev, {
-        text: "Sorry, I'm having trouble connecting. Please try again.",
-        sender: 'bot'
-      }]);
+      const data = await sendChatMessage(userMsg);
+      setMessages(prev => [
+        ...prev,
+        { text: data.response || "Sorry, I couldn't process that.", sender: 'bot' }
+      ]);
+    } catch {
+      setMessages(prev => [
+        ...prev,
+        { text: "Server error. Please try again.", sender: 'bot' }
+      ]);
     }
 
     setLoading(false);
@@ -43,170 +46,242 @@ const ChatBot = ({ onClose }) => {
 
   return (
     <motion.div
-      style={styles.window}
-      initial={{ opacity: 0, y: 20, scale: 0.9 }}
-      animate={{ opacity: 1, y: 0, scale: 1 }}
-      exit={{ opacity: 0, y: 20, scale: 0.9 }}
-      transition={{ type: 'spring', damping: 20 }}
+      style={styles.overlay}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
     >
-      {/* Header */}
-      <div style={styles.header}>
-        <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-          <FaRobot style={{ fontSize: '20px' }} />
-          <div>
-            <h3 style={{ fontSize: 'clamp(13px, 3vw, 15px)', fontWeight: 700, margin: 0 }}>GovScheme AI</h3>
-            <span style={{ fontSize: 'clamp(9px, 2vw, 11px)', opacity: 0.8 }}>Ask me anything</span>
-          </div>
-        </div>
-        <button onClick={onClose} style={styles.closeBtn}>
-          <FaTimes />
-        </button>
-      </div>
+      <motion.div
+        style={styles.modal}
+        initial={{ scale: 0.9, y: 40 }}
+        animate={{ scale: 1, y: 0 }}
+        transition={{ type: 'spring', damping: 20 }}
+      >
 
-      {/* Messages */}
-      <div style={styles.messages}>
-        {messages.map((msg, i) => (
-          <motion.div
-            key={i}
-            style={{
-              ...styles.message,
-              ...(msg.sender === 'user' ? styles.userMsg : styles.botMsg),
-            }}
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.3 }}
-          >
-            <p style={{ margin: 0, whiteSpace: 'pre-line' }}>{msg.text}</p>
-          </motion.div>
-        ))}
-        {loading && (
-          <div style={{ ...styles.message, ...styles.botMsg }}>
-            <p style={{ margin: 0 }}>Thinking... 🤔</p>
+        {/* HEADER */}
+        <div style={styles.header}>
+          <div style={styles.logo}>
+            <FaRobot />
+            <span>myScheme</span>
+          </div>
+          <button onClick={onClose} style={styles.closeBtn}>
+            <FaTimes />
+          </button>
+        </div>
+
+        {/* WELCOME BOX */}
+        {messages.length === 0 && (
+          <div style={styles.welcomeBox}>
+            <h2>myScheme</h2>
+            <p>
+              myScheme is a National Platform that aims to offer one-stop search
+              and discovery of Government schemes.
+            </p>
+            <p>
+              Hi! I am your assistant, here to help you find eligible government
+              schemes and provide information on eligibility, documents and more.
+            </p>
           </div>
         )}
-        <div ref={messagesEndRef} />
-      </div>
 
-      {/* Input */}
-      <div style={styles.inputBar}>
-        <input
-          style={styles.input}
-          value={input}
-          onChange={(e) => setInput(e.target.value)}
-          onKeyPress={(e) => e.key === 'Enter' && handleSend()}
-          placeholder="Ask about any scheme..."
-          disabled={loading}
-        />
-        <motion.button
-          style={styles.sendBtn}
-          onClick={handleSend}
-          whileHover={{ scale: 1.1 }}
-          whileTap={{ scale: 0.9 }}
-          disabled={loading}
-        >
-          <FaPaperPlane />
-        </motion.button>
-      </div>
+        {/* MESSAGES */}
+        <div style={styles.messages}>
+          {messages.map((msg, i) => (
+            <div
+              key={i}
+              style={{
+                ...styles.message,
+                ...(msg.sender === 'user' ? styles.userMsg : styles.botMsg),
+              }}
+            >
+              {msg.text}
+            </div>
+          ))}
+          {loading && <div style={styles.botMsg}>Thinking...</div>}
+          <div ref={messagesEndRef} />
+        </div>
+
+        {/* SUGGESTIONS */}
+        {messages.length === 0 && (
+          <div style={styles.suggestions}>
+            {suggestions.map((s, i) => (
+              <button
+                key={i}
+                style={styles.suggestionBtn}
+                onClick={() => handleSend(s)}
+              >
+                {s}
+              </button>
+            ))}
+          </div>
+        )}
+
+        {/* INPUT BAR */}
+        <div style={styles.inputBar}>
+          <input
+            style={styles.input}
+            value={input}
+            onChange={(e) => setInput(e.target.value)}
+            onKeyDown={(e) => e.key === 'Enter' && handleSend()}
+            placeholder="Type something..."
+            disabled={loading}
+          />
+
+          <button style={styles.iconBtn}>
+            <FaMicrophone />
+          </button>
+
+          <button
+            style={styles.sendBtn}
+            onClick={() => handleSend()}
+            disabled={loading}
+          >
+            <FaPaperPlane />
+          </button>
+        </div>
+
+        {/* FOOTER NOTE */}
+        <div style={styles.footer}>
+          *myScheme assistant can make mistakes. Consider checking important information.
+        </div>
+
+      </motion.div>
     </motion.div>
   );
 };
 
 const styles = {
-  window: {
+  overlay: {
     position: 'fixed',
-    bottom: 'clamp(80px, 12vw, 95px)',
-    right: 'clamp(12px, 3vw, 25px)',
-    width: 'clamp(300px, 85vw, 380px)',
-    height: 'clamp(400px, 65vh, 520px)',
-    background: 'var(--bg-card)',
-    borderRadius: '20px',
-    boxShadow: '0 10px 50px rgba(0,0,0,0.15)',
-    zIndex: 1500,
+    inset: 0,
+    background: 'rgba(0,0,0,0.4)',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    zIndex: 2000,
+  },
+
+  modal: {
+    width: '650px',
+    maxHeight: '90vh',
+    background: '#ffffff',
+    borderRadius: '16px',
     display: 'flex',
     flexDirection: 'column',
     overflow: 'hidden',
-    border: '1px solid var(--border)',
+    boxShadow: '0 20px 60px rgba(0,0,0,0.2)',
+    fontFamily: 'Inter, sans-serif',
   },
+
   header: {
     display: 'flex',
     justifyContent: 'space-between',
     alignItems: 'center',
-    padding: 'clamp(12px, 2.5vw, 16px) clamp(14px, 3vw, 20px)',
-    background: 'linear-gradient(135deg, #1e40af, #4338ca)',
-    color: 'white',
+    padding: '16px 20px',
+    borderBottom: '1px solid #e5e7eb',
   },
-  closeBtn: {
-    background: 'rgba(255,255,255,0.15)',
-    border: 'none',
-    color: 'white',
-    width: '32px',
-    height: '32px',
-    borderRadius: '50%',
-    cursor: 'pointer',
+
+  logo: {
     display: 'flex',
     alignItems: 'center',
-    justifyContent: 'center',
-    fontSize: '14px',
+    gap: '8px',
+    fontWeight: 700,
+    fontSize: '18px',
   },
+
+  closeBtn: {
+    background: 'none',
+    border: 'none',
+    fontSize: '16px',
+    cursor: 'pointer',
+  },
+
+  welcomeBox: {
+    padding: '20px',
+    background: '#f3f4f6',
+    borderRadius: '12px',
+    margin: '16px',
+  },
+
   messages: {
     flex: 1,
     overflowY: 'auto',
-    padding: 'clamp(10px, 2vw, 16px)',
+    padding: '0 16px',
     display: 'flex',
     flexDirection: 'column',
     gap: '10px',
-    background: 'var(--bg-input)',
   },
+
   message: {
-    maxWidth: '85%',
-    padding: 'clamp(10px, 2vw, 12px) clamp(12px, 2.5vw, 16px)',
-    borderRadius: '16px',
-    fontSize: 'clamp(12px, 2.5vw, 14px)',
-    lineHeight: 1.5,
+    padding: '10px 14px',
+    borderRadius: '12px',
+    maxWidth: '75%',
+    fontSize: '14px',
   },
+
   botMsg: {
-    background: '#f1f5f9',
-    color: 'var(--text)',
+    background: '#f3f4f6',
     alignSelf: 'flex-start',
-    borderBottomLeftRadius: '4px',
   },
+
   userMsg: {
-    background: 'linear-gradient(135deg, #3b82f6, #2563eb)',
+    background: '#2563eb',
     color: 'white',
     alignSelf: 'flex-end',
-    borderBottomRightRadius: '4px',
   },
+
+  suggestions: {
+    padding: '12px 16px',
+    display: 'flex',
+    flexDirection: 'column',
+    gap: '8px',
+  },
+
+  suggestionBtn: {
+    background: '#f3f4f6',
+    border: 'none',
+    padding: '10px',
+    borderRadius: '10px',
+    cursor: 'pointer',
+    textAlign: 'left',
+  },
+
   inputBar: {
     display: 'flex',
-    padding: 'clamp(8px, 2vw, 12px)',
+    alignItems: 'center',
+    padding: '12px',
     gap: '8px',
-    borderTop: '1px solid #e2e8f0',
-    background: 'var(--bg-card)',
+    borderTop: '1px solid #e5e7eb',
   },
+
   input: {
     flex: 1,
-    padding: 'clamp(8px, 2vw, 12px) clamp(12px, 2.5vw, 18px)',
-    border: '2px solid var(--border)',
-    borderRadius: '50px',
-    fontSize: 'clamp(12px, 2.5vw, 14px)',
+    padding: '10px 14px',
+    borderRadius: '20px',
+    border: '1px solid #d1d5db',
     outline: 'none',
-    fontFamily: 'Inter, sans-serif',
-    background: 'var(--bg-input)',
   },
-  sendBtn: {
-    width: 'clamp(38px, 7vw, 44px)',
-    height: 'clamp(38px, 7vw, 44px)',
-    borderRadius: '50%',
+
+  iconBtn: {
+    background: '#f3f4f6',
     border: 'none',
-    background: 'linear-gradient(135deg, #3b82f6, #2563eb)',
-    color: 'white',
+    padding: '8px',
+    borderRadius: '50%',
     cursor: 'pointer',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    fontSize: 'clamp(14px, 2.5vw, 16px)',
-    fontFamily: 'Inter, sans-serif',
-    flexShrink: 0,
+  },
+
+  sendBtn: {
+    background: '#2563eb',
+    color: 'white',
+    border: 'none',
+    padding: '10px',
+    borderRadius: '50%',
+    cursor: 'pointer',
+  },
+
+  footer: {
+    fontSize: '11px',
+    color: '#6b7280',
+    padding: '8px 16px 14px',
   },
 };
 
