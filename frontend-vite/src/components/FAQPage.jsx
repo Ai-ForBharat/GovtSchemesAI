@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useApp } from '../context/AppContext';
-import { FaArrowLeft, FaChevronDown } from 'react-icons/fa';
+import { FaChevronDown } from 'react-icons/fa';
 
 const FAQPage = () => {
   const { resetApp } = useApp();
@@ -10,107 +10,187 @@ const FAQPage = () => {
   const faqs = [
     { q: 'What is GovScheme AI?', a: 'GovScheme AI is an AI-powered platform that helps Indian citizens discover government schemes they are eligible for, available in 12 Indian languages.' },
     { q: 'How will GovScheme AI help common citizens?', a: 'It eliminates the need to visit multiple government websites. Fill one form and instantly see all schemes you qualify for with benefits, documents, and apply links.' },
-    { q: 'Can I apply for schemes through GovScheme AI?', a: 'We provide detailed information and direct links to official government portals where you can apply. We guide you to the right place.' },
-    { q: 'How does the eligibility check work?', a: 'Fill the form with your details. Our AI compares your profile against eligibility criteria of all schemes and shows matching ones with a relevance score (0-100%).' },
-    { q: 'What information about a scheme can I find?', a: 'Scheme name, description, eligibility criteria, benefits, required documents, how to apply, official website link, and your match percentage.' },
-    { q: 'Is this service free?', a: 'Yes! GovScheme AI is 100% free. No registration, no fees, no hidden charges. It is built as a public service tool.' },
-    { q: 'How many schemes are covered?', a: 'Currently we have 20+ schemes in our database covering Central and State government schemes. This is continuously expanding.' },
-    { q: 'Which languages are supported?', a: 'English, Hindi, Tamil, Telugu, Bengali, Marathi, Gujarati, Kannada, Malayalam, Punjabi, Odia, and Urdu — 12 languages total.' },
-    { q: 'Is my data safe?', a: 'We do NOT store any personal data. Your form details are processed in real-time and not saved anywhere. Privacy is our priority.' },
-    { q: 'What is the AI chatbot?', a: 'Our AI chatbot (bottom-right 🤖 icon) can answer questions about specific schemes, eligibility, documents required, and how to apply. Try it!' },
-    { q: 'How accurate is the matching?', a: 'Our matching engine checks age, gender, state, income, category, occupation, and special criteria. Schemes with 80%+ match are highly relevant.' },
-    { q: 'Can I use this on mobile?', a: 'Yes! The website is fully responsive and works on all devices — mobile, tablet, and desktop.' },
-    { q: 'How do I report incorrect information?', a: 'Scheme information is sourced from official government websites. If you find any discrepancy, please verify on the official portal.' },
-    { q: 'What if no schemes match my profile?', a: 'Try adjusting your details or browse all schemes through the Categories section. Some schemes have very specific criteria.' },
-    { q: 'Who built this?', a: 'GovScheme AI was built for a hackathon with the goal of making government welfare schemes accessible to every Indian citizen using AI technology.' },
+    { q: 'Can I apply for schemes through GovScheme AI?', a: 'We provide detailed information and direct links to official government portals where you can apply.' },
+    { q: 'How does the eligibility check work?', a: 'Our AI compares your profile against scheme eligibility criteria and shows matching ones with a relevance score.' },
+    { q: 'What information about a scheme can I find?', a: 'You can view eligibility, benefits, required documents, application steps, and official links.' },
+    { q: 'Is this service free?', a: 'Yes! GovScheme AI is completely free to use.' },
   ];
 
   return (
     <div style={styles.page}>
-      <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
-        <button onClick={resetApp} style={styles.backBtn}><FaArrowLeft /> Back to Home</button>
 
-        <h1 style={styles.title}>❓ Frequently Asked Questions</h1>
-        <p style={styles.subtitle}>Everything you need to know about GovScheme AI</p>
+      {/* HERO HEADER */}
+      <div style={styles.hero}>
+        <h1 style={styles.heroTitle}>Frequently Asked Questions</h1>
 
-        <div style={styles.faqList}>
-          {faqs.map((faq, i) => (
-            <motion.div
-              key={i}
-              style={styles.faqItem}
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: i * 0.05 }}
-            >
-              <button
-                style={{
-                  ...styles.faqQ,
-                  color: openIndex === i ? '#22c55e' : '#1e293b',
-                }}
-                onClick={() => setOpenIndex(openIndex === i ? null : i)}
-              >
-                <span style={styles.qNum}>{String(i + 1).padStart(2, '0')}</span>
-                <span style={{ flex: 1 }}>{faq.q}</span>
-                <FaChevronDown style={{
-                  transition: 'transform 0.3s',
-                  transform: openIndex === i ? 'rotate(180deg)' : 'rotate(0)',
-                  color: openIndex === i ? '#22c55e' : '#94a3b8',
-                  flexShrink: 0,
-                }} />
-              </button>
-              <AnimatePresence>
-                {openIndex === i && (
-                  <motion.div
-                    initial={{ height: 0, opacity: 0 }}
-                    animate={{ height: 'auto', opacity: 1 }}
-                    exit={{ height: 0, opacity: 0 }}
-                    style={{ overflow: 'hidden' }}
-                  >
-                    <p style={styles.faqA}>{faq.a}</p>
-                  </motion.div>
-                )}
-              </AnimatePresence>
-            </motion.div>
-          ))}
+        <p style={styles.breadcrumb}>
+          <span onClick={resetApp} style={{ cursor: 'pointer' }}>Home</span>
+          <span style={{ margin: '0 8px' }}>›</span>
+          Frequently Asked Questions
+        </p>
+
+        {/* CLEAN WAVE DIVIDER */}
+        <div style={styles.wave}>
+          <svg viewBox="0 0 1440 120" preserveAspectRatio="none">
+            <path
+              d="M0,80 C360,140 1080,20 1440,80 L1440,120 L0,120 Z"
+              fill="#1f2937"
+            />
+          </svg>
         </div>
-      </motion.div>
+      </div>
+
+      {/* MAIN CONTENT */}
+      <div style={styles.contentContainer}>
+
+        {/* LEFT SIDE IMAGE SPACE */}
+        <div style={styles.left}>
+          <div style={styles.imagePlaceholder}>
+            Custom Image Here
+          </div>
+        </div>
+
+        {/* RIGHT SIDE FAQ */}
+        <div style={styles.right}>
+          <div style={styles.faqList}>
+            {faqs.map((faq, i) => (
+              <div key={i} style={styles.faqItem}>
+                <button
+                  style={styles.question}
+                  onClick={() => setOpenIndex(openIndex === i ? null : i)}
+                >
+                  <span>{faq.q}</span>
+                  <FaChevronDown
+                    style={{
+                      transform: openIndex === i ? 'rotate(180deg)' : 'rotate(0deg)',
+                      transition: '0.3s',
+                    }}
+                  />
+                </button>
+
+                <AnimatePresence>
+                  {openIndex === i && (
+                    <motion.div
+                      initial={{ height: 0, opacity: 0 }}
+                      animate={{ height: 'auto', opacity: 1 }}
+                      exit={{ height: 0, opacity: 0 }}
+                      transition={{ duration: 0.3 }}
+                      style={{ overflow: 'hidden' }}
+                    >
+                      <p style={styles.answer}>{faq.a}</p>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </div>
+            ))}
+          </div>
+        </div>
+
+      </div>
     </div>
   );
 };
 
 const styles = {
-  page: { padding: '40px 24px', maxWidth: '800px', margin: '0 auto' },
-  backBtn: {
-    display: 'inline-flex', alignItems: 'center', gap: '8px',
-    padding: '10px 20px', background: '#f1f5f9', border: 'none',
-    borderRadius: '10px', fontSize: '14px', fontWeight: 600,
-    cursor: 'pointer', color: 'var(--text-secondary)', fontFamily: 'Inter, sans-serif', marginBottom: '24px',
+  page: {
+    background: '#1f2937',
+    minHeight: '100vh',
+    color: 'white',
   },
-  title: { fontSize: '36px', fontWeight: 900, color: 'var(--text)', marginBottom: '8px' },
-  subtitle: { fontSize: '16px', color: 'var(--text-light)', marginBottom: '32px' },
-  faqList: { display: 'flex', flexDirection: 'column', gap: '10px' },
+
+  hero: {
+    position: 'relative',
+    background: 'linear-gradient(135deg, #0f172a 0%, #111827 50%, #0f172a 100%)',
+    padding: '80px 20px 120px',
+    textAlign: 'center',
+    overflow: 'hidden',
+  },
+
+  heroTitle: {
+    fontSize: '42px',
+    fontWeight: 800,
+    marginBottom: '15px',
+  },
+
+  breadcrumb: {
+    color: '#22c55e',
+    fontSize: '14px',
+  },
+
+  wave: {
+    position: 'absolute',
+    bottom: 0,
+    left: 0,
+    width: '100%',
+    height: '70px',
+  },
+
+  contentContainer: {
+    maxWidth: '1200px',
+    margin: '40px auto 80px', // ✅ removed negative margin
+    display: 'flex',
+    gap: '60px',
+    padding: '0 20px',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    flexWrap: 'wrap',
+  },
+
+  left: {
+    flex: 1,
+    minWidth: '300px',
+    display: 'flex',
+    justifyContent: 'center',
+  },
+
+  imagePlaceholder: {
+    width: '100%',
+    maxWidth: '450px',
+    height: '380px',
+    borderRadius: '20px',
+    border: '2px dashed rgba(255,255,255,0.3)',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    opacity: 0.6,
+    fontSize: '18px',
+  },
+
+  right: {
+    flex: 1,
+    minWidth: '320px',
+  },
+
+  faqList: {
+    display: 'flex',
+    flexDirection: 'column',
+    gap: '18px',
+  },
+
   faqItem: {
-    background: 'var(--bg-card)', borderRadius: '14px',
-    border: '1px solid var(--border)', overflow: 'hidden',
-    boxShadow: '0 2px 8px rgba(0,0,0,0.03)',
+    borderBottom: '1px solid rgba(255,255,255,0.2)',
+    paddingBottom: '14px',
   },
-  faqQ: {
-    width: '100%', padding: '18px 20px',
-    background: 'none', border: 'none',
-    display: 'flex', alignItems: 'center', gap: '14px',
-    fontSize: '15px', fontWeight: 600,
-    cursor: 'pointer', textAlign: 'left',
-    fontFamily: 'Inter, sans-serif', lineHeight: 1.4,
+
+  question: {
+    width: '100%',
+    background: 'none',
+    border: 'none',
+    color: 'white',
+    display: 'flex',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    fontSize: '18px',
+    fontWeight: 600,
+    cursor: 'pointer',
+    textAlign: 'left',
   },
-  qNum: {
-    fontSize: '12px', fontWeight: 800, color: '#22c55e',
-    background: '#dcfce7', width: '28px', height: '28px',
-    borderRadius: '8px', display: 'flex', alignItems: 'center',
-    justifyContent: 'center', flexShrink: 0,
-  },
-  faqA: {
-    padding: '0 20px 18px 62px', fontSize: '14px',
-    color: 'var(--text-light)', lineHeight: 1.7,
+
+  answer: {
+    marginTop: '10px',
+    color: '#cbd5e1',
+    fontSize: '15px',
+    lineHeight: 1.6,
   },
 };
 

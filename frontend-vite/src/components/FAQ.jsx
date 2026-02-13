@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FaChevronDown } from 'react-icons/fa';
+import { useApp } from '../context/AppContext';
 
 const FAQ = () => {
+  const { setCurrentView } = useApp();
   const [openIndex, setOpenIndex] = useState(null);
 
   const faqs = [
@@ -34,7 +36,6 @@ const FAQ = () => {
 
         {/* LEFT SIDE IMAGE SPACE */}
         <div style={styles.left}>
-          {/* Replace below div with your custom image */}
           <div style={styles.imagePlaceholder}>
             Your Custom Image Here
           </div>
@@ -82,6 +83,18 @@ const FAQ = () => {
                 </AnimatePresence>
               </div>
             ))}
+          </div>
+
+          {/* VIEW MORE BUTTON */}
+          <div style={{ marginTop: '35px' }}>
+            <motion.button
+              style={styles.viewMoreBtn}
+              onClick={() => setCurrentView('faq')}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              View More Questions →
+            </motion.button>
           </div>
         </div>
 
@@ -166,6 +179,16 @@ const styles = {
     color: '#cbd5e1',
     fontSize: '15px',
     lineHeight: 1.6,
+  },
+  viewMoreBtn: {
+    padding: '12px 30px',
+    background: 'linear-gradient(135deg, #22c55e, #16a34a)',
+    color: 'white',
+    border: 'none',
+    borderRadius: '50px',
+    fontSize: '14px',
+    fontWeight: 600,
+    cursor: 'pointer',
   },
 };
 

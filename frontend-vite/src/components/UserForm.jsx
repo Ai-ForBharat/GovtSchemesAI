@@ -321,40 +321,46 @@ const styles = {
     position: 'relative',
     zIndex: 10,
   },
+
+  /* 🔥 DARK CARD */
   container: {
-    background: 'white',
+    background: '#0f172a', // dark navy
     borderRadius: 'clamp(16px, 3vw, 20px)',
     padding: 'clamp(24px, 5vw, 40px)',
-    boxShadow: '0 10px 50px rgba(0, 0, 0, 0.1)',
-    border: '1px solid var(--border)',
+    boxShadow: '0 20px 60px rgba(0, 0, 0, 0.6)',
+    border: '1px solid #1e293b',
   },
+
   title: {
     fontSize: 'clamp(20px, 4vw, 24px)',
     fontWeight: 800,
-    color: 'var(--text)',
+    color: '#ffffff',
     display: 'flex',
     alignItems: 'center',
     gap: '10px',
     marginBottom: '4px',
   },
+
   subtitle: {
-    color: 'var(--text-lighter)',
+    color: '#94a3b8',
     fontSize: 'clamp(12px, 2.5vw, 14px)',
     marginBottom: 'clamp(20px, 4vw, 28px)',
   },
+
   progress: {
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
     marginBottom: 'clamp(20px, 4vw, 30px)',
-    gap: '0',
   },
+
   progressStep: {
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
     gap: '5px',
   },
+
   progressDot: {
     width: 'clamp(30px, 5vw, 36px)',
     height: 'clamp(30px, 5vw, 36px)',
@@ -366,6 +372,7 @@ const styles = {
     fontSize: 'clamp(12px, 2.5vw, 14px)',
     transition: 'all 0.3s ease',
   },
+
   progressLine: {
     width: 'clamp(30px, 8vw, 60px)',
     height: '3px',
@@ -375,15 +382,18 @@ const styles = {
     marginRight: '4px',
     transition: 'all 0.3s ease',
   },
+
   stepTitle: {
     fontSize: 'clamp(16px, 3vw, 18px)',
     fontWeight: 700,
     marginBottom: 'clamp(14px, 3vw, 20px)',
-    color: 'var(--text)',
+    color: '#ffffff',
   },
+
   group: {
     marginBottom: 'clamp(14px, 3vw, 18px)',
   },
+
   label: {
     display: 'flex',
     alignItems: 'center',
@@ -391,61 +401,73 @@ const styles = {
     fontSize: 'clamp(12px, 2.5vw, 14px)',
     fontWeight: 600,
     marginBottom: '6px',
-    color: 'var(--text)',
+    color: '#e2e8f0',
   },
+
   labelIcon: {
     color: '#22c55e',
     fontSize: '14px',
   },
+
+  /* 🔥 DARK INPUTS */
   input: {
     width: '100%',
     padding: 'clamp(10px, 2vw, 14px) clamp(12px, 2.5vw, 16px)',
-    border: '2px solid var(--border)',
+    border: '2px solid #1e293b',
     borderRadius: 'clamp(10px, 2vw, 12px)',
     fontSize: 'clamp(13px, 2.5vw, 15px)',
     fontFamily: 'Inter, sans-serif',
-    background: 'var(--bg-input)',
+    background: '#020617',
+    color: '#ffffff',
     transition: 'all 0.3s ease',
     outline: 'none',
     boxSizing: 'border-box',
   },
+
   hint: {
-    color: 'var(--text-lighter)',
+    color: '#94a3b8',
     fontSize: 'clamp(10px, 2vw, 12px)',
     marginTop: '4px',
     display: 'block',
   },
+
   row: {
     display: 'grid',
     gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
     gap: 'clamp(10px, 2vw, 15px)',
   },
+
+  /* 🔥 DARK CHECKBOX CARDS */
   checkbox: {
     display: 'flex',
     alignItems: 'center',
     gap: 'clamp(8px, 2vw, 12px)',
     padding: 'clamp(10px, 2vw, 14px) clamp(12px, 2.5vw, 18px)',
-    border: '2px solid var(--border)',
+    border: '2px solid #1e293b',
     borderRadius: 'clamp(10px, 2vw, 12px)',
     marginBottom: 'clamp(8px, 1.5vw, 10px)',
     cursor: 'pointer',
     fontSize: 'clamp(12px, 2.5vw, 14px)',
     fontWeight: 500,
     transition: 'all 0.3s ease',
-    background: 'var(--bg-input)',
+    background: '#020617',
+    color: '#e2e8f0',
   },
+
   checkboxInput: {
     width: '18px',
     height: '18px',
     accentColor: '#22c55e',
     flexShrink: 0,
   },
+
   btnRow: {
     display: 'flex',
     gap: 'clamp(8px, 2vw, 12px)',
     marginTop: 'clamp(10px, 2vw, 15px)',
     flexWrap: 'wrap',
   },
+
   nextBtn: {
     width: '100%',
     padding: 'clamp(12px, 2.5vw, 14px) 24px',
@@ -463,10 +485,11 @@ const styles = {
     fontFamily: 'Inter, sans-serif',
     marginTop: '10px',
   },
+
   backBtn: {
     padding: 'clamp(12px, 2.5vw, 14px) clamp(16px, 3vw, 24px)',
-    background: '#f1f5f9',
-    color: 'var(--text-light)',
+    background: '#1e293b',
+    color: '#e2e8f0',
     border: 'none',
     borderRadius: 'clamp(10px, 2vw, 12px)',
     fontSize: 'clamp(13px, 2.5vw, 15px)',
@@ -477,6 +500,7 @@ const styles = {
     cursor: 'pointer',
     fontFamily: 'Inter, sans-serif',
   },
+
   submitBtn: {
     flex: 1,
     padding: 'clamp(14px, 3vw, 16px) 24px',

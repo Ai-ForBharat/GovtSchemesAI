@@ -7,17 +7,17 @@ const HowItWorks = () => {
     {
       icon: <FaEdit />, title: 'Enter Details',
       desc: 'Start by entering your basic details like age, state, income, and occupation.',
-      color: '#22c55e', bg: '#dcfce7', num: '01',
+      color: '#22c55e', bg: '#052e1f', num: '01',
     },
     {
-      icon: <FaSearch />, title: 'AI Searches',
-      desc: 'Our AI search engine will find the most relevant schemes matching your profile.',
-      color: '#16a34a', bg: '#ffedd5', num: '02',
+      icon: <FaSearch />, title: 'Search',
+      desc: 'Our AI search engine will find the relevant schemes matching your profile.',
+      color: '#22c55e', bg: '#052e1f', num: '02',
     },
     {
       icon: <FaCheckCircle />, title: 'Select & Apply',
       desc: 'Select and apply for the best suited scheme directly through official websites.',
-      color: '#22c55e', bg: '#dcfce7', num: '03',
+      color: '#22c55e', bg: '#052e1f', num: '03',
     },
   ];
 
@@ -29,10 +29,10 @@ const HowItWorks = () => {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
       >
-        <span style={styles.label}>How it Works</span>
+        <span style={styles.label}>How it works</span>
         <h2 style={styles.heading}>
-          Easy steps to apply for<br />
-          <span style={styles.headingHighlight}>Government Schemes</span>
+          Easy steps to apply<br />
+          for <span style={styles.headingHighlight}>Government Schemes</span>
         </h2>
       </motion.div>
 
@@ -45,14 +45,18 @@ const HowItWorks = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.2 }}
-              whileHover={{ y: -8, boxShadow: '0 20px 50px rgba(0,0,0,0.1)' }}
+              whileHover={{ y: -10, boxShadow: '0 0 30px rgba(34,197,94,0.3)' }}
             >
-              <div style={{ ...styles.numBadge, background: step.bg, color: step.color }}>
+              <div style={{ ...styles.numBadge }}>
                 {step.num}
               </div>
-              <div style={{ ...styles.iconCircle, background: step.bg }}>
-                <span style={{ fontSize: '28px', color: step.color }}>{step.icon}</span>
+
+              <div style={{ ...styles.iconCircle }}>
+                <span style={{ fontSize: '28px', color: step.color }}>
+                  {step.icon}
+                </span>
               </div>
+
               <h3 style={styles.stepTitle}>{step.title}</h3>
               <p style={styles.stepDesc}>{step.desc}</p>
             </motion.div>
@@ -60,10 +64,10 @@ const HowItWorks = () => {
             {i < steps.length - 1 && (
               <>
                 <div style={styles.arrowDesktop}>
-                  <FaArrowRight style={{ color: '#cbd5e1', fontSize: '24px' }} />
+                  <FaArrowRight style={{ color: '#1f2937', fontSize: '28px' }} />
                 </div>
                 <div style={styles.arrowMobile}>
-                  <FaArrowDown style={{ color: '#cbd5e1', fontSize: '24px' }} />
+                  <FaArrowDown style={{ color: '#1f2937', fontSize: '28px' }} />
                 </div>
               </>
             )}
@@ -78,93 +82,104 @@ const isMobile = typeof window !== 'undefined' && window.innerWidth <= 768;
 
 const styles = {
   section: {
-    padding: 'clamp(50px, 8vw, 80px) clamp(16px, 4vw, 24px)',
-    background: 'var(--bg-card)',
+    padding: 'clamp(60px, 10vw, 100px) 20px',
+    background: 'linear-gradient(135deg, #0f172a, #111827)',
   },
+
   header: {
     textAlign: 'center',
-    marginBottom: 'clamp(30px, 5vw, 50px)',
+    marginBottom: '60px',
   },
+
   label: {
-    display: 'inline-block',
-    background: '#f0fdf4',
-    color: '#22c55e',
-    padding: '6px 20px',
-    borderRadius: '50px',
+    display: 'block',
+    color: '#94a3b8',
     fontSize: '14px',
-    fontWeight: 600,
     marginBottom: '16px',
+    letterSpacing: '1px',
   },
+
   heading: {
-    fontSize: 'clamp(24px, 5vw, 40px)',
+    fontSize: 'clamp(28px, 5vw, 48px)',
     fontWeight: 800,
-    color: 'var(--text)',
+    color: '#ffffff',
     lineHeight: 1.2,
   },
+
   headingHighlight: {
     color: '#22c55e',
   },
+
   stepsContainer: {
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    gap: '20px',
-    maxWidth: '1000px',
+    gap: '40px',
+    maxWidth: '1100px',
     margin: '0 auto',
     flexWrap: 'wrap',
   },
+
   stepCard: {
-    background: 'var(--bg-card)',
-    borderRadius: '20px',
-    padding: 'clamp(24px, 4vw, 36px) clamp(20px, 3vw, 28px)',
+    background: '#0b1220',
+    borderRadius: '16px',
+    padding: '40px 30px',
     textAlign: 'center',
-    width: 'clamp(240px, 40vw, 280px)',
-    border: '1px solid var(--border)',
-    boxShadow: '0 4px 20px rgba(0,0,0,0.05)',
-    transition: 'all 0.3s ease',
+    width: '280px',
     position: 'relative',
+    transition: 'all 0.3s ease',
   },
+
   numBadge: {
     position: 'absolute',
-    top: '14px',
-    right: '14px',
+    top: '16px',
+    right: '16px',
     width: '32px',
     height: '32px',
     borderRadius: '50%',
+    background: '#052e1f',
+    color: '#22c55e',
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
     fontSize: '12px',
-    fontWeight: 800,
+    fontWeight: 700,
   },
+
   iconCircle: {
-    width: 'clamp(56px, 8vw, 72px)',
-    height: 'clamp(56px, 8vw, 72px)',
+    width: '70px',
+    height: '70px',
     borderRadius: '50%',
+    background: '#052e1f',
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    margin: '0 auto 16px',
+    margin: '0 auto 20px',
   },
+
   stepTitle: {
-    fontSize: 'clamp(15px, 3vw, 18px)',
+    fontSize: '18px',
     fontWeight: 700,
-    color: 'var(--text)',
-    marginBottom: '8px',
+    color: '#22c55e',
+    marginBottom: '12px',
   },
+
   stepDesc: {
-    fontSize: 'clamp(12px, 2.5vw, 14px)',
-    color: 'var(--text-light)',
+    fontSize: '14px',
+    color: '#cbd5e1',
     lineHeight: 1.6,
   },
+
   arrowDesktop: {
     display: isMobile ? 'none' : 'flex',
     alignItems: 'center',
   },
+
   arrowMobile: {
     display: isMobile ? 'flex' : 'none',
     justifyContent: 'center',
     width: '100%',
+    margin: '10px 0',
   },
 };
 
