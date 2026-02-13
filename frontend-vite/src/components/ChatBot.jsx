@@ -54,8 +54,8 @@ const ChatBot = ({ onClose }) => {
         <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
           <FaRobot style={{ fontSize: '20px' }} />
           <div>
-            <h3 style={{ fontSize: '15px', fontWeight: 700, margin: 0 }}>GovScheme AI</h3>
-            <span style={{ fontSize: '11px', opacity: 0.8 }}>Ask me anything</span>
+            <h3 style={{ fontSize: 'clamp(13px, 3vw, 15px)', fontWeight: 700, margin: 0 }}>GovScheme AI</h3>
+            <span style={{ fontSize: 'clamp(9px, 2vw, 11px)', opacity: 0.8 }}>Ask me anything</span>
           </div>
         </div>
         <button onClick={onClose} style={styles.closeBtn}>
@@ -114,10 +114,10 @@ const ChatBot = ({ onClose }) => {
 const styles = {
   window: {
     position: 'fixed',
-    bottom: '95px',
-    right: '25px',
-    width: '380px',
-    height: '520px',
+    bottom: 'clamp(80px, 12vw, 95px)',
+    right: 'clamp(12px, 3vw, 25px)',
+    width: 'clamp(300px, 85vw, 380px)',
+    height: 'clamp(400px, 65vh, 520px)',
     background: 'white',
     borderRadius: '20px',
     boxShadow: '0 10px 50px rgba(0,0,0,0.15)',
@@ -131,7 +131,7 @@ const styles = {
     display: 'flex',
     justifyContent: 'space-between',
     alignItems: 'center',
-    padding: '16px 20px',
+    padding: 'clamp(12px, 2.5vw, 16px) clamp(14px, 3vw, 20px)',
     background: 'linear-gradient(135deg, #1e40af, #4338ca)',
     color: 'white',
   },
@@ -151,7 +151,7 @@ const styles = {
   messages: {
     flex: 1,
     overflowY: 'auto',
-    padding: '16px',
+    padding: 'clamp(10px, 2vw, 16px)',
     display: 'flex',
     flexDirection: 'column',
     gap: '10px',
@@ -159,9 +159,9 @@ const styles = {
   },
   message: {
     maxWidth: '85%',
-    padding: '12px 16px',
+    padding: 'clamp(10px, 2vw, 12px) clamp(12px, 2.5vw, 16px)',
     borderRadius: '16px',
-    fontSize: '14px',
+    fontSize: 'clamp(12px, 2.5vw, 14px)',
     lineHeight: 1.5,
   },
   botMsg: {
@@ -178,24 +178,24 @@ const styles = {
   },
   inputBar: {
     display: 'flex',
-    padding: '12px',
+    padding: 'clamp(8px, 2vw, 12px)',
     gap: '8px',
     borderTop: '1px solid #e2e8f0',
     background: 'white',
   },
   input: {
     flex: 1,
-    padding: '12px 18px',
+    padding: 'clamp(8px, 2vw, 12px) clamp(12px, 2.5vw, 18px)',
     border: '2px solid #e2e8f0',
     borderRadius: '50px',
-    fontSize: '14px',
+    fontSize: 'clamp(12px, 2.5vw, 14px)',
     outline: 'none',
     fontFamily: 'Inter, sans-serif',
     background: '#fafbff',
   },
   sendBtn: {
-    width: '44px',
-    height: '44px',
+    width: 'clamp(38px, 7vw, 44px)',
+    height: 'clamp(38px, 7vw, 44px)',
     borderRadius: '50%',
     border: 'none',
     background: 'linear-gradient(135deg, #3b82f6, #2563eb)',
@@ -204,8 +204,9 @@ const styles = {
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    fontSize: '16px',
+    fontSize: 'clamp(14px, 2.5vw, 16px)',
     fontFamily: 'Inter, sans-serif',
+    flexShrink: 0,
   },
 };
 

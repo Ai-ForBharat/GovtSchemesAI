@@ -15,7 +15,7 @@ const About = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
         >
-          <span style={styles.label}>About Us</span>
+          <span style={styles.labelBadge}>About Us</span>
           <h2 style={styles.heading}>About GovScheme AI</h2>
 
           <p style={styles.text}>
@@ -68,44 +68,87 @@ const About = () => {
 };
 
 const styles = {
-  section: { padding: '80px 24px', background: '#f0f4ff' },
-  container: { maxWidth: '800px', margin: '0 auto' },
+  section: {
+    padding: 'clamp(50px, 8vw, 80px) clamp(12px, 3vw, 24px)',
+    background: '#f0f4ff',
+  },
+  container: {
+    maxWidth: '800px',
+    margin: '0 auto',
+  },
   content: {
-    background: 'white', borderRadius: '24px', padding: '50px 40px',
-    boxShadow: '0 10px 40px rgba(0,0,0,0.06)', border: '1px solid #e2e8f0',
+    background: 'white',
+    borderRadius: 'clamp(16px, 3vw, 24px)',
+    padding: 'clamp(28px, 5vw, 50px) clamp(20px, 4vw, 40px)',
+    boxShadow: '0 10px 40px rgba(0,0,0,0.06)',
+    border: '1px solid #e2e8f0',
     textAlign: 'center',
   },
-  label: {
-    display: 'inline-block', background: '#ede9fe', color: '#7c3aed',
-    padding: '6px 20px', borderRadius: '50px', fontSize: '14px',
-    fontWeight: 600, marginBottom: '16px',
+  labelBadge: {
+    display: 'inline-block',
+    background: '#ede9fe',
+    color: '#7c3aed',
+    padding: '6px 20px',
+    borderRadius: '50px',
+    fontSize: 'clamp(12px, 2.5vw, 14px)',
+    fontWeight: 600,
+    marginBottom: '14px',
   },
-  heading: { fontSize: '32px', fontWeight: 800, color: '#1e293b', marginBottom: '24px' },
+  heading: {
+    fontSize: 'clamp(24px, 5vw, 32px)',
+    fontWeight: 800,
+    color: '#1e293b',
+    marginBottom: 'clamp(16px, 3vw, 24px)',
+  },
   text: {
-    fontSize: '16px', color: '#475569', lineHeight: 1.8,
-    marginBottom: '16px', textAlign: 'left',
+    fontSize: 'clamp(13px, 2.5vw, 16px)',
+    color: '#475569',
+    lineHeight: 1.8,
+    marginBottom: '14px',
+    textAlign: 'left',
   },
   features: {
-    display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px',
-    margin: '30px 0',
+    display: 'grid',
+    gridTemplateColumns: 'repeat(auto-fit, minmax(clamp(140px, 40vw, 200px), 1fr))',
+    gap: 'clamp(8px, 2vw, 12px)',
+    margin: 'clamp(20px, 4vw, 30px) 0',
   },
   featureItem: {
-    display: 'flex', alignItems: 'center', gap: '12px',
-    padding: '14px 16px', background: '#f8faff', borderRadius: '12px',
+    display: 'flex',
+    alignItems: 'center',
+    gap: 'clamp(8px, 2vw, 12px)',
+    padding: 'clamp(10px, 2vw, 14px) clamp(12px, 2.5vw, 16px)',
+    background: '#f8faff',
+    borderRadius: '12px',
     border: '1px solid #e2e8f0',
   },
   featureIcon: {
-    width: '36px', height: '36px', borderRadius: '10px',
-    display: 'flex', alignItems: 'center', justifyContent: 'center',
-    fontSize: '16px', flexShrink: 0,
+    width: 'clamp(30px, 5vw, 36px)',
+    height: 'clamp(30px, 5vw, 36px)',
+    borderRadius: '10px',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    fontSize: 'clamp(14px, 2.5vw, 16px)',
+    flexShrink: 0,
   },
-  featureText: { fontSize: '13px', fontWeight: 600, color: '#1e293b' },
+  featureText: {
+    fontSize: 'clamp(11px, 2.5vw, 13px)',
+    fontWeight: 600,
+    color: '#1e293b',
+  },
   btn: {
-    padding: '14px 32px',
+    padding: 'clamp(12px, 2.5vw, 14px) clamp(24px, 4vw, 32px)',
     background: 'linear-gradient(135deg, #7c3aed, #6d28d9)',
-    color: 'white', border: 'none', borderRadius: '50px',
-    fontSize: '15px', fontWeight: 600, cursor: 'pointer',
-    display: 'inline-flex', alignItems: 'center', gap: '8px',
+    color: 'white',
+    border: 'none',
+    borderRadius: '50px',
+    fontSize: 'clamp(13px, 2.5vw, 15px)',
+    fontWeight: 600,
+    cursor: 'pointer',
+    display: 'inline-flex',
+    alignItems: 'center',
+    gap: '8px',
     fontFamily: 'Inter, sans-serif',
   },
 };

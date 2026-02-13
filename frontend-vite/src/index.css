@@ -45,7 +45,7 @@ body {
 }
 
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 6px;
 }
 
 ::-webkit-scrollbar-track {
@@ -74,6 +74,22 @@ button {
 
 input, select, textarea {
   font-family: var(--font);
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* ========== APP LAYOUT ========== */
+.app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.app-content {
+  flex: 1;
 }
 
 /* ========== CHAT FAB BUTTON ========== */
@@ -114,13 +130,116 @@ input, select, textarea {
   letter-spacing: 0.5px;
 }
 
-/* ========== RESPONSIVE ========== */
+/* ========== ANIMATIONS ========== */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
+@keyframes gradientMove {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* ==========================================================
+   RESPONSIVE BREAKPOINTS
+   Mobile:  < 480px
+   Tablet:  480px - 768px
+   Small:   768px - 900px
+   Desktop: > 900px
+   ========================================================== */
+
+/* ========== NAVBAR RESPONSIVE ========== */
+
+/* Hide desktop nav links & lang on small screens, show hamburger */
+@media (max-width: 900px) {
+  /* Hide desktop nav links */
+  nav > div > div:nth-child(3) {
+    display: none !important;
+  }
+
+  /* Hide desktop language selector */
+  nav > div > div:nth-child(4) {
+    display: none !important;
+  }
+
+  /* Show mobile menu button */
+  nav > div > button:last-child {
+    display: flex !important;
+  }
+
+  /* Make search bar take more space */
+  nav > div > form {
+    max-width: 100% !important;
+    flex: 1 !important;
+  }
+}
+
+@media (max-width: 480px) {
+  /* Smaller brand on mobile */
+  nav > div {
+    padding: 8px 12px !important;
+    gap: 10px !important;
+  }
+
+  nav > div > div:first-child h1 {
+    font-size: 16px !important;
+  }
+
+  nav > div > div:first-child span:first-child {
+    font-size: 22px !important;
+  }
+
+  nav > div > form {
+    padding: 0 8px !important;
+  }
+
+  nav > div > form input {
+    padding: 8px 6px !important;
+    font-size: 12px !important;
+  }
+}
+
+/* ========== HERO RESPONSIVE ========== */
 @media (max-width: 768px) {
+  .hero-section {
+    padding: 50px 16px 70px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-section {
+    padding: 40px 12px 60px !important;
+  }
+}
+
+/* ========== CHATBOT RESPONSIVE ========== */
+@media (max-width: 480px) {
   .chat-fab {
     width: 52px;
     height: 52px;
     font-size: 22px;
-    bottom: 20px;
-    right: 20px;
+    bottom: 16px;
+    right: 16px;
+  }
+
+  .fab-badge {
+    font-size: 8px;
+    padding: 2px 5px;
   }
 }

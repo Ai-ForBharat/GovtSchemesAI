@@ -66,7 +66,7 @@ const Results = () => {
         ))}
       </div>
 
-      {/* Scheme Cards Grid */}
+      {/* Grid */}
       <div style={styles.grid}>
         {filteredResults.length > 0 ? (
           filteredResults.map((scheme, index) => (
@@ -85,7 +85,6 @@ const Results = () => {
         )}
       </div>
 
-      {/* Modal */}
       {selectedScheme && (
         <SchemeModal
           scheme={selectedScheme}
@@ -100,36 +99,36 @@ const styles = {
   container: {
     maxWidth: '1100px',
     margin: '0 auto',
-    padding: '40px 20px',
+    padding: 'clamp(24px, 5vw, 40px) clamp(12px, 3vw, 20px)',
   },
   header: {
     display: 'flex',
     justifyContent: 'space-between',
     alignItems: 'center',
     flexWrap: 'wrap',
-    gap: '16px',
-    marginBottom: '24px',
+    gap: '12px',
+    marginBottom: 'clamp(16px, 3vw, 24px)',
   },
   title: {
-    fontSize: '28px',
+    fontSize: 'clamp(22px, 5vw, 28px)',
     fontWeight: 800,
     color: '#1e293b',
   },
   count: {
     color: '#64748b',
-    fontSize: '15px',
+    fontSize: 'clamp(13px, 2.5vw, 15px)',
     marginTop: '4px',
   },
   resetBtn: {
     display: 'flex',
     alignItems: 'center',
     gap: '8px',
-    padding: '10px 24px',
+    padding: 'clamp(8px, 2vw, 10px) clamp(16px, 3vw, 24px)',
     background: 'white',
     border: '2px solid #3b82f6',
     color: '#3b82f6',
     borderRadius: '12px',
-    fontSize: '14px',
+    fontSize: 'clamp(12px, 2.5vw, 14px)',
     fontWeight: 600,
     cursor: 'pointer',
     fontFamily: 'Inter, sans-serif',
@@ -137,16 +136,16 @@ const styles = {
   filterBar: {
     display: 'flex',
     alignItems: 'center',
-    gap: '10px',
-    marginBottom: '28px',
+    gap: 'clamp(6px, 1.5vw, 10px)',
+    marginBottom: 'clamp(20px, 4vw, 28px)',
     flexWrap: 'wrap',
   },
   filterBtn: {
-    padding: '8px 20px',
+    padding: 'clamp(6px, 1.5vw, 8px) clamp(14px, 3vw, 20px)',
     border: '2px solid #e2e8f0',
     borderRadius: '50px',
     background: 'white',
-    fontSize: '14px',
+    fontSize: 'clamp(12px, 2.5vw, 14px)',
     fontWeight: 500,
     cursor: 'pointer',
     fontFamily: 'Inter, sans-serif',
@@ -165,18 +164,18 @@ const styles = {
     background: 'rgba(255,255,255,0.2)',
     padding: '1px 8px',
     borderRadius: '50px',
-    fontSize: '12px',
+    fontSize: 'clamp(10px, 2vw, 12px)',
     fontWeight: 700,
   },
   grid: {
     display: 'grid',
-    gridTemplateColumns: 'repeat(auto-fill, minmax(340px, 1fr))',
-    gap: '20px',
+    gridTemplateColumns: 'repeat(auto-fill, minmax(clamp(280px, 80vw, 340px), 1fr))',
+    gap: 'clamp(14px, 3vw, 20px)',
   },
   empty: {
     gridColumn: '1 / -1',
     textAlign: 'center',
-    padding: '60px 20px',
+    padding: 'clamp(40px, 8vw, 60px) 20px',
     color: '#94a3b8',
   },
 };

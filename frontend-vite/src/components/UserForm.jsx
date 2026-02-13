@@ -85,45 +85,6 @@ const UserForm = () => {
     }
   };
 
-  const inputStyle = {
-    width: '100%',
-    padding: '14px 16px',
-    border: '2px solid #e2e8f0',
-    borderRadius: '12px',
-    fontSize: '15px',
-    fontFamily: 'Inter, sans-serif',
-    background: '#fafbff',
-    transition: 'all 0.3s ease',
-    outline: 'none',
-  };
-
-  const labelStyle = {
-    display: 'flex',
-    alignItems: 'center',
-    gap: '8px',
-    fontSize: '14px',
-    fontWeight: 600,
-    marginBottom: '6px',
-    color: '#1e293b',
-  };
-
-  const groupStyle = { marginBottom: '18px' };
-
-  const checkboxStyle = {
-    display: 'flex',
-    alignItems: 'center',
-    gap: '12px',
-    padding: '14px 18px',
-    border: '2px solid #e2e8f0',
-    borderRadius: '12px',
-    marginBottom: '10px',
-    cursor: 'pointer',
-    fontSize: '14px',
-    fontWeight: 500,
-    transition: 'all 0.3s ease',
-    background: '#fafbff',
-  };
-
   return (
     <section id="form-section" style={styles.section}>
       <motion.div
@@ -157,7 +118,7 @@ const UserForm = () => {
                   {step > i + 1 ? '✓' : i + 1}
                 </div>
                 <span style={{
-                  fontSize: '12px',
+                  fontSize: 'clamp(10px, 2.5vw, 12px)',
                   fontWeight: step === i + 1 ? 700 : 500,
                   color: step === i + 1 ? '#3b82f6' : '#94a3b8',
                 }}>{label}</span>
@@ -168,7 +129,8 @@ const UserForm = () => {
 
         <form onSubmit={handleSubmit}>
           <AnimatePresence mode="wait">
-            {/* Step 1 */}
+
+            {/* ===== STEP 1 ===== */}
             {step === 1 && (
               <motion.div
                 key="step1"
@@ -179,21 +141,21 @@ const UserForm = () => {
               >
                 <h3 style={styles.stepTitle}>👤 Personal Information</h3>
 
-                <div style={groupStyle}>
-                  <label style={labelStyle}><FaUser style={{color:'#3b82f6'}} /> Full Name</label>
-                  <input style={inputStyle} name="name" value={formData.name}
+                <div style={styles.group}>
+                  <label style={styles.label}><FaUser style={styles.labelIcon} /> Full Name</label>
+                  <input style={styles.input} name="name" value={formData.name}
                     onChange={handleChange} placeholder="Enter your full name" required />
                 </div>
 
-                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '15px' }}>
-                  <div style={groupStyle}>
-                    <label style={labelStyle}><FaBirthdayCake style={{color:'#f97316'}} /> Age</label>
-                    <input style={inputStyle} type="number" name="age" value={formData.age}
+                <div style={styles.row}>
+                  <div style={styles.group}>
+                    <label style={styles.label}><FaBirthdayCake style={{ ...styles.labelIcon, color: '#f97316' }} /> Age</label>
+                    <input style={styles.input} type="number" name="age" value={formData.age}
                       onChange={handleChange} placeholder="Your age" min="0" max="120" required />
                   </div>
-                  <div style={groupStyle}>
-                    <label style={labelStyle}><FaVenusMars style={{color:'#ec4899'}} /> Gender</label>
-                    <select style={inputStyle} name="gender" value={formData.gender} onChange={handleChange} required>
+                  <div style={styles.group}>
+                    <label style={styles.label}><FaVenusMars style={{ ...styles.labelIcon, color: '#ec4899' }} /> Gender</label>
+                    <select style={styles.input} name="gender" value={formData.gender} onChange={handleChange} required>
                       <option value="">Select Gender</option>
                       <option value="male">👨 Male</option>
                       <option value="female">👩 Female</option>
@@ -202,17 +164,17 @@ const UserForm = () => {
                   </div>
                 </div>
 
-                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '15px' }}>
-                  <div style={groupStyle}>
-                    <label style={labelStyle}><FaMapMarkerAlt style={{color:'#ef4444'}} /> State</label>
-                    <select style={inputStyle} name="state" value={formData.state} onChange={handleChange} required>
+                <div style={styles.row}>
+                  <div style={styles.group}>
+                    <label style={styles.label}><FaMapMarkerAlt style={{ ...styles.labelIcon, color: '#ef4444' }} /> State</label>
+                    <select style={styles.input} name="state" value={formData.state} onChange={handleChange} required>
                       <option value="">Select State</option>
                       {STATES.map(s => <option key={s} value={s}>{s}</option>)}
                     </select>
                   </div>
-                  <div style={groupStyle}>
-                    <label style={labelStyle}><FaUsers style={{color:'#8b5cf6'}} /> Category</label>
-                    <select style={inputStyle} name="category" value={formData.category} onChange={handleChange} required>
+                  <div style={styles.group}>
+                    <label style={styles.label}><FaUsers style={{ ...styles.labelIcon, color: '#8b5cf6' }} /> Category</label>
+                    <select style={styles.input} name="category" value={formData.category} onChange={handleChange} required>
                       <option value="">Select Category</option>
                       <option value="general">General</option>
                       <option value="obc">OBC</option>
@@ -229,7 +191,7 @@ const UserForm = () => {
               </motion.div>
             )}
 
-            {/* Step 2 */}
+            {/* ===== STEP 2 ===== */}
             {step === 2 && (
               <motion.div
                 key="step2"
@@ -240,16 +202,16 @@ const UserForm = () => {
               >
                 <h3 style={styles.stepTitle}>💰 Economic Information</h3>
 
-                <div style={groupStyle}>
-                  <label style={labelStyle}><FaRupeeSign style={{color:'#22c55e'}} /> Annual Family Income (₹)</label>
-                  <input style={inputStyle} type="number" name="annual_income" value={formData.annual_income}
+                <div style={styles.group}>
+                  <label style={styles.label}><FaRupeeSign style={{ ...styles.labelIcon, color: '#22c55e' }} /> Annual Family Income (₹)</label>
+                  <input style={styles.input} type="number" name="annual_income" value={formData.annual_income}
                     onChange={handleChange} placeholder="e.g. 200000" min="0" required />
-                  <small style={{ color: '#94a3b8', fontSize: '12px' }}>Enter total yearly family income</small>
+                  <small style={styles.hint}>Enter total yearly family income</small>
                 </div>
 
-                <div style={groupStyle}>
-                  <label style={labelStyle}><FaBriefcase style={{color:'#f97316'}} /> Occupation</label>
-                  <select style={inputStyle} name="occupation" value={formData.occupation} onChange={handleChange} required>
+                <div style={styles.group}>
+                  <label style={styles.label}><FaBriefcase style={{ ...styles.labelIcon, color: '#f97316' }} /> Occupation</label>
+                  <select style={styles.input} name="occupation" value={formData.occupation} onChange={handleChange} required>
                     <option value="">Select Occupation</option>
                     <option value="farmer">🌾 Farmer</option>
                     <option value="student">🎓 Student</option>
@@ -262,13 +224,13 @@ const UserForm = () => {
                   </select>
                 </div>
 
-                <label style={checkboxStyle}>
+                <label style={styles.checkbox}>
                   <input type="checkbox" name="is_bpl" checked={formData.is_bpl}
-                    onChange={handleChange} style={{ width: 18, height: 18, accentColor: '#3b82f6' }} />
+                    onChange={handleChange} style={styles.checkboxInput} />
                   📋 BPL (Below Poverty Line) Card Holder
                 </label>
 
-                <div style={{ display: 'flex', gap: '12px', marginTop: '10px' }}>
+                <div style={styles.btnRow}>
                   <motion.button type="button" onClick={prevStep} style={styles.backBtn}
                     whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
                     <FaArrowLeft /> Back
@@ -281,7 +243,7 @@ const UserForm = () => {
               </motion.div>
             )}
 
-            {/* Step 3 */}
+            {/* ===== STEP 3 ===== */}
             {step === 3 && (
               <motion.div
                 key="step3"
@@ -292,10 +254,10 @@ const UserForm = () => {
               >
                 <h3 style={styles.stepTitle}>📋 Additional Information</h3>
 
-                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '15px' }}>
-                  <div style={groupStyle}>
-                    <label style={labelStyle}><FaGraduationCap style={{color:'#8b5cf6'}} /> Education</label>
-                    <select style={inputStyle} name="education" value={formData.education} onChange={handleChange}>
+                <div style={styles.row}>
+                  <div style={styles.group}>
+                    <label style={styles.label}><FaGraduationCap style={{ ...styles.labelIcon, color: '#8b5cf6' }} /> Education</label>
+                    <select style={styles.input} name="education" value={formData.education} onChange={handleChange}>
                       <option value="">Select Level</option>
                       <option value="none">No Formal Education</option>
                       <option value="primary">Primary (1-5)</option>
@@ -305,9 +267,9 @@ const UserForm = () => {
                       <option value="post_graduate">Post Graduate</option>
                     </select>
                   </div>
-                  <div style={groupStyle}>
-                    <label style={labelStyle}><FaHeart style={{color:'#ef4444'}} /> Marital Status</label>
-                    <select style={inputStyle} name="marital_status" value={formData.marital_status} onChange={handleChange}>
+                  <div style={styles.group}>
+                    <label style={styles.label}><FaHeart style={{ ...styles.labelIcon, color: '#ef4444' }} /> Marital Status</label>
+                    <select style={styles.input} name="marital_status" value={formData.marital_status} onChange={handleChange}>
                       <option value="">Select Status</option>
                       <option value="single">Single</option>
                       <option value="married">Married</option>
@@ -318,19 +280,19 @@ const UserForm = () => {
                 </div>
 
                 {[
-                  { name: 'is_farmer', icon: <FaTractor />, label: 'I am a Farmer / Own Agricultural Land' },
-                  { name: 'is_student', icon: <FaUserGraduate />, label: 'I am currently a Student' },
-                  { name: 'disability', icon: <FaWheelchair />, label: 'Person with Disability' },
-                  { name: 'is_minority', icon: <FaMosque />, label: 'Minority Community' },
+                  { name: 'is_farmer', icon: <FaTractor />, text: 'I am a Farmer / Own Agricultural Land' },
+                  { name: 'is_student', icon: <FaUserGraduate />, text: 'I am currently a Student' },
+                  { name: 'disability', icon: <FaWheelchair />, text: 'Person with Disability' },
+                  { name: 'is_minority', icon: <FaMosque />, text: 'Minority Community' },
                 ].map(item => (
-                  <label key={item.name} style={checkboxStyle}>
+                  <label key={item.name} style={styles.checkbox}>
                     <input type="checkbox" name={item.name} checked={formData[item.name]}
-                      onChange={handleChange} style={{ width: 18, height: 18, accentColor: '#3b82f6' }} />
-                    {item.icon} {item.label}
+                      onChange={handleChange} style={styles.checkboxInput} />
+                    {item.icon} {item.text}
                   </label>
                 ))}
 
-                <div style={{ display: 'flex', gap: '12px', marginTop: '15px' }}>
+                <div style={styles.btnRow}>
                   <motion.button type="button" onClick={prevStep} style={styles.backBtn}
                     whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
                     <FaArrowLeft /> Back
@@ -343,6 +305,7 @@ const UserForm = () => {
                 </div>
               </motion.div>
             )}
+
           </AnimatePresence>
         </form>
       </motion.div>
@@ -354,19 +317,19 @@ const styles = {
   section: {
     maxWidth: '680px',
     margin: '-50px auto 40px',
-    padding: '0 20px',
+    padding: '0 clamp(12px, 3vw, 20px)',
     position: 'relative',
     zIndex: 10,
   },
   container: {
     background: 'white',
-    borderRadius: '20px',
-    padding: '40px',
+    borderRadius: 'clamp(16px, 3vw, 20px)',
+    padding: 'clamp(24px, 5vw, 40px)',
     boxShadow: '0 10px 50px rgba(0, 0, 0, 0.1)',
     border: '1px solid #e2e8f0',
   },
   title: {
-    fontSize: '24px',
+    fontSize: 'clamp(20px, 4vw, 24px)',
     fontWeight: 800,
     color: '#1e293b',
     display: 'flex',
@@ -376,35 +339,35 @@ const styles = {
   },
   subtitle: {
     color: '#94a3b8',
-    fontSize: '14px',
-    marginBottom: '28px',
+    fontSize: 'clamp(12px, 2.5vw, 14px)',
+    marginBottom: 'clamp(20px, 4vw, 28px)',
   },
   progress: {
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    marginBottom: '30px',
+    marginBottom: 'clamp(20px, 4vw, 30px)',
     gap: '0',
   },
   progressStep: {
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
-    gap: '6px',
+    gap: '5px',
   },
   progressDot: {
-    width: '36px',
-    height: '36px',
+    width: 'clamp(30px, 5vw, 36px)',
+    height: 'clamp(30px, 5vw, 36px)',
     borderRadius: '50%',
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
     fontWeight: 700,
-    fontSize: '14px',
+    fontSize: 'clamp(12px, 2.5vw, 14px)',
     transition: 'all 0.3s ease',
   },
   progressLine: {
-    width: '60px',
+    width: 'clamp(30px, 8vw, 60px)',
     height: '3px',
     borderRadius: '10px',
     marginBottom: '22px',
@@ -413,19 +376,84 @@ const styles = {
     transition: 'all 0.3s ease',
   },
   stepTitle: {
-    fontSize: '18px',
+    fontSize: 'clamp(16px, 3vw, 18px)',
     fontWeight: 700,
-    marginBottom: '20px',
+    marginBottom: 'clamp(14px, 3vw, 20px)',
     color: '#1e293b',
+  },
+  group: {
+    marginBottom: 'clamp(14px, 3vw, 18px)',
+  },
+  label: {
+    display: 'flex',
+    alignItems: 'center',
+    gap: '8px',
+    fontSize: 'clamp(12px, 2.5vw, 14px)',
+    fontWeight: 600,
+    marginBottom: '6px',
+    color: '#1e293b',
+  },
+  labelIcon: {
+    color: '#3b82f6',
+    fontSize: '14px',
+  },
+  input: {
+    width: '100%',
+    padding: 'clamp(10px, 2vw, 14px) clamp(12px, 2.5vw, 16px)',
+    border: '2px solid #e2e8f0',
+    borderRadius: 'clamp(10px, 2vw, 12px)',
+    fontSize: 'clamp(13px, 2.5vw, 15px)',
+    fontFamily: 'Inter, sans-serif',
+    background: '#fafbff',
+    transition: 'all 0.3s ease',
+    outline: 'none',
+    boxSizing: 'border-box',
+  },
+  hint: {
+    color: '#94a3b8',
+    fontSize: 'clamp(10px, 2vw, 12px)',
+    marginTop: '4px',
+    display: 'block',
+  },
+  row: {
+    display: 'grid',
+    gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
+    gap: 'clamp(10px, 2vw, 15px)',
+  },
+  checkbox: {
+    display: 'flex',
+    alignItems: 'center',
+    gap: 'clamp(8px, 2vw, 12px)',
+    padding: 'clamp(10px, 2vw, 14px) clamp(12px, 2.5vw, 18px)',
+    border: '2px solid #e2e8f0',
+    borderRadius: 'clamp(10px, 2vw, 12px)',
+    marginBottom: 'clamp(8px, 1.5vw, 10px)',
+    cursor: 'pointer',
+    fontSize: 'clamp(12px, 2.5vw, 14px)',
+    fontWeight: 500,
+    transition: 'all 0.3s ease',
+    background: '#fafbff',
+  },
+  checkboxInput: {
+    width: '18px',
+    height: '18px',
+    accentColor: '#3b82f6',
+    flexShrink: 0,
+  },
+  btnRow: {
+    display: 'flex',
+    gap: 'clamp(8px, 2vw, 12px)',
+    marginTop: 'clamp(10px, 2vw, 15px)',
+    flexWrap: 'wrap',
   },
   nextBtn: {
     width: '100%',
-    padding: '14px 24px',
+    padding: 'clamp(12px, 2.5vw, 14px) 24px',
     background: 'linear-gradient(135deg, #3b82f6, #2563eb)',
     color: 'white',
     border: 'none',
-    borderRadius: '12px',
-    fontSize: '15px',
+    borderRadius: 'clamp(10px, 2vw, 12px)',
+    fontSize: 'clamp(13px, 2.5vw, 15px)',
     fontWeight: 700,
     display: 'flex',
     alignItems: 'center',
@@ -436,12 +464,12 @@ const styles = {
     marginTop: '10px',
   },
   backBtn: {
-    padding: '14px 24px',
+    padding: 'clamp(12px, 2.5vw, 14px) clamp(16px, 3vw, 24px)',
     background: '#f1f5f9',
     color: '#64748b',
     border: 'none',
-    borderRadius: '12px',
-    fontSize: '15px',
+    borderRadius: 'clamp(10px, 2vw, 12px)',
+    fontSize: 'clamp(13px, 2.5vw, 15px)',
     fontWeight: 600,
     display: 'flex',
     alignItems: 'center',
@@ -451,12 +479,12 @@ const styles = {
   },
   submitBtn: {
     flex: 1,
-    padding: '16px 24px',
+    padding: 'clamp(14px, 3vw, 16px) 24px',
     background: 'linear-gradient(135deg, #22c55e, #16a34a)',
     color: 'white',
     border: 'none',
-    borderRadius: '12px',
-    fontSize: '16px',
+    borderRadius: 'clamp(10px, 2vw, 12px)',
+    fontSize: 'clamp(14px, 3vw, 16px)',
     fontWeight: 700,
     display: 'flex',
     alignItems: 'center',
@@ -464,6 +492,7 @@ const styles = {
     gap: '10px',
     cursor: 'pointer',
     fontFamily: 'Inter, sans-serif',
+    minWidth: '180px',
   },
 };
 

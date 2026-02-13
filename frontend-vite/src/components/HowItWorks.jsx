@@ -1,32 +1,23 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { FaEdit, FaSearch, FaCheckCircle, FaArrowRight } from 'react-icons/fa';
+import { FaEdit, FaSearch, FaCheckCircle, FaArrowRight, FaArrowDown } from 'react-icons/fa';
 
 const HowItWorks = () => {
   const steps = [
     {
-      icon: <FaEdit />,
-      title: 'Enter Details',
+      icon: <FaEdit />, title: 'Enter Details',
       desc: 'Start by entering your basic details like age, state, income, and occupation.',
-      color: '#3b82f6',
-      bg: '#dbeafe',
-      num: '01',
+      color: '#3b82f6', bg: '#dbeafe', num: '01',
     },
     {
-      icon: <FaSearch />,
-      title: 'AI Searches',
+      icon: <FaSearch />, title: 'AI Searches',
       desc: 'Our AI search engine will find the most relevant schemes matching your profile.',
-      color: '#f97316',
-      bg: '#ffedd5',
-      num: '02',
+      color: '#f97316', bg: '#ffedd5', num: '02',
     },
     {
-      icon: <FaCheckCircle />,
-      title: 'Select & Apply',
+      icon: <FaCheckCircle />, title: 'Select & Apply',
       desc: 'Select and apply for the best suited scheme directly through official websites.',
-      color: '#22c55e',
-      bg: '#dcfce7',
-      num: '03',
+      color: '#22c55e', bg: '#dcfce7', num: '03',
     },
   ];
 
@@ -67,9 +58,14 @@ const HowItWorks = () => {
             </motion.div>
 
             {i < steps.length - 1 && (
-              <div style={styles.arrow}>
-                <FaArrowRight style={{ color: '#cbd5e1', fontSize: '24px' }} />
-              </div>
+              <>
+                <div style={styles.arrowDesktop}>
+                  <FaArrowRight style={{ color: '#cbd5e1', fontSize: '24px' }} />
+                </div>
+                <div style={styles.arrowMobile}>
+                  <FaArrowDown style={{ color: '#cbd5e1', fontSize: '24px' }} />
+                </div>
+              </>
             )}
           </React.Fragment>
         ))}
@@ -78,14 +74,16 @@ const HowItWorks = () => {
   );
 };
 
+const isMobile = typeof window !== 'undefined' && window.innerWidth <= 768;
+
 const styles = {
   section: {
-    padding: '80px 24px',
+    padding: 'clamp(50px, 8vw, 80px) clamp(16px, 4vw, 24px)',
     background: 'white',
   },
   header: {
     textAlign: 'center',
-    marginBottom: '50px',
+    marginBottom: 'clamp(30px, 5vw, 50px)',
   },
   label: {
     display: 'inline-block',
@@ -98,7 +96,7 @@ const styles = {
     marginBottom: '16px',
   },
   heading: {
-    fontSize: 'clamp(28px, 4vw, 40px)',
+    fontSize: 'clamp(24px, 5vw, 40px)',
     fontWeight: 800,
     color: '#1e293b',
     lineHeight: 1.2,
@@ -118,9 +116,9 @@ const styles = {
   stepCard: {
     background: 'white',
     borderRadius: '20px',
-    padding: '36px 28px',
+    padding: 'clamp(24px, 4vw, 36px) clamp(20px, 3vw, 28px)',
     textAlign: 'center',
-    width: '280px',
+    width: 'clamp(240px, 40vw, 280px)',
     border: '1px solid #e2e8f0',
     boxShadow: '0 4px 20px rgba(0,0,0,0.05)',
     transition: 'all 0.3s ease',
@@ -128,8 +126,8 @@ const styles = {
   },
   numBadge: {
     position: 'absolute',
-    top: '16px',
-    right: '16px',
+    top: '14px',
+    right: '14px',
     width: '32px',
     height: '32px',
     borderRadius: '50%',
@@ -140,28 +138,33 @@ const styles = {
     fontWeight: 800,
   },
   iconCircle: {
-    width: '72px',
-    height: '72px',
+    width: 'clamp(56px, 8vw, 72px)',
+    height: 'clamp(56px, 8vw, 72px)',
     borderRadius: '50%',
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    margin: '0 auto 20px',
+    margin: '0 auto 16px',
   },
   stepTitle: {
-    fontSize: '18px',
+    fontSize: 'clamp(15px, 3vw, 18px)',
     fontWeight: 700,
     color: '#1e293b',
-    marginBottom: '10px',
+    marginBottom: '8px',
   },
   stepDesc: {
-    fontSize: '14px',
+    fontSize: 'clamp(12px, 2.5vw, 14px)',
     color: '#64748b',
     lineHeight: 1.6,
   },
-  arrow: {
-    display: 'flex',
+  arrowDesktop: {
+    display: isMobile ? 'none' : 'flex',
     alignItems: 'center',
+  },
+  arrowMobile: {
+    display: isMobile ? 'flex' : 'none',
+    justifyContent: 'center',
+    width: '100%',
   },
 };
 
