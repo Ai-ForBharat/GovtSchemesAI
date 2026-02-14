@@ -4,7 +4,7 @@ import {
   FaTimes, FaInfoCircle, FaGift, FaBuilding,
   FaFileAlt, FaClipboardList,
   FaExternalLinkAlt, FaChevronRight,
-  FaShieldAlt, FaCopy, FaCheckCircle
+  FaShieldAlt, FaCopy, FaCheckCircle, FaFlag
 } from 'react-icons/fa';
 
 const SchemeModal = ({ scheme, onClose }) => {
@@ -55,7 +55,11 @@ const SchemeModal = ({ scheme, onClose }) => {
                 color: isCenter ? '#f97316' : '#1a1a1a',
                 borderColor: isCenter ? 'rgba(249,115,22,0.2)' : '#e5e7eb',
               }}>
-                {isCenter ? '🇮🇳 Central Government' : '🏛️ State Government'}
+                {isCenter ? (
+                  <><FaFlag style={{ fontSize: '11px' }} /> Central Government</>
+                ) : (
+                  <><FaBuilding style={{ fontSize: '11px' }} /> State Government</>
+                )}
               </span>
 
               {scheme.category && (
@@ -150,7 +154,7 @@ const SchemeModal = ({ scheme, onClose }) => {
           </motion.a>
 
           {/* Footer note */}
-          
+
 
         </motion.div>
       </motion.div>

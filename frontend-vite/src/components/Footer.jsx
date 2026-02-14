@@ -2,7 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { useApp } from '../context/AppContext';
 import {
-  FaExternalLinkAlt
+  FaExternalLinkAlt, FaLink
 } from 'react-icons/fa';
 
 const Footer = () => {
@@ -80,6 +80,7 @@ const Footer = () => {
               >
                 <span style={styles.listArrow}>›</span>
                 {link.label}
+                <FaLink style={styles.internalIcon} />
               </motion.li>
             ))}
           </ul>
@@ -262,6 +263,11 @@ const styles = {
     width: '100%',
   },
   externalIcon: {
+    fontSize: '9px',
+    color: '#d1d5db',
+    marginLeft: 'auto',
+  },
+  internalIcon: {
     fontSize: '9px',
     color: '#d1d5db',
     marginLeft: 'auto',

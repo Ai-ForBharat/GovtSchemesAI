@@ -26,9 +26,6 @@ const SchemeCard = ({ scheme, index, onViewDetails }) => {
         boxShadow: '0 20px 50px rgba(249,115,22,0.08)',
       }}
     >
-      {/* Accent line top */}
-      <div style={styles.accentLine} />
-
       {/* Top Row */}
       <div style={styles.top}>
         <div style={styles.topLeft}>
@@ -134,13 +131,6 @@ const styles = {
     boxShadow: '0 4px 20px rgba(0,0,0,0.04)',
     height: '100%',
     minHeight: '420px',
-  },
-
-  accentLine: {
-    height: '3px',
-    width: '100%',
-    background: 'linear-gradient(90deg, #f97316, #1a1a1a, transparent)',
-    flexShrink: 0,
   },
 
   top: {
