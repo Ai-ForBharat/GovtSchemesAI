@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useApp } from '../context/AppContext';
 import {
@@ -10,6 +10,13 @@ const FAQPage = () => {
   const { setCurrentView } = useApp();
   const [openIndex, setOpenIndex] = useState(null);
   const [searchQuery, setSearchQuery] = useState('');
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
+
+  useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth <= 768);
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   const goHome = () => {
     setCurrentView('home');
@@ -214,11 +221,17 @@ const FAQPage = () => {
 
       {/* MAIN CONTENT */}
       <section style={styles.mainSection}>
-        <div style={styles.contentContainer}>
+        <div style={{
+          ...styles.contentContainer,
+          ...(isMobile ? styles.contentContainerMobile : {}),
+        }}>
 
           {/* LEFT SIDE */}
           <motion.div
-            style={styles.left}
+            style={{
+              ...styles.left,
+              ...(isMobile ? styles.leftMobile : {}),
+            }}
             initial={{ opacity: 0, x: -40 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
@@ -545,6 +558,9 @@ const styles = {
     alignItems: 'flex-start',
     flexWrap: 'wrap',
   },
+  contentContainerMobile: {
+    flexDirection: 'column-reverse',
+  },
 
   left: {
     width: '300px',
@@ -554,6 +570,12 @@ const styles = {
     gap: '20px',
     position: 'sticky',
     top: '100px',
+  },
+  leftMobile: {
+    position: 'relative',
+    top: 'auto',
+    width: '100%',
+    flexShrink: 1,
   },
 
   illustrationCard: {
