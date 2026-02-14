@@ -7,7 +7,7 @@ import {
   FaGlobe, FaSearch, FaBars, FaTimes,
   FaHome, FaThList, FaInfoCircle
 } from 'react-icons/fa';
-import logo from '../assets/logo.png'; // ← Import the logo
+import logo from '../assets/logo.png';
 
 const Navbar = () => {
   const {
@@ -19,6 +19,7 @@ const Navbar = () => {
   const [mobileMenu, setMobileMenu] = useState(false);
   const [searchInput, setSearchInput] = useState('');
   const [scrolled, setScrolled] = useState(false);
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 20);
@@ -28,7 +29,9 @@ const Navbar = () => {
 
   useEffect(() => {
     const handleResize = () => {
-      if (window.innerWidth > 768) setMobileMenu(false);
+      const mobile = window.innerWidth <= 768;
+      setIsMobile(mobile);
+      if (!mobile) setMobileMenu(false);
     };
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
@@ -99,7 +102,10 @@ const Navbar = () => {
       animate={{ y: 0 }}
       transition={{ duration: 0.4, ease: 'easeOut' }}
     >
-      <div style={styles.container}>
+      <div style={{
+        ...styles.container,
+        ...(isMobile ? styles.containerMobile : {}),
+      }}>
 
         {/* ─── Brand ─── */}
         <motion.div
@@ -108,7 +114,6 @@ const Navbar = () => {
           whileHover={{ scale: 1.02 }}
           whileTap={{ scale: 0.98 }}
         >
-          {/* ─── Logo Image ─── */}
           <img
             src={logo}
             alt="Saarthi AI Logo"
@@ -121,68 +126,79 @@ const Navbar = () => {
         </motion.div>
 
         {/* ─── Desktop Search ─── */}
-        <form onSubmit={handleSearch} style={styles.searchForm}>
-          <FaSearch style={styles.searchIcon} />
-          <input
-            style={styles.searchInput}
-            value={searchInput}
-            onChange={(e) => setSearchInput(e.target.value)}
-            placeholder="Search schemes..."
-          />
-          {searchInput && (
-            <motion.button
-              type="button"
-              onClick={() => setSearchInput('')}
-              style={styles.clearBtn}
-              initial={{ scale: 0 }}
-              animate={{ scale: 1 }}
-              whileTap={{ scale: 0.8 }}
-            >
-              <FaTimes />
-            </motion.button>
-          )}
-        </form>
+        {!isMobile && (
+          <form onSubmit={handleSearch} style={styles.searchForm}>
+            <FaSearch style={styles.searchIcon} />
+            <input
+              style={styles.searchInput}
+              value={searchInput}
+              onChange={(e) => setSearchInput(e.target.value)}
+              placeholder="Search schemes..."
+            />
+            {searchInput && (
+              <motion.button
+                type="button"
+                onClick={() => setSearchInput('')}
+                style={styles.clearBtn}
+                initial={{ scale: 0 }}
+                animate={{ scale: 1 }}
+                whileTap={{ scale: 0.8 }}
+              >
+                <FaTimes />
+              </motion.button>
+            )}
+          </form>
+        )}
 
         {/* ─── Desktop Nav Links ─── */}
-        <div style={styles.navLinks}>
-          {navLinks.map(link => (
-            <motion.button
-              key={link.label}
-              onClick={link.action}
-              style={styles.navLink}
-              whileHover={{ color: '#f97316' }}
-              whileTap={{ scale: 0.95 }}
-            >
-              {link.icon}
-              <span>{link.label}</span>
-            </motion.button>
-          ))}
-        </div>
-
-        {/* ─── Language Selector ─── */}
-        <div style={styles.langWrapper}>
-          <FaGlobe style={styles.langIcon} />
-          <select
-            value={language}
-            onChange={(e) => setLanguage(e.target.value)}
-            style={styles.langSelect}
-          >
-            {LANGUAGES.map(l => (
-              <option key={l.code} value={l.code} style={styles.langOption}>
-                {l.flag} {l.native}
-              </option>
+        {!isMobile && (
+          <div style={styles.navLinks}>
+            {navLinks.map(link => (
+              <motion.button
+                key={link.label}
+                onClick={link.action}
+                style={styles.navLink}
+                whileHover={{ color: '#f97316' }}
+                whileTap={{ scale: 0.95 }}
+              >
+                {link.icon}
+                <span>{link.label}</span>
+              </motion.button>
             ))}
-          </select>
-        </div>
+          </div>
+        )}
+
+        {/* ─── Language Selector (Desktop) ─── */}
+        {!isMobile && (
+          <div style={styles.langWrapper}>
+            <FaGlobe style={styles.langIcon} />
+            <select
+              value={language}
+              onChange={(e) => setLanguage(e.target.value)}
+              style={styles.langSelect}
+            >
+              {LANGUAGES.map(l => (
+                <option key={l.code} value={l.code} style={styles.langOption}>
+                  {l.flag} {l.native}
+                </option>
+              ))}
+            </select>
+          </div>
+        )}
+
+        {/* ─── Spacer to push hamburger to right ─── */}
+        {isMobile && <div style={{ flex: 1 }} />}
 
         {/* ─── Mobile Menu Button ─── */}
-        <motion.button
-          style={styles.menuBtn}
-          onClick={() => setMobileMenu(!mobileMenu)}
-          whileTap={{ scale: 0.9 }}
-        >
-          {mobileMenu ? <FaTimes /> : <FaBars />}
-        </motion.button>
+        {isMobile && (
+          <motion.button
+            style={styles.menuBtn}
+            onClick={() => setMobileMenu(!mobileMenu)}
+            whileTap={{ scale: 0.9 }}
+          >
+            {mobileMenu ? <FaTimes /> : <FaBars />}
+          </motion.button>
+        )}
 
       </div>
 
@@ -270,6 +286,9 @@ const styles = {
     alignItems: 'center',
     gap: '18px',
   },
+  containerMobile: {
+    justifyContent: 'space-between',
+  },
 
   brand: {
     display: 'flex',
@@ -278,10 +297,9 @@ const styles = {
     color: '#1a1a1a',
     textDecoration: 'none',
     flexShrink: 0,
-    gap: '10px', // ← Added gap between logo and text
+    gap: '10px',
   },
 
-  // ─── Logo Style ───
   logo: {
     width: '36px',
     height: '36px',
@@ -398,7 +416,6 @@ const styles = {
   },
 
   menuBtn: {
-    display: 'none',
     background: '#f9fafb',
     border: '1px solid #e5e7eb',
     color: '#4b5563',
@@ -407,6 +424,7 @@ const styles = {
     width: '40px',
     height: '40px',
     borderRadius: '10px',
+    display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
     flexShrink: 0,
