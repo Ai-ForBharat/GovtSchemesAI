@@ -1,10 +1,15 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { sendChatMessage } from '../api/api';
-import { FaTimes, FaPaperPlane, FaRobot, FaMicrophone } from 'react-icons/fa';
+import { FaTimes, FaPaperPlane, FaMicrophone } from 'react-icons/fa';
 
 const ChatBot = ({ onClose }) => {
-  const [messages, setMessages] = useState([]);
+  const [messages, setMessages] = useState([
+    {
+      text: "Hi! I am your assistant, here to help you find eligible government schemes and provide information on eligibility, documents and more.",
+      sender: 'bot'
+    }
+  ]);
   const [input, setInput] = useState('');
   const [loading, setLoading] = useState(false);
   const messagesEndRef = useRef(null);
@@ -12,13 +17,6 @@ const ChatBot = ({ onClose }) => {
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
   }, [messages]);
-
-  const suggestions = [
-    "Tell me about DPIIT Internship Scheme",
-    "Eligibility criteria for Pradhan Mantri Awas Yojana",
-    "Application process of Kisan Credit Scheme",
-    "Schemes for students?"
-  ];
 
   const handleSend = async (text = input) => {
     if (!text.trim() || loading) return;
@@ -56,11 +54,8 @@ const ChatBot = ({ onClose }) => {
       {/* HEADER */}
       <div style={styles.header}>
         <div style={styles.logo}>
-          <div style={styles.logoIcon}>
-            <FaRobot />
-          </div>
           <div>
-            <span style={styles.logoText}>myScheme</span>
+            <span style={styles.logoText}>Saarthi AI</span>
             <span style={styles.statusDot}>● Online</span>
           </div>
         </div>
@@ -68,21 +63,6 @@ const ChatBot = ({ onClose }) => {
           <FaTimes />
         </button>
       </div>
-
-      {/* WELCOME BOX */}
-      {messages.length === 0 && (
-        <div style={styles.welcomeBox}>
-          <h2 style={styles.welcomeTitle}>myScheme</h2>
-          <p style={styles.welcomeText}>
-            myScheme is a National Platform that aims to offer one-stop search
-            and discovery of Government schemes.
-          </p>
-          <p style={styles.welcomeText}>
-            Hi! I am your assistant, here to help you find eligible government
-            schemes and provide information on eligibility, documents and more.
-          </p>
-        </div>
-      )}
 
       {/* MESSAGES */}
       <div style={styles.messages}>
@@ -94,11 +74,6 @@ const ChatBot = ({ onClose }) => {
               ...(msg.sender === 'user' ? styles.userMsg : styles.botMsg),
             }}
           >
-            {msg.sender === 'bot' && (
-              <div style={styles.botAvatar}>
-                <FaRobot style={{ fontSize: '10px' }} />
-              </div>
-            )}
             <div style={{
               ...(msg.sender === 'user' ? styles.userBubble : styles.botBubble),
             }}>
@@ -108,9 +83,6 @@ const ChatBot = ({ onClose }) => {
         ))}
         {loading && (
           <div style={{ ...styles.message, ...styles.botMsg }}>
-            <div style={styles.botAvatar}>
-              <FaRobot style={{ fontSize: '10px' }} />
-            </div>
             <div style={styles.botBubble}>
               <div style={styles.typingDots}>
                 <span style={styles.dot}>●</span>
@@ -122,21 +94,6 @@ const ChatBot = ({ onClose }) => {
         )}
         <div ref={messagesEndRef} />
       </div>
-
-      {/* SUGGESTIONS */}
-      {messages.length === 0 && (
-        <div style={styles.suggestions}>
-          {suggestions.map((s, i) => (
-            <button
-              key={i}
-              style={styles.suggestionBtn}
-              onClick={() => handleSend(s)}
-            >
-              {s}
-            </button>
-          ))}
-        </div>
-      )}
 
       {/* INPUT BAR */}
       <div style={styles.inputBar}>
@@ -167,7 +124,7 @@ const ChatBot = ({ onClose }) => {
 
       {/* FOOTER NOTE */}
       <div style={styles.footer}>
-        *myScheme assistant can make mistakes. Consider checking important information.
+        *Saarthi AI assistant can make mistakes. Consider checking important information.
       </div>
 
     </motion.div>
@@ -175,7 +132,6 @@ const ChatBot = ({ onClose }) => {
 };
 
 const styles = {
-  /* 🔥 BOTTOM-RIGHT CORNER POSITIONING */
   chatWindow: {
     position: 'fixed',
     bottom: '90px',
@@ -184,25 +140,24 @@ const styles = {
     maxWidth: 'calc(100vw - 32px)',
     height: '580px',
     maxHeight: 'calc(100vh - 120px)',
-    background: '#0f172a',
+    background: '#ffffff',
     borderRadius: '20px',
     display: 'flex',
     flexDirection: 'column',
     overflow: 'hidden',
-    boxShadow: '0 20px 60px rgba(0,0,0,0.5), 0 0 0 1px #1e293b',
-    border: '1px solid #1e293b',
+    boxShadow: '0 20px 60px rgba(0,0,0,0.12), 0 0 0 1px #e5e7eb',
+    border: '1px solid #e5e7eb',
     fontFamily: 'Inter, sans-serif',
     zIndex: 2000,
   },
 
-  /* HEADER */
   header: {
     display: 'flex',
     justifyContent: 'space-between',
     alignItems: 'center',
     padding: '14px 16px',
-    borderBottom: '1px solid #1e293b',
-    background: '#020617',
+    borderBottom: '1px solid #e5e7eb',
+    background: '#ffffff',
     flexShrink: 0,
   },
 
@@ -212,23 +167,10 @@ const styles = {
     gap: '10px',
   },
 
-  logoIcon: {
-    width: '36px',
-    height: '36px',
-    borderRadius: '10px',
-    background: 'linear-gradient(135deg, rgba(34,197,94,0.2), rgba(34,197,94,0.05))',
-    border: '1px solid rgba(34,197,94,0.3)',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    color: '#22c55e',
-    fontSize: '16px',
-  },
-
   logoText: {
     fontWeight: 700,
     fontSize: '16px',
-    color: '#ffffff',
+    color: '#f97316',
     display: 'block',
   },
 
@@ -239,11 +181,11 @@ const styles = {
   },
 
   closeBtn: {
-    background: '#1e293b',
-    border: 'none',
+    background: '#f9fafb',
+    border: '1px solid #e5e7eb',
     fontSize: '14px',
     cursor: 'pointer',
-    color: '#94a3b8',
+    color: '#6b7280',
     width: '32px',
     height: '32px',
     borderRadius: '8px',
@@ -253,32 +195,6 @@ const styles = {
     transition: 'all 0.2s ease',
   },
 
-  /* WELCOME BOX */
-  welcomeBox: {
-    padding: '16px',
-    background: '#020617',
-    borderRadius: '12px',
-    margin: '12px',
-    border: '1px solid #1e293b',
-    flexShrink: 0,
-  },
-
-  welcomeTitle: {
-    fontSize: '16px',
-    fontWeight: 800,
-    color: '#22c55e',
-    marginBottom: '8px',
-    margin: '0 0 8px 0',
-  },
-
-  welcomeText: {
-    fontSize: '12px',
-    color: '#94a3b8',
-    lineHeight: 1.5,
-    margin: '0 0 6px 0',
-  },
-
-  /* MESSAGES */
   messages: {
     flex: 1,
     overflowY: 'auto',
@@ -303,25 +219,12 @@ const styles = {
     flexDirection: 'row-reverse',
   },
 
-  botAvatar: {
-    width: '24px',
-    height: '24px',
-    borderRadius: '8px',
-    background: 'rgba(34,197,94,0.15)',
-    border: '1px solid rgba(34,197,94,0.3)',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    color: '#22c55e',
-    flexShrink: 0,
-    marginTop: '2px',
-  },
-
   botBubble: {
     padding: '10px 14px',
     borderRadius: '4px 12px 12px 12px',
-    background: '#1e293b',
-    color: '#e2e8f0',
+    background: '#f9fafb',
+    border: '1px solid #e5e7eb',
+    color: '#1a1a1a',
     fontSize: '13px',
     lineHeight: 1.5,
   },
@@ -329,13 +232,12 @@ const styles = {
   userBubble: {
     padding: '10px 14px',
     borderRadius: '12px 4px 12px 12px',
-    background: 'linear-gradient(135deg, #22c55e, #16a34a)',
+    background: 'linear-gradient(135deg, #f97316, #ea580c)',
     color: '#ffffff',
     fontSize: '13px',
     lineHeight: 1.5,
   },
 
-  /* TYPING DOTS */
   typingDots: {
     display: 'flex',
     gap: '4px',
@@ -345,43 +247,17 @@ const styles = {
 
   dot: {
     fontSize: '14px',
-    color: '#64748b',
+    color: '#9ca3af',
     animation: 'pulse 1s infinite',
   },
 
-  /* SUGGESTIONS */
-  suggestions: {
-    padding: '8px 12px',
-    display: 'flex',
-    flexDirection: 'column',
-    gap: '6px',
-    flexShrink: 0,
-    maxHeight: '180px',
-    overflowY: 'auto',
-  },
-
-  suggestionBtn: {
-    background: '#020617',
-    border: '1px solid #1e293b',
-    padding: '10px 14px',
-    borderRadius: '10px',
-    cursor: 'pointer',
-    textAlign: 'left',
-    fontSize: '12px',
-    color: '#94a3b8',
-    fontFamily: 'Inter, sans-serif',
-    transition: 'all 0.2s ease',
-    fontWeight: 500,
-  },
-
-  /* INPUT BAR */
   inputBar: {
     display: 'flex',
     alignItems: 'center',
     padding: '10px 12px',
     gap: '8px',
-    borderTop: '1px solid #1e293b',
-    background: '#020617',
+    borderTop: '1px solid #e5e7eb',
+    background: '#ffffff',
     flexShrink: 0,
   },
 
@@ -389,21 +265,21 @@ const styles = {
     flex: 1,
     padding: '10px 14px',
     borderRadius: '12px',
-    border: '1px solid #1e293b',
+    border: '1px solid #e5e7eb',
     outline: 'none',
     fontSize: '13px',
     fontFamily: 'Inter, sans-serif',
-    background: '#0f172a',
-    color: '#ffffff',
+    background: '#f9fafb',
+    color: '#1a1a1a',
   },
 
   iconBtn: {
-    background: '#1e293b',
-    border: 'none',
+    background: '#f9fafb',
+    border: '1px solid #e5e7eb',
     padding: '10px',
     borderRadius: '10px',
     cursor: 'pointer',
-    color: '#94a3b8',
+    color: '#6b7280',
     fontSize: '14px',
     display: 'flex',
     alignItems: 'center',
@@ -412,7 +288,7 @@ const styles = {
   },
 
   sendBtn: {
-    background: 'linear-gradient(135deg, #22c55e, #16a34a)',
+    background: 'linear-gradient(135deg, #f97316, #ea580c)',
     color: 'white',
     border: 'none',
     padding: '10px',
@@ -425,13 +301,12 @@ const styles = {
     transition: 'all 0.2s ease',
   },
 
-  /* FOOTER */
   footer: {
     fontSize: '10px',
-    color: '#475569',
+    color: '#9ca3af',
     padding: '6px 12px 10px',
     textAlign: 'center',
-    background: '#020617',
+    background: '#ffffff',
     flexShrink: 0,
   },
 };

@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { useApp } from './context/AppContext';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
@@ -14,6 +15,7 @@ import AboutPage from './components/AboutPage';
 import FAQPage from './components/FAQPage';
 import SearchResults from './components/SearchResults';
 import Footer from './components/Footer';
+import { FaCommentDots, FaTimes } from 'react-icons/fa';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import './App.css';
@@ -46,21 +48,46 @@ function App() {
       </div>
 
       {/* Floating Chatbot */}
-      <button
-        className="chat-fab"
+      <motion.button
+        style={styles.chatFab}
         onClick={() => setShowChat(!showChat)}
         title="AI Assistant"
+        whileHover={{ scale: 1.1 }}
+        whileTap={{ scale: 0.95 }}
       >
-        {showChat ? '✕' : '🤖'}
-        {!showChat && <span className="fab-badge">AI</span>}
-      </button>
+        {showChat ? <FaTimes /> : <FaCommentDots />}
+      </motion.button>
 
-      {showChat && <ChatBot onClose={() => setShowChat(false)} />}
+      <AnimatePresence>
+        {showChat && <ChatBot onClose={() => setShowChat(false)} />}
+      </AnimatePresence>
 
       <Footer />
       <ToastContainer position="top-right" autoClose={3000} theme="colored" />
     </div>
   );
 }
+
+const styles = {
+  chatFab: {
+    position: 'fixed',
+    bottom: '20px',
+    right: '20px',
+    width: '56px',
+    height: '56px',
+    borderRadius: '50%',
+    background: 'linear-gradient(135deg, #f97316, #ea580c)',
+    color: '#ffffff',
+    border: 'none',
+    cursor: 'pointer',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    fontSize: '24px',
+    boxShadow: '0 8px 30px rgba(249,115,22,0.4)',
+    zIndex: 2000,
+    fontFamily: 'Inter, sans-serif',
+  },
+};
 
 export default App;
