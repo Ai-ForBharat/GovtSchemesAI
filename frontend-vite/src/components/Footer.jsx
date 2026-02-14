@@ -2,10 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { useApp } from '../context/AppContext';
 import {
-  FaHeart, FaTwitter, FaFacebookF, FaInstagram,
-  FaYoutube, FaLinkedinIn, FaEnvelope,
-  FaPhone, FaMapMarkerAlt, FaExternalLinkAlt,
-  FaShieldAlt, FaRobot
+  FaExternalLinkAlt
 } from 'react-icons/fa';
 
 const Footer = () => {
@@ -15,14 +12,6 @@ const Footer = () => {
     setCurrentView(view);
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
-
-  const socialLinks = [
-    { icon: <FaTwitter />, url: 'https://twitter.com/GoI_MeitY', label: 'Twitter', color: '#1DA1F2' },
-    { icon: <FaFacebookF />, url: 'https://www.facebook.com/MeitYGoI', label: 'Facebook', color: '#4267B2' },
-    { icon: <FaInstagram />, url: 'https://www.instagram.com/meaboratory/', label: 'Instagram', color: '#E4405F' },
-    { icon: <FaYoutube />, url: 'https://www.youtube.com/@MeitYGoI', label: 'YouTube', color: '#FF0000' },
-    { icon: <FaLinkedinIn />, url: 'https://www.linkedin.com/company/meity/', label: 'LinkedIn', color: '#0A66C2' },
-  ];
 
   const quickLinks = [
     { label: 'About Us', action: () => navigateTo('about') },
@@ -65,58 +54,15 @@ const Footer = () => {
         {/* Column 1 — Brand */}
         <div style={styles.column}>
           <div style={styles.brandRow}>
-            <div style={styles.brandIcon}>
-              <FaShieldAlt style={{ color: '#22c55e', fontSize: '18px' }} />
-            </div>
             <h2 style={styles.brand}>
-              <span style={styles.brandGreen}>GovScheme</span> AI
+              <span style={styles.brandOrange}>Saarthi</span> AI
             </h2>
           </div>
 
-          <p style={styles.brandTagline}>
-            Empowering every Indian citizen to access government welfare schemes
-          </p>
-
           <div style={styles.govInfo}>
-            <p style={styles.text}>Powered by Digital India</p>
-            <p style={styles.text}>Ministry of Electronics & IT (MeitY)</p>
-            <p style={styles.text}>Government of India</p>
-          </div>
-
-          <div style={styles.featurePills}>
-            {[
-              { icon: <FaShieldAlt />, text: 'Secure' },
-              { icon: <FaRobot />, text: 'AI Powered' },
-            ].map((f, i) => (
-              <span key={i} style={styles.featurePill}>
-                {f.icon} {f.text}
-              </span>
-            ))}
-          </div>
-
-          <div style={styles.socialSection}>
-            <p style={styles.socialLabel}>Connect with us</p>
-            <div style={styles.socialRow}>
-              {socialLinks.map((s, i) => (
-                <motion.a
-                  key={i}
-                  href={s.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  style={styles.socialBtn}
-                  title={s.label}
-                  whileHover={{
-                    scale: 1.15,
-                    background: s.color,
-                    color: '#ffffff',
-                    borderColor: s.color,
-                  }}
-                  whileTap={{ scale: 0.95 }}
-                >
-                  {s.icon}
-                </motion.a>
-              ))}
-            </div>
+            <p style={styles.text}>
+              Empowering every Indian citizen to access government welfare schemes
+            </p>
           </div>
         </div>
 
@@ -130,7 +76,7 @@ const Footer = () => {
               <motion.li
                 key={i}
                 style={styles.listItem}
-                whileHover={{ x: 4, color: '#22c55e' }}
+                whileHover={{ x: 4, color: '#f97316' }}
                 onClick={link.action}
               >
                 <span style={styles.listArrow}>›</span>
@@ -167,7 +113,7 @@ const Footer = () => {
           </ul>
         </div>
 
-        {/* Column 4 — Popular Schemes + Contact */}
+        {/* Column 4 — Popular Schemes */}
         <div style={styles.column}>
           <h3 style={styles.heading}>
             <span style={{ ...styles.headingDot, background: '#8b5cf6' }} /> Popular Schemes
@@ -192,47 +138,21 @@ const Footer = () => {
               </motion.li>
             ))}
           </ul>
-
-          <div style={styles.contactSection}>
-            <h3 style={styles.heading}>
-              <span style={{ ...styles.headingDot, background: '#f59e0b' }} /> Contact
-            </h3>
-
-            <div style={styles.contactItem}>
-              <FaMapMarkerAlt style={styles.contactIcon} />
-              <p style={styles.contactText}>
-                4th Floor, Electronics Niketan,
-                CGO Complex, Lodhi Road,
-                New Delhi – 110003
-              </p>
-            </div>
-
-            <a href="mailto:support@govschemeai.in" style={styles.contactLink}>
-              <FaEnvelope style={{ ...styles.contactIcon, color: '#3b82f6' }} />
-              <span>support@govschemeai.in</span>
-            </a>
-
-            <a href="tel:01124303714" style={styles.contactLink}>
-              <FaPhone style={{ ...styles.contactIcon, color: '#8b5cf6' }} />
-              <span>(011) 24303714</span>
-            </a>
-          </div>
         </div>
       </div>
-  
-      
     </footer>
   );
 };
 
 const styles = {
   footer: {
-    background: '#020617',
-    color: 'white',
+    background: '#ffffff',
+    color: '#1a1a1a',
     marginTop: 'auto',
     position: 'relative',
     overflow: 'hidden',
     fontFamily: 'Inter, sans-serif',
+    borderTop: '1px solid #e5e7eb',
   },
 
   bgDecor1: {
@@ -242,7 +162,7 @@ const styles = {
     width: '400px',
     height: '400px',
     borderRadius: '50%',
-    background: 'radial-gradient(circle, rgba(34,197,94,0.04) 0%, transparent 70%)',
+    background: 'radial-gradient(circle, rgba(249,115,22,0.06) 0%, transparent 70%)',
     pointerEvents: 'none',
   },
   bgDecor2: {
@@ -252,7 +172,7 @@ const styles = {
     width: '300px',
     height: '300px',
     borderRadius: '50%',
-    background: 'radial-gradient(circle, rgba(59,130,246,0.03) 0%, transparent 70%)',
+    background: 'radial-gradient(circle, rgba(249,115,22,0.05) 0%, transparent 70%)',
     pointerEvents: 'none',
   },
 
@@ -272,95 +192,29 @@ const styles = {
   brandRow: {
     display: 'flex',
     alignItems: 'center',
-    gap: '10px',
     marginBottom: '12px',
   },
-  brandIcon: {
-    width: '40px',
-    height: '40px',
-    borderRadius: '12px',
-    background: 'rgba(34,197,94,0.1)',
-    border: '1px solid rgba(34,197,94,0.3)',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
   brand: {
-    fontSize: '20px',
+    fontSize: '22px',
     fontWeight: 800,
-    color: '#ffffff',
+    color: '#1a1a1a',
     margin: 0,
+    letterSpacing: '-0.3px',
   },
-  brandGreen: { color: '#22c55e' },
-  brandTagline: {
-    fontSize: '13px',
-    color: '#64748b',
-    lineHeight: 1.6,
-    marginBottom: '16px',
-    maxWidth: '250px',
-  },
+  brandOrange: { color: '#f97316' },
+
   govInfo: {
     padding: '12px 14px',
-    background: '#0f172a',
-    border: '1px solid #1e293b',
+    background: '#f9fafb',
+    border: '1px solid #e5e7eb',
     borderRadius: '12px',
-    marginBottom: '14px',
-  },
-
-  featurePills: {
-    display: 'flex',
-    gap: '8px',
-    marginBottom: '16px',
-    flexWrap: 'wrap',
-  },
-  featurePill: {
-    display: 'flex',
-    alignItems: 'center',
-    gap: '6px',
-    padding: '4px 12px',
-    background: 'rgba(34,197,94,0.1)',
-    border: '1px solid rgba(34,197,94,0.2)',
-    borderRadius: '50px',
-    fontSize: '11px',
-    fontWeight: 600,
-    color: '#22c55e',
-  },
-
-  socialSection: { marginTop: '4px' },
-  socialLabel: {
-    fontSize: '12px',
-    color: '#64748b',
-    fontWeight: 600,
-    marginBottom: '10px',
-    textTransform: 'uppercase',
-    letterSpacing: '0.5px',
-  },
-  socialRow: {
-    display: 'flex',
-    gap: '8px',
-    flexWrap: 'wrap',
-  },
-  socialBtn: {
-    width: '36px',
-    height: '36px',
-    borderRadius: '10px',
-    background: '#0f172a',
-    border: '1px solid #1e293b',
-    color: '#94a3b8',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    fontSize: '14px',
-    cursor: 'pointer',
-    textDecoration: 'none',
-    transition: 'all 0.3s ease',
   },
 
   heading: {
     fontSize: '15px',
     fontWeight: 700,
     marginBottom: '16px',
-    color: '#ffffff',
+    color: '#1a1a1a',
     display: 'flex',
     alignItems: 'center',
     gap: '8px',
@@ -369,7 +223,7 @@ const styles = {
     width: '8px',
     height: '8px',
     borderRadius: '50%',
-    background: '#22c55e',
+    background: '#f97316',
     flexShrink: 0,
   },
 
@@ -386,14 +240,14 @@ const styles = {
     alignItems: 'center',
     gap: '6px',
     padding: '6px 0',
-    color: '#94a3b8',
+    color: '#6b7280',
     fontSize: '13px',
     fontWeight: 500,
     cursor: 'pointer',
     transition: 'all 0.2s ease',
   },
   listArrow: {
-    color: '#334155',
+    color: '#d1d5db',
     fontSize: '14px',
     fontWeight: 700,
     flexShrink: 0,
@@ -410,61 +264,14 @@ const styles = {
   },
   externalIcon: {
     fontSize: '9px',
-    color: '#334155',
+    color: '#d1d5db',
     marginLeft: 'auto',
   },
 
   text: {
     fontSize: '13px',
-    color: '#64748b',
+    color: '#6b7280',
     lineHeight: 1.6,
-    margin: '0 0 4px 0',
-  },
-
-  contactSection: { marginTop: '24px' },
-  contactItem: {
-    display: 'flex',
-    gap: '10px',
-    marginBottom: '12px',
-  },
-  contactIcon: {
-    color: '#22c55e',
-    fontSize: '14px',
-    marginTop: '3px',
-    flexShrink: 0,
-  },
-  contactText: {
-    fontSize: '12px',
-    color: '#64748b',
-    lineHeight: 1.6,
-    margin: 0,
-  },
-  contactLink: {
-    display: 'flex',
-    alignItems: 'center',
-    gap: '10px',
-    color: '#94a3b8',
-    textDecoration: 'none',
-    fontSize: '13px',
-    fontWeight: 500,
-    marginBottom: '8px',
-    transition: 'color 0.2s ease',
-  },
-
-  divider: {
-    height: '1px',
-    background: 'linear-gradient(90deg, transparent, #1e293b, transparent)',
-    maxWidth: '1200px',
-    margin: '0 auto',
-  },
-
-  bottom: {
-    textAlign: 'center',
-    padding: '20px 20px 24px',
-  },
-  bottomText: {
-    fontSize: '13px',
-    color: '#475569',
     margin: 0,
   },
 };
