@@ -13,7 +13,7 @@ const slides = [
     title: 'PM Kisan Samman Nidhi',
     desc: '₹6,000 per year for farmers',
     tag: 'Agriculture',
-    color: '#22c55e',
+    color: '#f97316',
   },
   {
     image: '',
@@ -84,7 +84,7 @@ const Hero = () => {
       <div style={styles.bgDecor2} />
       <div style={styles.bgDecor3} />
 
-      {/* 🔄 IMAGE CAROUSEL */}
+      {/* IMAGE CAROUSEL */}
       <div style={styles.imageSection}>
         <AnimatePresence mode="wait">
           <motion.div
@@ -97,17 +97,14 @@ const Hero = () => {
           >
             <div style={{
               ...styles.imagePlaceholder,
-              borderColor: `${slides[current].color}30`,
+              borderColor: `${slides[current].color}20`,
             }}>
-              {/* Replace with <img> when images are ready */}
-              {/* <img src={slides[current].image} alt={slides[current].title} style={styles.actualImage} /> */}
-
               <div style={styles.slideOverlay}>
                 <motion.div
                   style={{
                     ...styles.slideTag,
-                    background: `${slides[current].color}15`,
-                    borderColor: `${slides[current].color}40`,
+                    background: `${slides[current].color}10`,
+                    borderColor: `${slides[current].color}30`,
                     color: slides[current].color,
                   }}
                   initial={{ opacity: 0, y: -10 }}
@@ -134,10 +131,9 @@ const Hero = () => {
                 </motion.p>
               </div>
 
-              {/* Corner glow */}
               <div style={{
                 ...styles.cornerGlow,
-                background: `radial-gradient(circle, ${slides[current].color}10 0%, transparent 70%)`,
+                background: `radial-gradient(circle, ${slides[current].color}08 0%, transparent 70%)`,
               }} />
             </div>
           </motion.div>
@@ -147,7 +143,7 @@ const Hero = () => {
         <motion.button
           style={{ ...styles.navBtn, left: 'clamp(12px, 3vw, 30px)' }}
           onClick={prevSlide}
-          whileHover={{ scale: 1.1, background: '#1e293b' }}
+          whileHover={{ scale: 1.1, background: '#f3f4f6' }}
           whileTap={{ scale: 0.95 }}
         >
           <FaChevronLeft />
@@ -155,7 +151,7 @@ const Hero = () => {
         <motion.button
           style={{ ...styles.navBtn, right: 'clamp(12px, 3vw, 30px)' }}
           onClick={nextSlide}
-          whileHover={{ scale: 1.1, background: '#1e293b' }}
+          whileHover={{ scale: 1.1, background: '#f3f4f6' }}
           whileTap={{ scale: 0.95 }}
         >
           <FaChevronRight />
@@ -194,7 +190,7 @@ const Hero = () => {
         </div>
       </div>
 
-      {/* 📝 TEXT SECTION */}
+      {/* TEXT SECTION */}
       <div style={styles.hero}>
         <div style={styles.content}>
 
@@ -204,7 +200,7 @@ const Hero = () => {
             animate={{ scale: 1 }}
             transition={{ delay: 0.3, type: 'spring', stiffness: 200 }}
           >
-            🇮🇳 Powered by AI • Made for India
+            Powered by AI • Made for India
           </motion.div>
 
           <motion.h1
@@ -243,7 +239,7 @@ const Hero = () => {
               'Verified schemes',
             ].map((item, i) => (
               <span key={i} style={styles.trustItem}>
-                <FaCheckCircle style={{ color: '#22c55e', fontSize: '12px' }} />
+                <FaCheckCircle style={{ color: '#f97316', fontSize: '12px' }} />
                 {item}
               </span>
             ))}
@@ -252,10 +248,10 @@ const Hero = () => {
           {/* Stats */}
           <div style={styles.statsRow}>
             {[
-              { num: '200+', label: 'Schemes', icon: '📋', color: '#22c55e' },
-              { num: '36', label: 'States & UTs', icon: '🗺️', color: '#3b82f6' },
-              { num: '12', label: 'Languages', icon: '🌐', color: '#8b5cf6' },
-              { num: '10L+', label: 'Users', icon: '👥', color: '#f59e0b' },
+              { num: '200+', label: 'Schemes', color: '#f97316' },
+              { num: '36', label: 'States & UTs', color: '#3b82f6' },
+              { num: '12', label: 'Languages', color: '#8b5cf6' },
+              { num: '10L+', label: 'Users', color: '#f59e0b' },
             ].map((stat, i) => (
               <motion.div
                 key={stat.label}
@@ -265,7 +261,6 @@ const Hero = () => {
                 transition={{ delay: 0.5 + i * 0.1 }}
                 whileHover={{ scale: 1.05, borderColor: stat.color }}
               >
-                <span style={styles.statIcon}>{stat.icon}</span>
                 <span style={{ ...styles.statNum, color: stat.color }}>{stat.num}</span>
                 <span style={styles.statLabel}>{stat.label}</span>
               </motion.div>
@@ -282,7 +277,7 @@ const Hero = () => {
             <motion.button
               style={styles.ctaBtn}
               onClick={goToForm}
-              whileHover={{ scale: 1.05, boxShadow: '0 10px 40px rgba(34,197,94,0.4)' }}
+              whileHover={{ scale: 1.05, boxShadow: '0 10px 40px rgba(249,115,22,0.3)' }}
               whileTap={{ scale: 0.95 }}
             >
               <FaSearch /> Find My Schemes
@@ -298,7 +293,7 @@ const Hero = () => {
             transition={{ delay: 0.8 }}
           >
             {[
-              { icon: <FaShieldAlt />, text: '100% Free', color: '#22c55e' },
+              { icon: <FaShieldAlt />, text: '100% Free', color: '#f97316' },
               { icon: <FaLanguage />, text: 'Multilingual', color: '#3b82f6' },
               { icon: <FaRobot />, text: 'AI Powered', color: '#8b5cf6' },
               { icon: <FaUsers />, text: 'For All Citizens', color: '#f59e0b' },
@@ -348,7 +343,7 @@ const styles = {
     width: '500px',
     height: '500px',
     borderRadius: '50%',
-    background: 'radial-gradient(circle, rgba(34,197,94,0.06) 0%, transparent 70%)',
+    background: 'radial-gradient(circle, rgba(249,115,22,0.05) 0%, transparent 70%)',
     pointerEvents: 'none',
     zIndex: 0,
   },
@@ -359,7 +354,7 @@ const styles = {
     width: '400px',
     height: '400px',
     borderRadius: '50%',
-    background: 'radial-gradient(circle, rgba(59,130,246,0.05) 0%, transparent 70%)',
+    background: 'radial-gradient(circle, rgba(59,130,246,0.04) 0%, transparent 70%)',
     pointerEvents: 'none',
     zIndex: 0,
   },
@@ -371,7 +366,7 @@ const styles = {
     width: '600px',
     height: '600px',
     borderRadius: '50%',
-    background: 'radial-gradient(circle, rgba(139,92,246,0.03) 0%, transparent 60%)',
+    background: 'radial-gradient(circle, rgba(249,115,22,0.03) 0%, transparent 60%)',
     pointerEvents: 'none',
     zIndex: 0,
   },
@@ -381,13 +376,13 @@ const styles = {
     width: '100%',
     height: 'clamp(350px, 50vw, 500px)',
     position: 'relative',
-    background: '#020617',
+    background: '#f9fafb',
     paddingTop: '72px',
   },
   imageSlide: {
     width: '100%',
     height: '100%',
-    background: 'linear-gradient(180deg, #020617 0%, #0f172a 100%)',
+    background: '#f9fafb',
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
@@ -397,19 +392,18 @@ const styles = {
     width: '92%',
     maxWidth: '1100px',
     height: '88%',
-    background: '#0f172a',
-    border: '1px solid #1e293b',
+    background: '#ffffff',
+    border: '1px solid #e5e7eb',
     borderRadius: '24px',
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
     position: 'relative',
     overflow: 'hidden',
-    boxShadow: '0 20px 60px rgba(0,0,0,0.4)',
+    boxShadow: '0 20px 60px rgba(0,0,0,0.06)',
     transition: 'border-color 0.5s ease',
   },
 
-  /* When using actual images */
   actualImage: {
     width: '100%',
     height: '100%',
@@ -453,13 +447,13 @@ const styles = {
   slideTitle: {
     fontSize: 'clamp(22px, 4vw, 36px)',
     fontWeight: 800,
-    color: '#ffffff',
+    color: '#1a1a1a',
     margin: 0,
     lineHeight: 1.2,
   },
   slideDesc: {
     fontSize: 'clamp(13px, 2.5vw, 16px)',
-    color: '#94a3b8',
+    color: '#6b7280',
     margin: 0,
     fontWeight: 500,
   },
@@ -472,9 +466,9 @@ const styles = {
     width: '42px',
     height: '42px',
     borderRadius: '12px',
-    background: '#0f172a',
-    border: '1px solid #1e293b',
-    color: '#94a3b8',
+    background: '#ffffff',
+    border: '1px solid #e5e7eb',
+    color: '#6b7280',
     fontSize: '14px',
     display: 'flex',
     alignItems: 'center',
@@ -482,6 +476,7 @@ const styles = {
     cursor: 'pointer',
     zIndex: 5,
     transition: 'all 0.3s ease',
+    boxShadow: '0 2px 8px rgba(0,0,0,0.06)',
   },
 
   /* Dots */
@@ -498,7 +493,7 @@ const styles = {
     width: '8px',
     height: '8px',
     borderRadius: '50%',
-    background: '#334155',
+    background: '#d1d5db',
     border: 'none',
     cursor: 'pointer',
     transition: 'all 0.3s ease',
@@ -517,7 +512,7 @@ const styles = {
     left: '0',
     width: '100%',
     height: '3px',
-    background: '#1e293b',
+    background: '#e5e7eb',
     zIndex: 5,
   },
   progressBar: {
@@ -527,10 +522,10 @@ const styles = {
 
   /* TEXT SECTION */
   hero: {
-    background: 'linear-gradient(180deg, #0f172a 0%, #020617 100%)',
+    background: '#ffffff',
     padding: 'clamp(50px, 8vw, 80px) 24px clamp(60px, 8vw, 100px)',
     textAlign: 'center',
-    color: '#ffffff',
+    color: '#1a1a1a',
     position: 'relative',
     zIndex: 1,
   },
@@ -542,23 +537,24 @@ const styles = {
     display: 'inline-flex',
     alignItems: 'center',
     gap: '6px',
-    background: 'rgba(34,197,94,0.1)',
-    border: '1px solid rgba(34,197,94,0.3)',
+    background: 'rgba(249,115,22,0.08)',
+    border: '1px solid rgba(249,115,22,0.2)',
     padding: '8px 20px',
     borderRadius: '50px',
     fontSize: '13px',
     fontWeight: 600,
     marginBottom: '24px',
-    color: '#22c55e',
+    color: '#f97316',
   },
   heading: {
     fontSize: 'clamp(30px, 6vw, 56px)',
     fontWeight: 900,
     lineHeight: 1.1,
     marginBottom: '18px',
+    color: '#1a1a1a',
   },
   headingHighlight: {
-    color: '#22c55e',
+    color: '#f97316',
     display: 'inline-block',
   },
   subtitle: {
@@ -566,7 +562,7 @@ const styles = {
     maxWidth: '600px',
     margin: '0 auto 20px',
     lineHeight: 1.7,
-    color: '#94a3b8',
+    color: '#6b7280',
   },
 
   trustRow: {
@@ -581,7 +577,7 @@ const styles = {
     alignItems: 'center',
     gap: '6px',
     fontSize: '13px',
-    color: '#94a3b8',
+    color: '#6b7280',
     fontWeight: 500,
   },
 
@@ -596,17 +592,13 @@ const styles = {
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
-    background: '#0f172a',
-    border: '1px solid #1e293b',
+    background: '#f9fafb',
+    border: '1px solid #e5e7eb',
     padding: 'clamp(12px, 2vw, 18px) clamp(16px, 3vw, 24px)',
     borderRadius: '16px',
     minWidth: 'clamp(80px, 15vw, 110px)',
     transition: 'all 0.3s ease',
     cursor: 'default',
-  },
-  statIcon: {
-    fontSize: '20px',
-    marginBottom: '2px',
   },
   statNum: {
     fontSize: 'clamp(22px, 4vw, 28px)',
@@ -615,7 +607,7 @@ const styles = {
   statLabel: {
     fontSize: '11px',
     textTransform: 'uppercase',
-    color: '#64748b',
+    color: '#9ca3af',
     fontWeight: 600,
     letterSpacing: '0.3px',
   },
@@ -627,7 +619,7 @@ const styles = {
     padding: '18px 44px',
     fontSize: 'clamp(15px, 2.5vw, 17px)',
     fontWeight: 700,
-    background: 'linear-gradient(135deg, #22c55e, #16a34a)',
+    background: 'linear-gradient(135deg, #f97316, #ea580c)',
     color: 'white',
     border: 'none',
     borderRadius: '16px',
@@ -636,7 +628,7 @@ const styles = {
     alignItems: 'center',
     gap: '10px',
     fontFamily: 'Inter, sans-serif',
-    boxShadow: '0 6px 25px rgba(34,197,94,0.3)',
+    boxShadow: '0 6px 25px rgba(249,115,22,0.25)',
   },
 
   features: {
@@ -651,12 +643,12 @@ const styles = {
     alignItems: 'center',
     gap: '6px',
     padding: '8px 16px',
-    background: '#0f172a',
-    border: '1px solid #1e293b',
+    background: '#f9fafb',
+    border: '1px solid #e5e7eb',
     borderRadius: '50px',
     fontSize: '12px',
     fontWeight: 600,
-    color: '#e2e8f0',
+    color: '#1a1a1a',
     transition: 'all 0.3s ease',
     cursor: 'default',
   },
@@ -670,7 +662,7 @@ const styles = {
   },
   poweredByText: {
     fontSize: '12px',
-    color: '#475569',
+    color: '#9ca3af',
     fontWeight: 500,
     textTransform: 'uppercase',
     letterSpacing: '0.5px',
@@ -681,12 +673,12 @@ const styles = {
   },
   poweredByBadge: {
     padding: '4px 12px',
-    background: '#0f172a',
-    border: '1px solid #1e293b',
+    background: '#f9fafb',
+    border: '1px solid #e5e7eb',
     borderRadius: '8px',
     fontSize: '11px',
     fontWeight: 600,
-    color: '#64748b',
+    color: '#9ca3af',
   },
 };
 
