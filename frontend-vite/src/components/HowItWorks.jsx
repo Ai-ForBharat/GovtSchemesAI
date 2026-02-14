@@ -20,8 +20,7 @@ const HowItWorks = () => {
       icon: <FaEdit />,
       title: 'Enter Details',
       desc: 'Fill a simple form with your basic details like age, state, income, category, and occupation.',
-      color: '#22c55e',
-      num: '01',
+      color: '#f97316',
       features: ['Name & Age', 'State & Category', 'Income & Occupation'],
     },
     {
@@ -29,7 +28,6 @@ const HowItWorks = () => {
       title: 'AI Matches Schemes',
       desc: 'Our AI engine compares your profile against 200+ scheme eligibility criteria in real-time.',
       color: '#3b82f6',
-      num: '02',
       features: ['Smart Matching', 'Central & State', 'Relevance Score'],
     },
     {
@@ -37,7 +35,6 @@ const HowItWorks = () => {
       title: 'View Results',
       desc: 'See all eligible schemes with benefits, documents needed, and match percentage at a glance.',
       color: '#8b5cf6',
-      num: '03',
       features: ['Detailed Info', 'Documents List', 'Match Percentage'],
     },
     {
@@ -45,7 +42,6 @@ const HowItWorks = () => {
       title: 'Apply Online',
       desc: 'Apply directly through official government portals with our step-by-step guidance.',
       color: '#f59e0b',
-      num: '04',
       features: ['Official Links', 'Step-by-Step', 'Track Status'],
     },
   ];
@@ -82,7 +78,7 @@ const HowItWorks = () => {
         {/* Steps */}
         <div style={styles.stepsContainer}>
           {steps.map((step, i) => (
-            <React.Fragment key={step.num}>
+            <React.Fragment key={i}>
               <motion.div
                 style={styles.stepCard}
                 initial={{ opacity: 0, y: 40 }}
@@ -91,29 +87,16 @@ const HowItWorks = () => {
                 transition={{ delay: i * 0.15, duration: 0.5 }}
                 whileHover={{
                   y: -8,
-                  borderColor: `${step.color}40`,
-                  boxShadow: `0 20px 50px ${step.color}15`,
+                  borderColor: '#d1d5db',
+                  boxShadow: '0 20px 50px rgba(0,0,0,0.06)',
                 }}
               >
-                <div style={{
-                  ...styles.numBadge,
-                  background: `${step.color}15`,
-                  color: step.color,
-                  border: `1px solid ${step.color}30`,
-                }}>
-                  {step.num}
-                </div>
-
                 <motion.div
-                  style={{
-                    ...styles.iconCircle,
-                    background: `${step.color}10`,
-                    border: `2px solid ${step.color}25`,
-                  }}
+                  style={styles.iconCircle}
                   whileHover={{ scale: 1.1, rotate: 5 }}
                   transition={{ type: 'spring', stiffness: 300 }}
                 >
-                  <span style={{ fontSize: '26px', color: step.color }}>
+                  <span style={{ fontSize: '26px', color: '#1a1a1a' }}>
                     {step.icon}
                   </span>
                 </motion.div>
@@ -139,11 +122,6 @@ const HowItWorks = () => {
                     </motion.div>
                   ))}
                 </div>
-
-                <div style={{
-                  ...styles.accentLine,
-                  background: `linear-gradient(90deg, ${step.color}, transparent)`,
-                }} />
               </motion.div>
 
               {i < steps.length - 1 && (
@@ -157,11 +135,11 @@ const HowItWorks = () => {
                       transition={{ delay: 0.3 + i * 0.15 }}
                     >
                       <div style={styles.arrowCircle}>
-                        <FaArrowRight style={{ color: '#64748b', fontSize: '14px' }} />
+                        <FaArrowRight style={{ color: '#9ca3af', fontSize: '14px' }} />
                       </div>
                       <div style={{
                         ...styles.arrowLine,
-                        background: `linear-gradient(90deg, ${step.color}40, ${steps[i + 1].color}40)`,
+                        background: `linear-gradient(90deg, ${step.color}30, ${steps[i + 1].color}30)`,
                       }} />
                     </motion.div>
                   )}
@@ -173,7 +151,7 @@ const HowItWorks = () => {
                       viewport={{ once: true }}
                     >
                       <div style={styles.arrowMobileCircle}>
-                        <FaArrowDown style={{ color: '#64748b', fontSize: '14px' }} />
+                        <FaArrowDown style={{ color: '#9ca3af', fontSize: '14px' }} />
                       </div>
                     </motion.div>
                   )}
@@ -191,7 +169,7 @@ const HowItWorks = () => {
 const styles = {
   section: {
     padding: 'clamp(60px, 10vw, 100px) 20px',
-    background: '#0f172a',
+    background: '#ffffff',
     position: 'relative',
     overflow: 'hidden',
   },
@@ -203,7 +181,7 @@ const styles = {
     width: '400px',
     height: '400px',
     borderRadius: '50%',
-    background: 'radial-gradient(circle, rgba(34,197,94,0.05) 0%, transparent 70%)',
+    background: 'radial-gradient(circle, rgba(249,115,22,0.05) 0%, transparent 70%)',
     pointerEvents: 'none',
   },
   bgDecor2: {
@@ -231,7 +209,7 @@ const styles = {
 
   label: {
     display: 'block',
-    color: '#64748b',
+    color: '#9ca3af',
     fontSize: '13px',
     marginBottom: '12px',
     letterSpacing: '1px',
@@ -242,18 +220,18 @@ const styles = {
   heading: {
     fontSize: 'clamp(26px, 5vw, 44px)',
     fontWeight: 800,
-    color: '#ffffff',
+    color: '#1a1a1a',
     lineHeight: 1.2,
     marginBottom: '14px',
   },
 
   headingHighlight: {
-    color: '#22c55e',
+    color: '#f97316',
   },
 
   headerDesc: {
     fontSize: 'clamp(13px, 2.5vw, 16px)',
-    color: '#94a3b8',
+    color: '#6b7280',
     maxWidth: '550px',
     margin: '0 auto',
     lineHeight: 1.7,
@@ -270,8 +248,8 @@ const styles = {
   },
 
   stepCard: {
-    background: '#020617',
-    border: '1px solid #1e293b',
+    background: '#ffffff',
+    border: '2px solid #e5e7eb',
     borderRadius: '20px',
     padding: 'clamp(28px, 4vw, 36px) clamp(20px, 3vw, 28px)',
     textAlign: 'center',
@@ -280,31 +258,20 @@ const styles = {
     transition: 'all 0.4s ease',
     cursor: 'default',
     overflow: 'hidden',
-  },
-
-  numBadge: {
-    position: 'absolute',
-    top: '14px',
-    right: '14px',
-    width: '30px',
-    height: '30px',
-    borderRadius: '50%',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    fontSize: '11px',
-    fontWeight: 800,
+    boxShadow: '0 2px 8px rgba(0,0,0,0.02)',
   },
 
   iconCircle: {
     width: '64px',
     height: '64px',
-    borderRadius: '18px',
+    borderRadius: '50%',
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
     margin: '0 auto 16px',
     transition: 'all 0.3s ease',
+    background: '#f3f4f6',
+    border: '2px solid #1a1a1a',
   },
 
   stepTitle: {
@@ -315,7 +282,7 @@ const styles = {
 
   stepDesc: {
     fontSize: 'clamp(12px, 2vw, 13px)',
-    color: '#94a3b8',
+    color: '#6b7280',
     lineHeight: 1.6,
     marginBottom: '14px',
   },
@@ -334,17 +301,8 @@ const styles = {
   },
   stepFeatureText: {
     fontSize: '11px',
-    color: '#64748b',
+    color: '#9ca3af',
     fontWeight: 500,
-  },
-
-  accentLine: {
-    position: 'absolute',
-    bottom: '0',
-    left: '0',
-    width: '100%',
-    height: '3px',
-    borderRadius: '0 0 20px 20px',
   },
 
   arrowDesktop: {
@@ -358,8 +316,8 @@ const styles = {
     width: '32px',
     height: '32px',
     borderRadius: '50%',
-    background: '#0f172a',
-    border: '1px solid #1e293b',
+    background: '#f9fafb',
+    border: '1px solid #e5e7eb',
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
@@ -384,8 +342,8 @@ const styles = {
     width: '32px',
     height: '32px',
     borderRadius: '50%',
-    background: '#0f172a',
-    border: '1px solid #1e293b',
+    background: '#f9fafb',
+    border: '1px solid #e5e7eb',
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
