@@ -11,36 +11,20 @@ const Loading = () => {
   const [factIndex, setFactIndex] = useState(0);
 
   const steps = [
-    {
-      icon: <FaUser />,
-      text: 'Reading your details',
-      color: '#22c55e',
-    },
-    {
-      icon: <FaClipboardCheck />,
-      text: 'Checking eligibility criteria',
-      color: '#3b82f6',
-    },
-    {
-      icon: <FaChartBar />,
-      text: 'Calculating match scores',
-      color: '#8b5cf6',
-    },
-    {
-      icon: <FaCheckCircle />,
-      text: 'Preparing your results',
-      color: '#f59e0b',
-    },
+    { icon: <FaUser />, text: 'Reading your details' },
+    { icon: <FaClipboardCheck />, text: 'Checking eligibility criteria' },
+    { icon: <FaChartBar />, text: 'Calculating match scores' },
+    { icon: <FaCheckCircle />, text: 'Preparing your results' },
   ];
 
   const facts = [
-    '💡 India has 200+ active government welfare schemes',
-    '🇮🇳 Schemes cover all 36 States & Union Territories',
-    '📊 Over 10 Lakh citizens have used AI scheme finders',
-    '🌐 Schemes are available in 12+ Indian languages',
-    '💰 PM Kisan provides ₹6,000/year to eligible farmers',
-    '🏥 Ayushman Bharat covers up to ₹5 Lakh in medical expenses',
-    '🎓 National Scholarship Portal offers 100+ scholarships',
+    'India has 200+ active government welfare schemes',
+    'Schemes cover all 36 States & Union Territories',
+    'Over 10 Lakh citizens have used AI scheme finders',
+    'Schemes are available in 12+ Indian languages',
+    'PM Kisan provides ₹6,000/year to eligible farmers',
+    'Ayushman Bharat covers up to ₹5 Lakh in medical expenses',
+    'National Scholarship Portal offers 100+ scholarships',
   ];
 
   useEffect(() => {
@@ -53,7 +37,6 @@ const Loading = () => {
         return prev;
       });
     }, 1800);
-
     return () => clearInterval(stepInterval);
   }, []);
 
@@ -97,17 +80,12 @@ const Loading = () => {
               </div>
             </div>
           </div>
-          {/* Orbiting dots */}
+
           {[0, 1, 2].map(i => (
             <motion.div
               key={i}
-              style={{
-                ...styles.orbitDot,
-                background: steps[Math.min(activeStep, steps.length - 1)].color,
-              }}
-              animate={{
-                rotate: 360,
-              }}
+              style={styles.orbitDot}
+              animate={{ rotate: 360 }}
               transition={{
                 duration: 3,
                 repeat: Infinity,
@@ -126,7 +104,7 @@ const Loading = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.3 }}
         >
-          🔍 Analyzing Your Profile
+          Analyzing Your Profile
         </motion.h2>
 
         <motion.p
@@ -135,16 +113,13 @@ const Loading = () => {
           animate={{ opacity: 1 }}
           transition={{ delay: 0.4 }}
         >
-          Matching with 200+ government schemes across India
+          Matching with government schemes across India
         </motion.p>
 
         {/* Progress bar */}
         <div style={styles.progressTrack}>
           <motion.div
-            style={{
-              ...styles.progressBar,
-              background: `linear-gradient(90deg, #22c55e, ${steps[Math.min(activeStep, steps.length - 1)].color})`,
-            }}
+            style={styles.progressBar}
             initial={{ width: '0%' }}
             animate={{ width: `${progress}%` }}
             transition={{ duration: 0.8, ease: 'easeOut' }}
@@ -164,30 +139,15 @@ const Loading = () => {
                   ...styles.stepItem,
                   ...(isActive ? styles.stepItemActive : {}),
                   ...(isCompleted ? styles.stepItemCompleted : {}),
-                  borderColor: isActive
-                    ? `${step.color}40`
-                    : isCompleted
-                      ? `${step.color}20`
-                      : '#1e293b',
                 }}
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: 0.5 + i * 0.15 }}
               >
-                {/* Step icon */}
                 <div style={{
                   ...styles.stepIcon,
-                  background: isCompleted
-                    ? `${step.color}20`
-                    : isActive
-                      ? `${step.color}15`
-                      : '#0f172a',
-                  borderColor: isCompleted || isActive
-                    ? `${step.color}40`
-                    : '#1e293b',
-                  color: isCompleted || isActive
-                    ? step.color
-                    : '#475569',
+                  ...(isCompleted ? styles.stepIconCompleted : {}),
+                  ...(isActive ? styles.stepIconActive : {}),
                 }}>
                   {isCompleted ? (
                     <FaCheckCircle style={{ fontSize: '14px' }} />
@@ -203,21 +163,20 @@ const Loading = () => {
                   )}
                 </div>
 
-                {/* Step text */}
                 <div style={styles.stepTextWrapper}>
                   <span style={{
                     ...styles.stepText,
                     color: isCompleted
-                      ? step.color
+                      ? '#f97316'
                       : isActive
-                        ? '#e2e8f0'
-                        : '#475569',
+                        ? '#1a1a1a'
+                        : '#9ca3af',
                   }}>
                     {step.text}
                   </span>
                   {isActive && (
                     <motion.span
-                      style={styles.stepStatus}
+                      style={styles.stepStatusProcessing}
                       initial={{ opacity: 0 }}
                       animate={{ opacity: [0.4, 1, 0.4] }}
                       transition={{ duration: 1.5, repeat: Infinity }}
@@ -226,16 +185,13 @@ const Loading = () => {
                     </motion.span>
                   )}
                   {isCompleted && (
-                    <span style={{ ...styles.stepStatus, color: step.color }}>
-                      Complete
-                    </span>
+                    <span style={styles.stepStatusComplete}>Complete</span>
                   )}
                 </div>
 
-                {/* Step number */}
                 <span style={{
                   ...styles.stepNum,
-                  color: isCompleted || isActive ? step.color : '#334155',
+                  color: isCompleted || isActive ? '#f97316' : '#d1d5db',
                 }}>
                   {String(i + 1).padStart(2, '0')}
                 </span>
@@ -263,15 +219,7 @@ const Loading = () => {
             </motion.p>
           </AnimatePresence>
         </div>
-
       </motion.div>
-
-      <style>{`
-        @keyframes pulse-glow {
-          0%, 100% { box-shadow: 0 0 20px rgba(34,197,94,0.1); }
-          50% { box-shadow: 0 0 40px rgba(34,197,94,0.2); }
-        }
-      `}</style>
     </section>
   );
 };
@@ -282,10 +230,11 @@ const styles = {
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    background: 'linear-gradient(180deg, #020617 0%, #0f172a 50%, #020617 100%)',
+    background: '#ffffff',
     padding: 'clamp(30px, 5vw, 60px) 20px',
     position: 'relative',
     overflow: 'hidden',
+    fontFamily: 'Inter, sans-serif',
   },
 
   bgDecor1: {
@@ -295,7 +244,7 @@ const styles = {
     width: '400px',
     height: '400px',
     borderRadius: '50%',
-    background: 'radial-gradient(circle, rgba(34,197,94,0.06) 0%, transparent 70%)',
+    background: 'radial-gradient(circle, rgba(249,115,22,0.06) 0%, transparent 70%)',
     pointerEvents: 'none',
   },
   bgDecor2: {
@@ -305,7 +254,7 @@ const styles = {
     width: '350px',
     height: '350px',
     borderRadius: '50%',
-    background: 'radial-gradient(circle, rgba(59,130,246,0.05) 0%, transparent 70%)',
+    background: 'radial-gradient(circle, rgba(249,115,22,0.04) 0%, transparent 70%)',
     pointerEvents: 'none',
   },
   bgDecor3: {
@@ -316,22 +265,21 @@ const styles = {
     width: '500px',
     height: '500px',
     borderRadius: '50%',
-    background: 'radial-gradient(circle, rgba(139,92,246,0.03) 0%, transparent 60%)',
+    background: 'radial-gradient(circle, rgba(249,115,22,0.03) 0%, transparent 60%)',
     pointerEvents: 'none',
   },
 
   card: {
     textAlign: 'center',
-    background: '#0f172a',
-    border: '1px solid #1e293b',
+    background: '#ffffff',
+    border: '1px solid #e5e7eb',
     padding: 'clamp(30px, 5vw, 48px)',
     borderRadius: '24px',
-    boxShadow: '0 25px 80px rgba(0,0,0,0.5)',
+    boxShadow: '0 25px 80px rgba(0,0,0,0.08), 0 0 0 1px #e5e7eb',
     maxWidth: '500px',
     width: '100%',
     position: 'relative',
     zIndex: 1,
-    animation: 'pulse-glow 3s ease-in-out infinite',
   },
 
   /* Spinner */
@@ -345,8 +293,8 @@ const styles = {
     width: '100px',
     height: '100px',
     borderRadius: '50%',
-    background: '#020617',
-    border: '2px solid #1e293b',
+    background: '#f9fafb',
+    border: '1px solid #e5e7eb',
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
@@ -365,8 +313,8 @@ const styles = {
     inset: '4px',
     borderRadius: '50%',
     border: '3px solid transparent',
-    borderTopColor: '#22c55e',
-    borderRightColor: '#3b82f6',
+    borderTopColor: '#f97316',
+    borderRightColor: '#1a1a1a',
   },
   spinnerCenter: {
     display: 'flex',
@@ -376,7 +324,7 @@ const styles = {
   spinnerPercent: {
     fontSize: '22px',
     fontWeight: 900,
-    color: '#22c55e',
+    color: '#f97316',
     fontFamily: 'Inter, sans-serif',
   },
 
@@ -385,23 +333,23 @@ const styles = {
     width: '8px',
     height: '8px',
     borderRadius: '50%',
+    background: '#f97316',
     top: '-4px',
     left: '46px',
     transformOrigin: '4px 54px',
-    opacity: 0.6,
+    opacity: 0.5,
   },
 
   /* Title */
   title: {
     fontSize: 'clamp(20px, 4vw, 26px)',
     fontWeight: 800,
-    color: '#ffffff',
+    color: '#1a1a1a',
     marginBottom: '8px',
   },
-
   subtitle: {
     fontSize: 'clamp(13px, 2.5vw, 15px)',
-    color: '#64748b',
+    color: '#6b7280',
     marginBottom: '24px',
     fontWeight: 500,
   },
@@ -410,7 +358,7 @@ const styles = {
   progressTrack: {
     width: '100%',
     height: '6px',
-    background: '#1e293b',
+    background: '#e5e7eb',
     borderRadius: '3px',
     marginBottom: '28px',
     overflow: 'hidden',
@@ -418,7 +366,8 @@ const styles = {
   progressBar: {
     height: '100%',
     borderRadius: '3px',
-    boxShadow: '0 0 10px rgba(34,197,94,0.3)',
+    background: '#f97316',
+    boxShadow: '0 0 10px rgba(249,115,22,0.3)',
   },
 
   /* Steps */
@@ -427,35 +376,48 @@ const styles = {
     flexDirection: 'column',
     gap: '10px',
   },
-
   stepItem: {
     display: 'flex',
     alignItems: 'center',
     gap: '12px',
     padding: '12px 16px',
-    background: '#020617',
-    border: '1px solid #1e293b',
+    background: '#f9fafb',
+    border: '1px solid #e5e7eb',
     borderRadius: '14px',
     transition: 'all 0.4s ease',
   },
   stepItemActive: {
-    background: '#0f172a',
-    boxShadow: '0 4px 15px rgba(0,0,0,0.3)',
+    background: '#ffffff',
+    borderColor: 'rgba(249,115,22,0.3)',
+    boxShadow: '0 4px 15px rgba(249,115,22,0.08)',
   },
   stepItemCompleted: {
-    background: '#020617',
+    background: '#f9fafb',
+    borderColor: 'rgba(249,115,22,0.15)',
   },
 
   stepIcon: {
     width: '36px',
     height: '36px',
     borderRadius: '10px',
-    border: '1px solid',
+    border: '1px solid #e5e7eb',
+    background: '#ffffff',
+    color: '#9ca3af',
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
     flexShrink: 0,
     transition: 'all 0.3s ease',
+  },
+  stepIconActive: {
+    background: 'rgba(249,115,22,0.08)',
+    borderColor: 'rgba(249,115,22,0.3)',
+    color: '#f97316',
+  },
+  stepIconCompleted: {
+    background: 'rgba(249,115,22,0.08)',
+    borderColor: 'rgba(249,115,22,0.2)',
+    color: '#f97316',
   },
 
   stepTextWrapper: {
@@ -468,9 +430,16 @@ const styles = {
     display: 'block',
     transition: 'color 0.3s ease',
   },
-  stepStatus: {
+  stepStatusProcessing: {
     fontSize: '11px',
-    color: '#475569',
+    color: '#f97316',
+    fontWeight: 500,
+    display: 'block',
+    marginTop: '2px',
+  },
+  stepStatusComplete: {
+    fontSize: '11px',
+    color: '#f97316',
     fontWeight: 500,
     display: 'block',
     marginTop: '2px',
@@ -486,7 +455,7 @@ const styles = {
   /* Divider */
   divider: {
     height: '1px',
-    background: 'linear-gradient(90deg, transparent, #1e293b, transparent)',
+    background: '#e5e7eb',
     margin: '24px 0 20px',
   },
 
@@ -496,7 +465,7 @@ const styles = {
   },
   factLabel: {
     fontSize: '11px',
-    color: '#475569',
+    color: '#1a1a1a',
     fontWeight: 600,
     textTransform: 'uppercase',
     letterSpacing: '0.5px',
@@ -505,7 +474,7 @@ const styles = {
   },
   factText: {
     fontSize: '13px',
-    color: '#94a3b8',
+    color: '#6b7280',
     lineHeight: 1.6,
     fontWeight: 500,
     margin: 0,

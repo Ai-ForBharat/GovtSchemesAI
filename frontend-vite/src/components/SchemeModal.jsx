@@ -2,17 +2,14 @@ import React from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
   FaTimes, FaInfoCircle, FaGift, FaBuilding,
-  FaFileAlt, FaClipboardList, FaChartBar,
-  FaExternalLinkAlt, FaCheckCircle, FaChevronRight,
-  FaShieldAlt, FaCopy
+  FaFileAlt, FaClipboardList,
+  FaExternalLinkAlt, FaChevronRight,
+  FaShieldAlt, FaCopy, FaCheckCircle
 } from 'react-icons/fa';
 
 const SchemeModal = ({ scheme, onClose }) => {
   if (!scheme) return null;
 
-  const score = scheme.match_score || 0;
-  const scoreColor = score >= 80 ? '#22c55e' : score >= 60 ? '#f59e0b' : '#ef4444';
-  const scoreLabel = score >= 80 ? 'Excellent Match' : score >= 60 ? 'Good Match' : 'Low Match';
   const isCenter = scheme.type === 'central';
 
   const copyName = () => {
@@ -37,16 +34,13 @@ const SchemeModal = ({ scheme, onClose }) => {
           onClick={(e) => e.stopPropagation()}
         >
           {/* Top accent */}
-          <div style={{
-            ...styles.topAccent,
-            background: `linear-gradient(90deg, ${scoreColor}, ${isCenter ? '#3b82f6' : '#8b5cf6'}, transparent)`,
-          }} />
+          <div style={styles.topAccent} />
 
           {/* Close Button */}
           <motion.button
             style={styles.closeBtn}
             onClick={onClose}
-            whileHover={{ scale: 1.1, background: '#1e293b' }}
+            whileHover={{ scale: 1.1, background: '#f3f4f6' }}
             whileTap={{ scale: 0.9 }}
           >
             <FaTimes />
@@ -57,20 +51,15 @@ const SchemeModal = ({ scheme, onClose }) => {
             <div style={styles.badgeRow}>
               <span style={{
                 ...styles.typeBadge,
-                background: isCenter ? 'rgba(59,130,246,0.1)' : 'rgba(139,92,246,0.1)',
-                color: isCenter ? '#3b82f6' : '#8b5cf6',
-                borderColor: isCenter ? 'rgba(59,130,246,0.3)' : 'rgba(139,92,246,0.3)',
+                background: isCenter ? 'rgba(249,115,22,0.08)' : '#f9fafb',
+                color: isCenter ? '#f97316' : '#1a1a1a',
+                borderColor: isCenter ? 'rgba(249,115,22,0.2)' : '#e5e7eb',
               }}>
                 {isCenter ? '🇮🇳 Central Government' : '🏛️ State Government'}
               </span>
 
               {scheme.category && (
-                <span style={{
-                  ...styles.categoryBadge,
-                  background: `${scoreColor}10`,
-                  color: scoreColor,
-                  borderColor: `${scoreColor}30`,
-                }}>
+                <span style={styles.categoryBadge}>
                   {(scheme.category || '').replace(/_/g, ' ').replace(/\b\w/g, c => c.toUpperCase())}
                 </span>
               )}
@@ -81,7 +70,7 @@ const SchemeModal = ({ scheme, onClose }) => {
               <motion.button
                 style={styles.copyBtn}
                 onClick={copyName}
-                whileHover={{ scale: 1.1 }}
+                whileHover={{ scale: 1.1, borderColor: 'rgba(249,115,22,0.3)' }}
                 whileTap={{ scale: 0.9 }}
                 title="Copy scheme name"
               >
@@ -94,105 +83,52 @@ const SchemeModal = ({ scheme, onClose }) => {
             )}
           </div>
 
-          {/* Score Card */}
-          <div style={{
-            ...styles.scoreCard,
-            borderColor: `${scoreColor}30`,
-          }}>
-            <div style={styles.scoreLeft}>
-              <div style={styles.scoreCircleWrapper}>
-                <svg width="64" height="64" style={styles.scoreSvg}>
-                  <circle cx="32" cy="32" r="26" fill="none" stroke="#1e293b" strokeWidth="4" />
-                  <circle
-                    cx="32" cy="32" r="26"
-                    fill="none"
-                    stroke={scoreColor}
-                    strokeWidth="4"
-                    strokeLinecap="round"
-                    strokeDasharray={`${(score / 100) * 163.4} 163.4`}
-                    transform="rotate(-90 32 32)"
-                    style={{ transition: 'stroke-dasharray 1s ease' }}
-                  />
-                </svg>
-                <div style={styles.scoreInner}>
-                  <span style={{ ...styles.scoreNum, color: scoreColor }}>{score}</span>
-                  <span style={{ ...styles.scorePercent, color: scoreColor }}>%</span>
-                </div>
-              </div>
+          {/* Verified Badge */}
+          <div style={styles.verifiedCard}>
+            <div style={styles.verifiedLeft}>
+              <FaCheckCircle style={{ color: '#f97316', fontSize: '14px' }} />
+              <span style={styles.verifiedText}>Verified Official Scheme</span>
             </div>
-
-            <div style={styles.scoreRight}>
-              <span style={{ ...styles.scoreLabel, color: scoreColor }}>{scoreLabel}</span>
-              <div style={styles.scoreBarTrack}>
-                <motion.div
-                  style={{
-                    ...styles.scoreBarFill,
-                    background: `linear-gradient(90deg, ${scoreColor}, ${scoreColor}80)`,
-                  }}
-                  initial={{ width: 0 }}
-                  animate={{ width: `${score}%` }}
-                  transition={{ duration: 1, delay: 0.3 }}
-                />
-              </div>
-              <div style={styles.scoreDetails}>
-                <span style={styles.scoreDetailItem}>
-                  <FaCheckCircle style={{ color: '#22c55e', fontSize: '10px' }} /> Eligibility verified
-                </span>
-                <span style={styles.scoreDetailItem}>
-                  <FaShieldAlt style={{ color: '#3b82f6', fontSize: '10px' }} /> Official scheme
-                </span>
-              </div>
+            <div style={styles.verifiedRight}>
+              <FaShieldAlt style={{ color: '#1a1a1a', fontSize: '12px' }} />
+              <span style={styles.verifiedText}>Government Portal</span>
             </div>
           </div>
 
           {/* Sections */}
           <div style={styles.sectionsWrapper}>
 
-            <Section
-              icon={<FaInfoCircle />}
-              iconColor="#3b82f6"
-              title="Description"
-            >
-              <p style={styles.sectionText}>{scheme.description}</p>
+            <Section icon={<FaInfoCircle />} title="Description">
+              <p style={styles.sectionText}>
+                {scheme.description || 'No description available. Please visit the official website for more details.'}
+              </p>
             </Section>
 
-            <Section
-              icon={<FaGift />}
-              iconColor="#22c55e"
-              title="Benefits"
-            >
-              <p style={styles.sectionText}>{scheme.benefits}</p>
+            <Section icon={<FaGift />} title="Benefits">
+              <p style={styles.sectionText}>
+                {scheme.benefits || 'Visit the official website for detailed benefits information.'}
+              </p>
             </Section>
 
-            <Section
-              icon={<FaBuilding />}
-              iconColor="#f59e0b"
-              title="Ministry / Department"
-            >
+            <Section icon={<FaBuilding />} title="Ministry / Department">
               <p style={styles.sectionText}>{scheme.ministry || 'Government of India'}</p>
             </Section>
 
-            <Section
-              icon={<FaFileAlt />}
-              iconColor="#8b5cf6"
-              title="Documents Required"
-            >
+            <Section icon={<FaFileAlt />} title="Documents Required">
               <div style={styles.docsList}>
-                {(scheme.documents || ['Check official website']).map((doc, i) => (
+                {(scheme.documents || ['Check official website for required documents']).map((doc, i) => (
                   <div key={i} style={styles.docItem}>
-                    <FaChevronRight style={{ color: '#8b5cf6', fontSize: '9px', flexShrink: 0, marginTop: '5px' }} />
+                    <FaChevronRight style={{ color: '#f97316', fontSize: '9px', flexShrink: 0, marginTop: '5px' }} />
                     <span style={styles.docText}>{doc}</span>
                   </div>
                 ))}
               </div>
             </Section>
 
-            <Section
-              icon={<FaClipboardList />}
-              iconColor="#ec4899"
-              title="How to Apply"
-            >
-              <p style={styles.sectionText}>{scheme.how_to_apply || 'Visit the official website to apply'}</p>
+            <Section icon={<FaClipboardList />} title="How to Apply">
+              <p style={styles.sectionText}>
+                {scheme.how_to_apply || 'Visit the official website to apply for this scheme.'}
+              </p>
             </Section>
 
           </div>
@@ -206,7 +142,7 @@ const SchemeModal = ({ scheme, onClose }) => {
             target="_blank"
             rel="noopener noreferrer"
             style={styles.applyBtn}
-            whileHover={{ scale: 1.02, boxShadow: '0 8px 30px rgba(34,197,94,0.4)' }}
+            whileHover={{ scale: 1.02, boxShadow: '0 8px 30px rgba(249,115,22,0.4)', background: '#ea580c' }}
             whileTap={{ scale: 0.98 }}
           >
             <FaExternalLinkAlt style={{ fontSize: '14px' }} />
@@ -214,10 +150,7 @@ const SchemeModal = ({ scheme, onClose }) => {
           </motion.a>
 
           {/* Footer note */}
-          <p style={styles.footerNote}>
-            <FaShieldAlt style={{ fontSize: '10px', color: '#475569' }} />
-            Information sourced from official government portals
-          </p>
+          
 
         </motion.div>
       </motion.div>
@@ -225,15 +158,10 @@ const SchemeModal = ({ scheme, onClose }) => {
   );
 };
 
-const Section = ({ icon, iconColor, title, children }) => (
+const Section = ({ icon, title, children }) => (
   <div style={sectionStyles.wrapper}>
     <div style={sectionStyles.header}>
-      <div style={{
-        ...sectionStyles.iconBox,
-        background: `${iconColor}10`,
-        border: `1px solid ${iconColor}25`,
-        color: iconColor,
-      }}>
+      <div style={sectionStyles.iconBox}>
         {icon}
       </div>
       <h4 style={sectionStyles.title}>{title}</h4>
@@ -247,8 +175,8 @@ const Section = ({ icon, iconColor, title, children }) => (
 const sectionStyles = {
   wrapper: {
     marginBottom: '16px',
-    background: '#020617',
-    border: '1px solid #1e293b',
+    background: '#f9fafb',
+    border: '1px solid #e5e7eb',
     borderRadius: '14px',
     padding: '16px',
     transition: 'all 0.3s ease',
@@ -268,11 +196,14 @@ const sectionStyles = {
     justifyContent: 'center',
     fontSize: '14px',
     flexShrink: 0,
+    background: 'rgba(249,115,22,0.08)',
+    border: '1px solid rgba(249,115,22,0.2)',
+    color: '#f97316',
   },
   title: {
     fontSize: '14px',
     fontWeight: 700,
-    color: '#e2e8f0',
+    color: '#1a1a1a',
     margin: 0,
   },
   content: {
@@ -287,7 +218,7 @@ const styles = {
     left: 0,
     right: 0,
     bottom: 0,
-    background: 'rgba(0, 0, 0, 0.7)',
+    background: 'rgba(0, 0, 0, 0.5)',
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
@@ -298,8 +229,8 @@ const styles = {
   },
 
   modal: {
-    background: '#0f172a',
-    border: '1px solid #1e293b',
+    background: '#ffffff',
+    border: '1px solid #e5e7eb',
     borderRadius: '24px',
     maxWidth: '620px',
     width: '100%',
@@ -307,7 +238,7 @@ const styles = {
     overflowY: 'auto',
     padding: '0',
     position: 'relative',
-    boxShadow: '0 25px 80px rgba(0,0,0,0.6)',
+    boxShadow: '0 25px 80px rgba(0,0,0,0.15), 0 0 0 1px #e5e7eb',
     fontFamily: 'Inter, sans-serif',
   },
 
@@ -315,6 +246,7 @@ const styles = {
     height: '4px',
     width: '100%',
     borderRadius: '24px 24px 0 0',
+    background: 'linear-gradient(90deg, #f97316, #1a1a1a, transparent)',
   },
 
   closeBtn: {
@@ -324,19 +256,18 @@ const styles = {
     width: '36px',
     height: '36px',
     borderRadius: '10px',
-    border: '1px solid #1e293b',
-    background: '#020617',
+    border: '1px solid #e5e7eb',
+    background: '#f9fafb',
     cursor: 'pointer',
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
     fontSize: '14px',
-    color: '#94a3b8',
+    color: '#1a1a1a',
     zIndex: 10,
     transition: 'all 0.3s ease',
   },
 
-  /* Header */
   headerSection: {
     padding: '24px 28px 0',
   },
@@ -364,7 +295,9 @@ const styles = {
     borderRadius: '8px',
     fontSize: '10px',
     fontWeight: 700,
-    border: '1px solid',
+    border: '1px solid #e5e7eb',
+    background: '#f9fafb',
+    color: '#1a1a1a',
   },
 
   titleRow: {
@@ -375,7 +308,7 @@ const styles = {
   title: {
     fontSize: 'clamp(18px, 3.5vw, 22px)',
     fontWeight: 800,
-    color: '#ffffff',
+    color: '#1a1a1a',
     marginBottom: '4px',
     lineHeight: 1.3,
     flex: 1,
@@ -385,9 +318,9 @@ const styles = {
     width: '32px',
     height: '32px',
     borderRadius: '8px',
-    background: '#020617',
-    border: '1px solid #1e293b',
-    color: '#64748b',
+    background: '#f9fafb',
+    border: '1px solid #e5e7eb',
+    color: '#6b7280',
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
@@ -398,98 +331,51 @@ const styles = {
     transition: 'all 0.2s ease',
   },
   nameEn: {
-    color: '#64748b',
+    color: '#6b7280',
     fontSize: '13px',
     margin: '4px 0 0 0',
     fontStyle: 'italic',
   },
 
-  /* Score Card */
-  scoreCard: {
+  verifiedCard: {
     margin: '20px 28px 0',
-    padding: '18px',
-    background: '#020617',
-    border: '1px solid #1e293b',
-    borderRadius: '16px',
+    padding: '14px 18px',
+    background: '#f9fafb',
+    border: '1px solid #e5e7eb',
+    borderRadius: '12px',
     display: 'flex',
     alignItems: 'center',
-    gap: '18px',
-  },
-  scoreLeft: {},
-  scoreCircleWrapper: {
-    position: 'relative',
-    width: '64px',
-    height: '64px',
-  },
-  scoreSvg: {
-    position: 'absolute',
-    top: 0,
-    left: 0,
-  },
-  scoreInner: {
-    position: 'absolute',
-    inset: 0,
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  scoreNum: {
-    fontSize: '20px',
-    fontWeight: 900,
-  },
-  scorePercent: {
-    fontSize: '11px',
-    fontWeight: 700,
-    marginTop: '2px',
-  },
-  scoreRight: {
-    flex: 1,
-  },
-  scoreLabel: {
-    fontSize: '14px',
-    fontWeight: 700,
-    display: 'block',
-    marginBottom: '8px',
-  },
-  scoreBarTrack: {
-    width: '100%',
-    height: '6px',
-    background: '#1e293b',
-    borderRadius: '3px',
-    overflow: 'hidden',
-    marginBottom: '10px',
-  },
-  scoreBarFill: {
-    height: '100%',
-    borderRadius: '3px',
-  },
-  scoreDetails: {
-    display: 'flex',
-    gap: '14px',
+    justifyContent: 'space-between',
+    gap: '12px',
     flexWrap: 'wrap',
   },
-  scoreDetailItem: {
+  verifiedLeft: {
     display: 'flex',
     alignItems: 'center',
-    gap: '5px',
-    fontSize: '11px',
-    color: '#64748b',
-    fontWeight: 500,
+    gap: '8px',
+  },
+  verifiedRight: {
+    display: 'flex',
+    alignItems: 'center',
+    gap: '6px',
+  },
+  verifiedText: {
+    fontSize: '12px',
+    fontWeight: 600,
+    color: '#1a1a1a',
   },
 
-  /* Sections wrapper */
   sectionsWrapper: {
     padding: '20px 28px 0',
   },
 
   sectionText: {
     fontSize: '13px',
-    color: '#94a3b8',
+    color: '#6b7280',
     lineHeight: 1.7,
     margin: 0,
   },
 
-  /* Documents */
   docsList: {
     display: 'flex',
     flexDirection: 'column',
@@ -502,25 +388,23 @@ const styles = {
   },
   docText: {
     fontSize: '13px',
-    color: '#94a3b8',
+    color: '#6b7280',
     lineHeight: 1.5,
   },
 
-  /* Divider */
   divider: {
     height: '1px',
-    background: 'linear-gradient(90deg, transparent, #1e293b, transparent)',
+    background: '#e5e7eb',
     margin: '20px 28px',
   },
 
-  /* Apply Button */
   applyBtn: {
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
     gap: '10px',
     padding: '16px 28px',
-    background: 'linear-gradient(135deg, #22c55e, #16a34a)',
+    background: '#f97316',
     color: '#ffffff',
     border: 'none',
     borderRadius: '14px',
@@ -530,18 +414,17 @@ const styles = {
     textDecoration: 'none',
     margin: '0 28px',
     fontFamily: 'Inter, sans-serif',
-    boxShadow: '0 4px 20px rgba(34,197,94,0.25)',
+    boxShadow: '0 4px 20px rgba(249,115,22,0.25)',
     transition: 'all 0.3s ease',
   },
 
-  /* Footer note */
   footerNote: {
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
     gap: '6px',
     fontSize: '11px',
-    color: '#475569',
+    color: '#6b7280',
     padding: '14px 28px 20px',
     margin: 0,
     textAlign: 'center',
