@@ -2,19 +2,12 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { useApp } from '../context/AppContext';
 import {
-  FaArrowRight, FaShieldAlt, FaLanguage, FaRobot,
-  FaUsers, FaCheckCircle, FaMapMarkerAlt
+  FaArrowRight,
+  FaCheckCircle, FaMapMarkerAlt
 } from 'react-icons/fa';
 
 const About = () => {
   const { setCurrentView } = useApp();
-
-  const highlights = [
-    { icon: <FaShieldAlt />, text: '100% Free & Secure', color: '#22c55e' },
-    { icon: <FaLanguage />, text: '12+ Languages', color: '#3b82f6' },
-    { icon: <FaRobot />, text: 'AI-Powered Matching', color: '#8b5cf6' },
-    { icon: <FaUsers />, text: '10L+ Users Helped', color: '#f59e0b' },
-  ];
 
   return (
     <section style={styles.section}>
@@ -32,23 +25,13 @@ const About = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          {/* Badge */}
-          <motion.div
-            style={styles.badge}
-            initial={{ opacity: 0, y: -10 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.2 }}
-          >
-            🇮🇳 About Our Platform
-          </motion.div>
-
           <h2 style={styles.title}>
-            About <span style={styles.titleHighlight}>GovScheme AI</span>
+            <span style={styles.titleBlack}>About</span>{' '}
+            <span style={styles.titleHighlight}>Saarthi AI</span>
           </h2>
 
           <p style={styles.text}>
-            <strong style={styles.bold}>GovScheme AI</strong> is a national platform that aims to offer
+            <strong style={styles.bold}>Saarthi AI</strong> is a national platform that aims to offer
             one-stop search and discovery of Government schemes.
           </p>
 
@@ -63,34 +46,14 @@ const About = () => {
             Thus no need to visit multiple Government websites.
           </p>
 
-          {/* Highlight Pills */}
-          <div style={styles.highlights}>
-            {highlights.map((h, i) => (
-              <motion.div
-                key={i}
-                style={styles.highlightPill}
-                initial={{ opacity: 0, y: 10 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.3 + i * 0.1 }}
-                whileHover={{ scale: 1.05, borderColor: h.color }}
-              >
-                <span style={{ color: h.color, fontSize: '14px', flexShrink: 0 }}>
-                  {h.icon}
-                </span>
-                <span style={styles.highlightText}>{h.text}</span>
-              </motion.div>
-            ))}
-          </div>
-
           <motion.button
             style={styles.button}
             whileHover={{
               scale: 1.05,
-              background: '#22c55e',
+              background: '#f97316',
               color: '#ffffff',
-              borderColor: '#22c55e',
-              boxShadow: '0 8px 30px rgba(34,197,94,0.3)',
+              borderColor: '#f97316',
+              boxShadow: '0 8px 30px rgba(249,115,22,0.3)',
             }}
             whileTap={{ scale: 0.95 }}
             onClick={() => setCurrentView('about')}
@@ -122,21 +85,12 @@ const About = () => {
                     <span style={{ ...styles.frameDot, background: '#f59e0b' }} />
                     <span style={{ ...styles.frameDot, background: '#22c55e' }} />
                   </div>
-                  <span style={styles.frameUrl}>govscheme.ai</span>
+                  <span style={styles.frameUrl}>saarthi.ai</span>
                 </div>
 
                 {/* Mock content */}
                 <div style={styles.mockContent}>
-                  {/* Icon */}
-                  <motion.div
-                    style={styles.mockIcon}
-                    animate={{ rotate: [0, 5, -5, 0] }}
-                    transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
-                  >
-                    🇮🇳
-                  </motion.div>
-
-                  <div style={styles.mockTitle}>GovScheme AI</div>
+                  <div style={styles.mockTitle}>Saarthi AI</div>
                   <div style={styles.mockSubtitle}>Find schemes you deserve</div>
 
                   {/* Mock stats */}
@@ -175,28 +129,20 @@ const About = () => {
                         viewport={{ once: true }}
                         transition={{ delay: 0.7 + i * 0.1 }}
                       >
-                        <FaCheckCircle style={{ color: '#22c55e', fontSize: '12px', flexShrink: 0 }} />
+                        <FaCheckCircle style={{ color: '#f97316', fontSize: '12px', flexShrink: 0 }} />
                         <span style={styles.mockCheckText}>{item}</span>
                       </motion.div>
                     ))}
                   </div>
                 </div>
 
-                {/* Floating elements */}
+                {/* Floating element */}
                 <motion.div
                   style={styles.floatingBadge1}
                   animate={{ y: [0, -8, 0] }}
                   transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut' }}
                 >
                   <FaMapMarkerAlt style={{ fontSize: '10px' }} /> 36 States
-                </motion.div>
-
-                <motion.div
-                  style={styles.floatingBadge2}
-                  animate={{ y: [0, 8, 0] }}
-                  transition={{ duration: 3.5, repeat: Infinity, ease: 'easeInOut', delay: 0.5 }}
-                >
-                  <FaShieldAlt style={{ fontSize: '10px' }} /> Verified
                 </motion.div>
               </div>
             </div>
@@ -211,7 +157,7 @@ const About = () => {
 const styles = {
   section: {
     padding: 'clamp(60px, 10vw, 100px) 20px',
-    background: '#0f172a',
+    background: '#ffffff',
     position: 'relative',
     overflow: 'hidden',
   },
@@ -223,7 +169,7 @@ const styles = {
     width: '400px',
     height: '400px',
     borderRadius: '50%',
-    background: 'radial-gradient(circle, rgba(34,197,94,0.06) 0%, transparent 70%)',
+    background: 'radial-gradient(circle, rgba(249,115,22,0.06) 0%, transparent 70%)',
     pointerEvents: 'none',
   },
 
@@ -234,7 +180,7 @@ const styles = {
     width: '350px',
     height: '350px',
     borderRadius: '50%',
-    background: 'radial-gradient(circle, rgba(59,130,246,0.05) 0%, transparent 70%)',
+    background: 'radial-gradient(circle, rgba(249,115,22,0.05) 0%, transparent 70%)',
     pointerEvents: 'none',
   },
 
@@ -249,78 +195,42 @@ const styles = {
     zIndex: 1,
   },
 
-  /* LEFT SIDE */
   left: {
-    color: 'white',
-  },
-
-  badge: {
-    display: 'inline-block',
-    padding: '6px 16px',
-    background: 'rgba(34,197,94,0.1)',
-    border: '1px solid rgba(34,197,94,0.3)',
-    borderRadius: '50px',
-    fontSize: '13px',
-    fontWeight: 600,
-    color: '#22c55e',
-    marginBottom: '16px',
+    color: '#1a1a1a',
   },
 
   title: {
     fontSize: 'clamp(32px, 5vw, 44px)',
     fontWeight: 800,
-    color: '#ffffff',
     marginBottom: '24px',
     lineHeight: 1.2,
   },
 
+  titleBlack: {
+    color: '#1a1a1a',
+  },
+
   titleHighlight: {
-    color: '#22c55e',
+    color: '#f97316',
   },
 
   text: {
     fontSize: 'clamp(14px, 2.5vw, 16px)',
     lineHeight: 1.8,
-    color: '#94a3b8',
+    color: '#333333',
     marginBottom: '16px',
   },
 
   bold: {
-    color: '#e2e8f0',
-  },
-
-  highlights: {
-    display: 'grid',
-    gridTemplateColumns: 'repeat(2, 1fr)',
-    gap: '10px',
-    marginTop: '24px',
-    marginBottom: '28px',
-  },
-
-  highlightPill: {
-    display: 'flex',
-    alignItems: 'center',
-    gap: '10px',
-    padding: '10px 14px',
-    background: '#020617',
-    border: '1px solid #1e293b',
-    borderRadius: '12px',
-    transition: 'all 0.3s ease',
-    cursor: 'default',
-  },
-
-  highlightText: {
-    fontSize: '13px',
-    fontWeight: 600,
-    color: '#e2e8f0',
+    color: '#f97316',
   },
 
   button: {
     marginTop: '8px',
     padding: '14px 32px',
     background: 'transparent',
-    border: '2px solid #334155',
-    color: '#e2e8f0',
+    border: '2px solid #f97316',
+    color: '#f97316',
     borderRadius: '12px',
     cursor: 'pointer',
     display: 'inline-flex',
@@ -332,7 +242,6 @@ const styles = {
     transition: 'all 0.3s ease',
   },
 
-  /* RIGHT SIDE */
   right: {
     display: 'flex',
     justifyContent: 'center',
@@ -352,7 +261,7 @@ const styles = {
     width: '80%',
     height: '80%',
     borderRadius: '50%',
-    background: 'radial-gradient(circle, rgba(34,197,94,0.08) 0%, transparent 70%)',
+    background: 'radial-gradient(circle, rgba(249,115,22,0.08) 0%, transparent 70%)',
     pointerEvents: 'none',
     zIndex: 0,
   },
@@ -361,15 +270,14 @@ const styles = {
     width: '100%',
     height: '420px',
     borderRadius: '20px',
-    background: '#020617',
-    border: '1px solid #1e293b',
-    boxShadow: '0 25px 80px rgba(0,0,0,0.5), 0 0 0 1px #1e293b',
+    background: '#f9fafb',
+    border: '1px solid #e5e7eb',
+    boxShadow: '0 25px 80px rgba(0,0,0,0.08), 0 0 0 1px #e5e7eb',
     position: 'relative',
     overflow: 'hidden',
     zIndex: 1,
   },
 
-  /* Frame content */
   frameContent: {
     width: '100%',
     height: '100%',
@@ -383,8 +291,8 @@ const styles = {
     alignItems: 'center',
     gap: '12px',
     padding: '12px 16px',
-    borderBottom: '1px solid #1e293b',
-    background: '#0f172a',
+    borderBottom: '1px solid #e5e7eb',
+    background: '#f3f4f6',
   },
 
   frameDots: {
@@ -401,16 +309,15 @@ const styles = {
 
   frameUrl: {
     fontSize: '11px',
-    color: '#64748b',
+    color: '#6b7280',
     fontWeight: 500,
-    background: '#020617',
+    background: '#ffffff',
     padding: '3px 12px',
     borderRadius: '6px',
     flex: 1,
     textAlign: 'center',
   },
 
-  /* Mock content inside frame */
   mockContent: {
     padding: '24px 20px',
     display: 'flex',
@@ -420,19 +327,15 @@ const styles = {
     flex: 1,
   },
 
-  mockIcon: {
-    fontSize: '36px',
-  },
-
   mockTitle: {
     fontSize: '20px',
     fontWeight: 800,
-    color: '#ffffff',
+    color: '#f97316',
   },
 
   mockSubtitle: {
     fontSize: '12px',
-    color: '#64748b',
+    color: '#6b7280',
     fontWeight: 500,
   },
 
@@ -447,8 +350,8 @@ const styles = {
     flexDirection: 'column',
     alignItems: 'center',
     padding: '10px 16px',
-    background: '#0f172a',
-    border: '1px solid #1e293b',
+    background: '#ffffff',
+    border: '1px solid #e5e7eb',
     borderRadius: '12px',
     minWidth: '70px',
   },
@@ -456,12 +359,12 @@ const styles = {
   mockStatNum: {
     fontSize: '18px',
     fontWeight: 900,
-    color: '#22c55e',
+    color: '#f97316',
   },
 
   mockStatLabel: {
     fontSize: '10px',
-    color: '#64748b',
+    color: '#6b7280',
     textTransform: 'uppercase',
     fontWeight: 600,
   },
@@ -483,11 +386,10 @@ const styles = {
 
   mockCheckText: {
     fontSize: '12px',
-    color: '#94a3b8',
+    color: '#4b5563',
     fontWeight: 500,
   },
 
-  /* Floating badges */
   floatingBadge1: {
     position: 'absolute',
     top: '80px',
@@ -496,31 +398,13 @@ const styles = {
     alignItems: 'center',
     gap: '6px',
     padding: '6px 14px',
-    background: '#0f172a',
-    border: '1px solid rgba(59,130,246,0.3)',
+    background: '#ffffff',
+    border: '1px solid rgba(249,115,22,0.3)',
     borderRadius: '50px',
     fontSize: '11px',
     fontWeight: 600,
-    color: '#3b82f6',
-    boxShadow: '0 4px 15px rgba(0,0,0,0.3)',
-    zIndex: 2,
-  },
-
-  floatingBadge2: {
-    position: 'absolute',
-    bottom: '60px',
-    left: '-8px',
-    display: 'flex',
-    alignItems: 'center',
-    gap: '6px',
-    padding: '6px 14px',
-    background: '#0f172a',
-    border: '1px solid rgba(34,197,94,0.3)',
-    borderRadius: '50px',
-    fontSize: '11px',
-    fontWeight: 600,
-    color: '#22c55e',
-    boxShadow: '0 4px 15px rgba(0,0,0,0.3)',
+    color: '#f97316',
+    boxShadow: '0 4px 15px rgba(0,0,0,0.08)',
     zIndex: 2,
   },
 };
