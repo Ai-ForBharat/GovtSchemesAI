@@ -11,7 +11,7 @@
 **An AI-powered platform that recommends eligible Indian Government Schemes  
 (Central + State) based on user profile — in 12 Indian languages.**
 
-[Live Demo](#) • [Video Demo](#) • [Presentation](#)
+
 
 </div>
 
