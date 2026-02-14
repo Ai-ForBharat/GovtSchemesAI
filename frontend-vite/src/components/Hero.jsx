@@ -1,62 +1,25 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
-  FaSearch, FaShieldAlt, FaLanguage, FaRobot,
-  FaCheckCircle, FaArrowRight, FaUsers,
+  FaSearch, FaCheckCircle, FaArrowRight,
   FaChevronLeft, FaChevronRight
 } from 'react-icons/fa';
 import { useApp } from '../context/AppContext';
 
+import banner1 from '../assets/Pradhanmantri-Mudra-Yojna.png';
+import banner2 from '../assets/banner2.png';
+import banner4 from '../assets/banner4.png';
+import banner5 from '../assets/banner5.png';
+import bannerNSP from '../assets/NSP-myscheme-Web-Dark.png';
+import bannerPMAY from '../assets/PMAY-U-Banner.png';
+
 const slides = [
-  {
-    image: '',
-    title: 'PM Kisan Samman Nidhi',
-    desc: '₹6,000 per year for farmers',
-    tag: 'Agriculture',
-    color: '#f97316',
-  },
-  {
-    image: '',
-    title: 'Ayushman Bharat Yojana',
-    desc: '₹5 Lakh health cover per family',
-    tag: 'Healthcare',
-    color: '#3b82f6',
-  },
-  {
-    image: '',
-    title: 'PM Awas Yojana',
-    desc: 'Affordable housing for all',
-    tag: 'Housing',
-    color: '#8b5cf6',
-  },
-  {
-    image: '',
-    title: 'PM Ujjwala Yojana',
-    desc: 'Free LPG connections for BPL families',
-    tag: 'Energy',
-    color: '#f59e0b',
-  },
-  {
-    image: '',
-    title: 'Skill India Mission',
-    desc: 'Free skill training & certification',
-    tag: 'Education',
-    color: '#ec4899',
-  },
-  {
-    image: '',
-    title: 'PM Mudra Yojana',
-    desc: 'Loans up to ₹10 Lakh for businesses',
-    tag: 'Finance',
-    color: '#14b8a6',
-  },
-  {
-    image: '',
-    title: 'Jan Dhan Yojana',
-    desc: 'Zero-balance bank accounts for all',
-    tag: 'Banking',
-    color: '#f97316',
-  },
+  { image: banner1, color: '#f97316' },
+  { image: banner2, color: '#3b82f6' },
+  { image: banner4, color: '#8b5cf6' },
+  { image: banner5, color: '#f59e0b' },
+  { image: bannerNSP, color: '#ec4899' },
+  { image: bannerPMAY, color: '#14b8a6' },
 ];
 
 const Hero = () => {
@@ -89,69 +52,33 @@ const Hero = () => {
         <AnimatePresence mode="wait">
           <motion.div
             key={current}
-            initial={{ opacity: 0, scale: 1.02 }}
-            animate={{ opacity: 1, scale: 1 }}
-            exit={{ opacity: 0, scale: 0.98 }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
             transition={{ duration: 0.8 }}
             style={styles.imageSlide}
           >
-            <div style={{
-              ...styles.imagePlaceholder,
-              borderColor: `${slides[current].color}20`,
-            }}>
-              <div style={styles.slideOverlay}>
-                <motion.div
-                  style={{
-                    ...styles.slideTag,
-                    background: `${slides[current].color}10`,
-                    borderColor: `${slides[current].color}30`,
-                    color: slides[current].color,
-                  }}
-                  initial={{ opacity: 0, y: -10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.3 }}
-                >
-                  {slides[current].tag}
-                </motion.div>
-                <motion.h3
-                  style={styles.slideTitle}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.4 }}
-                >
-                  {slides[current].title}
-                </motion.h3>
-                <motion.p
-                  style={styles.slideDesc}
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.5 }}
-                >
-                  {slides[current].desc}
-                </motion.p>
-              </div>
-
-              <div style={{
-                ...styles.cornerGlow,
-                background: `radial-gradient(circle, ${slides[current].color}08 0%, transparent 70%)`,
-              }} />
-            </div>
+            <img
+              src={slides[current].image}
+              alt="Government Scheme Banner"
+              style={styles.actualImage}
+            />
           </motion.div>
         </AnimatePresence>
 
         {/* Nav arrows */}
         <motion.button
-          style={{ ...styles.navBtn, left: 'clamp(12px, 3vw, 30px)' }}
+          style={{ ...styles.navBtn, left: '16px' }}
           onClick={prevSlide}
-          whileHover={{ scale: 1.1, background: '#f3f4f6' }}
+          whileHover={{ scale: 1.1, background: 'rgba(255,255,255,0.95)' }}
           whileTap={{ scale: 0.95 }}
         >
           <FaChevronLeft />
         </motion.button>
         <motion.button
-          style={{ ...styles.navBtn, right: 'clamp(12px, 3vw, 30px)' }}
+          style={{ ...styles.navBtn, right: '16px' }}
           onClick={nextSlide}
-          whileHover={{ scale: 1.1, background: '#f3f4f6' }}
+          whileHover={{ scale: 1.1, background: 'rgba(255,255,255,0.95)' }}
           whileTap={{ scale: 0.95 }}
         >
           <FaChevronRight />
@@ -174,34 +101,11 @@ const Hero = () => {
             />
           ))}
         </div>
-
-        {/* Progress bar */}
-        <div style={styles.progressTrack}>
-          <motion.div
-            style={{
-              ...styles.progressBar,
-              background: slides[current].color,
-            }}
-            initial={{ width: '0%' }}
-            animate={{ width: '100%' }}
-            transition={{ duration: 5, ease: 'linear' }}
-            key={current}
-          />
-        </div>
       </div>
 
       {/* TEXT SECTION */}
       <div style={styles.hero}>
         <div style={styles.content}>
-
-          <motion.div
-            style={styles.badge}
-            initial={{ scale: 0 }}
-            animate={{ scale: 1 }}
-            transition={{ delay: 0.3, type: 'spring', stiffness: 200 }}
-          >
-            Powered by AI • Made for India
-          </motion.div>
 
           <motion.h1
             style={styles.heading}
@@ -245,34 +149,12 @@ const Hero = () => {
             ))}
           </motion.div>
 
-          {/* Stats */}
-          <div style={styles.statsRow}>
-            {[
-              { num: '200+', label: 'Schemes', color: '#f97316' },
-              { num: '36', label: 'States & UTs', color: '#3b82f6' },
-              { num: '12', label: 'Languages', color: '#8b5cf6' },
-              { num: '10L+', label: 'Users', color: '#f59e0b' },
-            ].map((stat, i) => (
-              <motion.div
-                key={stat.label}
-                style={styles.stat}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.5 + i * 0.1 }}
-                whileHover={{ scale: 1.05, borderColor: stat.color }}
-              >
-                <span style={{ ...styles.statNum, color: stat.color }}>{stat.num}</span>
-                <span style={styles.statLabel}>{stat.label}</span>
-              </motion.div>
-            ))}
-          </div>
-
           {/* CTA */}
           <motion.div
             style={styles.ctaRow}
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.7 }}
+            transition={{ delay: 0.5 }}
           >
             <motion.button
               style={styles.ctaBtn}
@@ -283,44 +165,6 @@ const Hero = () => {
               <FaSearch /> Find My Schemes
               <FaArrowRight style={{ fontSize: '14px' }} />
             </motion.button>
-          </motion.div>
-
-          {/* Feature Pills */}
-          <motion.div
-            style={styles.features}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.8 }}
-          >
-            {[
-              { icon: <FaShieldAlt />, text: '100% Free', color: '#f97316' },
-              { icon: <FaLanguage />, text: 'Multilingual', color: '#3b82f6' },
-              { icon: <FaRobot />, text: 'AI Powered', color: '#8b5cf6' },
-              { icon: <FaUsers />, text: 'For All Citizens', color: '#f59e0b' },
-            ].map((f, i) => (
-              <motion.span
-                key={i}
-                style={styles.featurePill}
-                whileHover={{ scale: 1.05, borderColor: f.color }}
-              >
-                <span style={{ color: f.color }}>{f.icon}</span> {f.text}
-              </motion.span>
-            ))}
-          </motion.div>
-
-          {/* Powered by */}
-          <motion.div
-            style={styles.poweredBy}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.9 }}
-          >
-            <span style={styles.poweredByText}>Powered by</span>
-            <div style={styles.poweredByLogos}>
-              {['Digital India', 'MeitY', 'NIC'].map((name, i) => (
-                <span key={i} style={styles.poweredByBadge}>{name}</span>
-              ))}
-            </div>
           </motion.div>
 
         </div>
@@ -374,88 +218,24 @@ const styles = {
   /* IMAGE CAROUSEL */
   imageSection: {
     width: '100%',
-    height: 'clamp(350px, 50vw, 500px)',
+    height: 'clamp(300px, 45vw, 520px)',
     position: 'relative',
     background: '#f9fafb',
     paddingTop: '72px',
+    overflow: 'hidden',
   },
   imageSlide: {
     width: '100%',
     height: '100%',
-    background: '#f9fafb',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    padding: '20px',
+    position: 'absolute',
+    top: 0,
+    left: 0,
   },
-  imagePlaceholder: {
-    width: '92%',
-    maxWidth: '1100px',
-    height: '88%',
-    background: '#ffffff',
-    border: '1px solid #e5e7eb',
-    borderRadius: '24px',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    position: 'relative',
-    overflow: 'hidden',
-    boxShadow: '0 20px 60px rgba(0,0,0,0.06)',
-    transition: 'border-color 0.5s ease',
-  },
-
   actualImage: {
     width: '100%',
     height: '100%',
     objectFit: 'cover',
-    borderRadius: '24px',
-    position: 'absolute',
-    top: 0,
-    left: 0,
-    zIndex: 0,
-  },
-
-  cornerGlow: {
-    position: 'absolute',
-    top: '-50%',
-    right: '-30%',
-    width: '80%',
-    height: '80%',
-    borderRadius: '50%',
-    pointerEvents: 'none',
-    zIndex: 0,
-  },
-
-  slideOverlay: {
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-    gap: '10px',
-    textAlign: 'center',
-    zIndex: 1,
-    position: 'relative',
-  },
-  slideTag: {
-    padding: '5px 16px',
-    borderRadius: '50px',
-    fontSize: '11px',
-    fontWeight: 700,
-    textTransform: 'uppercase',
-    letterSpacing: '0.5px',
-    border: '1px solid',
-  },
-  slideTitle: {
-    fontSize: 'clamp(22px, 4vw, 36px)',
-    fontWeight: 800,
-    color: '#1a1a1a',
-    margin: 0,
-    lineHeight: 1.2,
-  },
-  slideDesc: {
-    fontSize: 'clamp(13px, 2.5vw, 16px)',
-    color: '#6b7280',
-    margin: 0,
-    fontWeight: 500,
+    display: 'block',
   },
 
   /* Nav */
@@ -465,10 +245,10 @@ const styles = {
     transform: 'translateY(-50%)',
     width: '42px',
     height: '42px',
-    borderRadius: '12px',
-    background: '#ffffff',
-    border: '1px solid #e5e7eb',
-    color: '#6b7280',
+    borderRadius: '50%',
+    background: 'rgba(255,255,255,0.85)',
+    border: 'none',
+    color: '#1a1a1a',
     fontSize: '14px',
     display: 'flex',
     alignItems: 'center',
@@ -476,13 +256,14 @@ const styles = {
     cursor: 'pointer',
     zIndex: 5,
     transition: 'all 0.3s ease',
-    boxShadow: '0 2px 8px rgba(0,0,0,0.06)',
+    boxShadow: '0 2px 12px rgba(0,0,0,0.15)',
+    backdropFilter: 'blur(8px)',
   },
 
   /* Dots */
   dots: {
     position: 'absolute',
-    bottom: '20px',
+    bottom: '16px',
     left: '50%',
     transform: 'translateX(-50%)',
     display: 'flex',
@@ -493,7 +274,7 @@ const styles = {
     width: '8px',
     height: '8px',
     borderRadius: '50%',
-    background: '#d1d5db',
+    background: 'rgba(255,255,255,0.5)',
     border: 'none',
     cursor: 'pointer',
     transition: 'all 0.3s ease',
@@ -503,21 +284,6 @@ const styles = {
     width: '24px',
     borderRadius: '4px',
     height: '8px',
-  },
-
-  /* Progress */
-  progressTrack: {
-    position: 'absolute',
-    bottom: '0',
-    left: '0',
-    width: '100%',
-    height: '3px',
-    background: '#e5e7eb',
-    zIndex: 5,
-  },
-  progressBar: {
-    height: '100%',
-    borderRadius: '0 2px 2px 0',
   },
 
   /* TEXT SECTION */
@@ -532,19 +298,6 @@ const styles = {
   content: {
     maxWidth: '850px',
     margin: '0 auto',
-  },
-  badge: {
-    display: 'inline-flex',
-    alignItems: 'center',
-    gap: '6px',
-    background: 'rgba(249,115,22,0.08)',
-    border: '1px solid rgba(249,115,22,0.2)',
-    padding: '8px 20px',
-    borderRadius: '50px',
-    fontSize: '13px',
-    fontWeight: 600,
-    marginBottom: '24px',
-    color: '#f97316',
   },
   heading: {
     fontSize: 'clamp(30px, 6vw, 56px)',
@@ -581,39 +334,8 @@ const styles = {
     fontWeight: 500,
   },
 
-  statsRow: {
-    display: 'flex',
-    justifyContent: 'center',
-    gap: 'clamp(10px, 2vw, 16px)',
-    marginBottom: '32px',
-    flexWrap: 'wrap',
-  },
-  stat: {
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-    background: '#f9fafb',
-    border: '1px solid #e5e7eb',
-    padding: 'clamp(12px, 2vw, 18px) clamp(16px, 3vw, 24px)',
-    borderRadius: '16px',
-    minWidth: 'clamp(80px, 15vw, 110px)',
-    transition: 'all 0.3s ease',
-    cursor: 'default',
-  },
-  statNum: {
-    fontSize: 'clamp(22px, 4vw, 28px)',
-    fontWeight: 900,
-  },
-  statLabel: {
-    fontSize: '11px',
-    textTransform: 'uppercase',
-    color: '#9ca3af',
-    fontWeight: 600,
-    letterSpacing: '0.3px',
-  },
-
   ctaRow: {
-    marginBottom: '24px',
+    marginBottom: '0',
   },
   ctaBtn: {
     padding: '18px 44px',
@@ -629,56 +351,6 @@ const styles = {
     gap: '10px',
     fontFamily: 'Inter, sans-serif',
     boxShadow: '0 6px 25px rgba(249,115,22,0.25)',
-  },
-
-  features: {
-    display: 'flex',
-    justifyContent: 'center',
-    gap: '10px',
-    flexWrap: 'wrap',
-    marginBottom: '28px',
-  },
-  featurePill: {
-    display: 'flex',
-    alignItems: 'center',
-    gap: '6px',
-    padding: '8px 16px',
-    background: '#f9fafb',
-    border: '1px solid #e5e7eb',
-    borderRadius: '50px',
-    fontSize: '12px',
-    fontWeight: 600,
-    color: '#1a1a1a',
-    transition: 'all 0.3s ease',
-    cursor: 'default',
-  },
-
-  poweredBy: {
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    gap: '12px',
-    flexWrap: 'wrap',
-  },
-  poweredByText: {
-    fontSize: '12px',
-    color: '#9ca3af',
-    fontWeight: 500,
-    textTransform: 'uppercase',
-    letterSpacing: '0.5px',
-  },
-  poweredByLogos: {
-    display: 'flex',
-    gap: '8px',
-  },
-  poweredByBadge: {
-    padding: '4px 12px',
-    background: '#f9fafb',
-    border: '1px solid #e5e7eb',
-    borderRadius: '8px',
-    fontSize: '11px',
-    fontWeight: 600,
-    color: '#9ca3af',
   },
 };
 
