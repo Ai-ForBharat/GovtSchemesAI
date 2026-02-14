@@ -168,7 +168,7 @@ Response generated + translated
 ## 📁 Project Structure
 
 ```
-AI For Bharat/
+Saarthi AI/
 │
 ├── README.md
 ├── requirements.txt
