@@ -5,24 +5,49 @@
       "patterns": [
         "hi", "hello", "hey", "namaste", "good morning",
         "good evening", "whats up", "how are you",
-        "hi there", "greetings"
+        "hi there", "greetings", "good afternoon",
+        "hey there", "howdy", "hola", "sup",
+        "namaskar", "namaskaram", "vanakkam",
+        "sat sri akal", "jai hind", "jai bhim",
+        "kaise ho", "kya haal hai", "hello ji",
+        "good day", "hey bot", "hi bot", "hello bot",
+        "anybody there", "is anyone there",
+        "hey govscheme", "hi govscheme",
+        "start", "begin", "let's start",
+        "yo", "hii", "hiii", "helloo",
+        "ram ram", "pranam", "sasriakal",
+        "hi can you help me", "hello i need help",
+        "hey i have a question", "hi i want to ask something"
       ],
       "responses": [
         "Namaste! 🙏 I'm GovScheme AI. I can help you find government schemes. Ask me anything!",
         "Hello! Welcome to GovScheme AI. How can I help you find the right government scheme?",
-        "Hey there! I'm here to help you discover government schemes you're eligible for."
+        "Hey there! I'm here to help you discover government schemes you're eligible for.",
+        "Hi! 😊 Ask me about any government scheme or tell me about yourself and I'll find matching schemes!",
+        "Namaste! 🙏 I can help with PM-KISAN, Ayushman Bharat, scholarships, and 100+ more schemes. What do you need?"
       ]
     },
     {
       "tag": "goodbye",
       "patterns": [
         "bye", "goodbye", "see you", "thank you bye",
-        "thanks bye", "quit", "exit", "close"
+        "thanks bye", "quit", "exit", "close",
+        "see you later", "take care", "gotta go",
+        "bye bye", "good night", "alvida",
+        "phir milenge", "chalta hu", "ok bye",
+        "that's all", "nothing else", "i'm done",
+        "no more questions", "all good bye",
+        "ok thanks bye", "bye thanks for help",
+        "tata", "bbye", "cya", "catch you later",
+        "thanks goodbye", "thats it bye",
+        "ok im done thank you", "no thanks bye"
       ],
       "responses": [
         "Goodbye! 🙏 Hope I helped you find useful schemes. Visit official websites to apply!",
-        "Thank you for using GovScheme AI! Good luck with your applications!",
-        "Bye! Remember to check official portals for the latest scheme updates."
+        "Thank you for using GovScheme AI! Good luck with your applications! 🇮🇳",
+        "Bye! Remember to check official portals for the latest scheme updates. Jai Hind! 🙏",
+        "Take care! Don't forget to apply before the deadlines. Feel free to come back anytime! 😊",
+        "Alvida! 🙏 Share GovScheme AI with friends and family who might benefit. Good luck!"
       ]
     },
     {
@@ -30,12 +55,24 @@
       "patterns": [
         "thanks", "thank you", "helpful", "nice",
         "great help", "appreciate it", "dhanyavaad",
-        "shukriya", "thanks a lot"
+        "shukriya", "thanks a lot", "thanku",
+        "thanks so much", "very helpful",
+        "that was helpful", "great information",
+        "bahut accha", "bohot helpful", "awesome",
+        "wonderful", "perfect", "exactly what i needed",
+        "thank you so much", "you are helpful",
+        "this is great", "very useful information",
+        "thanks for the info", "thanks for your help",
+        "you are amazing", "great job", "well done",
+        "brilliant", "superb", "fantastic help",
+        "god bless you", "thank you very much"
       ],
       "responses": [
         "You're welcome! 😊 Let me know if you need anything else.",
-        "Happy to help! Don't forget to apply before deadlines.",
-        "Glad I could help! Share this tool with others who might benefit."
+        "Happy to help! Don't forget to apply before deadlines. 📅",
+        "Glad I could help! Share this tool with others who might benefit. 🙏",
+        "Thank you! 😊 Remember to keep all your documents ready before applying.",
+        "You're welcome! I'm always here to help. Feel free to ask more questions anytime!"
       ]
     },
     {
@@ -45,10 +82,26 @@
         "pm kisan scheme", "kisan samman nidhi",
         "farmer scheme money", "6000 rupees farmer",
         "pm kisan eligibility", "how to apply pm kisan",
-        "kisan yojana", "farmer income support"
+        "kisan yojana", "farmer income support",
+        "pm kisan status", "pm kisan installment",
+        "when will pm kisan money come",
+        "pm kisan beneficiary status", "pm kisan list",
+        "2000 rupees farmer", "pm kisan 2000",
+        "kisan samman nidhi yojana details",
+        "pm kisan registration", "pm kisan online apply",
+        "pm kisan documents needed",
+        "pm kisan amount", "pm kisan payment",
+        "pm kisan ke baare mein batao",
+        "kisan ko paisa kab milega",
+        "farmer direct benefit transfer",
+        "pm kisan nidhi", "pradhan mantri kisan",
+        "how to check pm kisan status",
+        "pm kisan ekyc", "pm kisan correction",
+        "pm kisan rejected reason"
       ],
       "responses": [
-        "📋 PM-KISAN Samman Nidhi:\n💰 Rs. 6,000/year (3 installments of Rs. 2,000)\n👤 For: All farmer families with cultivable land\n📝 Apply: pmkisan.gov.in\n📄 Documents: Aadhaar, Land Records, Bank Account\n✅ Income limit: Rs. 2 lakh/year"
+        "📋 PM-KISAN Samman Nidhi:\n💰 Rs. 6,000/year (3 installments of Rs. 2,000)\n👤 For: All farmer families with cultivable land\n📝 Apply: pmkisan.gov.in\n📄 Documents: Aadhaar, Land Records, Bank Account\n✅ Income limit: Rs. 2 lakh/year\n📞 Helpline: 155261 / 011-24300606\n\n💡 Check status: pmkisan.gov.in → Beneficiary Status",
+        "🌾 PM-KISAN Details:\n\n• Rs. 6,000/year in 3 installments\n• Directly to bank account via DBT\n• All small & marginal farmers eligible\n• Link Aadhaar & complete e-KYC\n• Apply at pmkisan.gov.in or CSC center\n\n📞 Helpline: 155261\n⚠️ Institutional landholders and income tax payers excluded"
       ]
     },
     {
@@ -58,10 +111,22 @@
         "housing scheme", "free house scheme",
         "home loan subsidy", "awas yojana apply",
         "pmay scheme", "government housing",
-        "house for poor", "affordable housing"
+        "house for poor", "affordable housing",
+        "ghar ka scheme", "pucca house scheme",
+        "pmay urban", "pmay gramin", "pmay rural",
+        "pradhan mantri awas yojana gramin",
+        "housing for all", "awas yojana eligibility",
+        "home subsidy scheme", "pmay beneficiary list",
+        "2.67 lakh subsidy", "home loan interest subsidy",
+        "pmay apply online", "awas yojana registration",
+        "free ghar yojana", "garib ko ghar",
+        "pmay status check", "awas yojana documents",
+        "pmay clss", "credit linked subsidy scheme",
+        "how to get government house",
+        "rural housing scheme", "gramin awas"
       ],
       "responses": [
-        "🏠 PM Awas Yojana (PMAY):\n💰 Subsidy up to Rs. 2.67 Lakh on home loan\n👤 For: Families without pucca house\n💵 Income limit: Up to Rs. 18 Lakh/year\n📝 Apply: pmaymis.gov.in or nearest bank\n📄 Documents: Aadhaar, Income Certificate, Bank Statement"
+        "🏠 PM Awas Yojana (PMAY):\n\n🏙️ PMAY Urban:\n💰 Subsidy up to Rs. 2.67 Lakh on home loan\n💵 Income: EWS (< Rs.3L), LIG (3-6L), MIG-I (6-12L), MIG-II (12-18L)\n\n🏘️ PMAY Gramin:\n💰 Rs. 1.20 Lakh (plain) / Rs. 1.30 Lakh (hilly areas)\n👤 For: Families without pucca house\n\n📝 Apply: pmaymis.gov.in (Urban) | pmayg.nic.in (Rural)\n📄 Documents: Aadhaar, Income Certificate, No pucca house certificate\n📞 Helpline: 1800-11-6163"
       ]
     },
     {
@@ -71,10 +136,22 @@
         "pm jan arogya", "free health insurance",
         "5 lakh health cover", "ayushman card",
         "pmjay", "government health scheme",
-        "free hospital treatment", "medical scheme"
+        "free hospital treatment", "medical scheme",
+        "ayushman bharat yojana", "jan arogya yojana",
+        "health card scheme", "free treatment scheme",
+        "ayushman card kaise banaye", "ayushman eligibility",
+        "ayushman hospital list", "ayushman bharat hospital",
+        "free surgery scheme", "government medical insurance",
+        "ayushman card apply", "pmjay registration",
+        "health cover for poor", "muft ilaj",
+        "free health card", "ayushman bharat status",
+        "am i eligible for ayushman bharat",
+        "ayushman bharat benefits", "how to use ayushman card",
+        "ayushman bharat 5 lakh", "health scheme for bpl"
       ],
       "responses": [
-        "🏥 Ayushman Bharat (PMJAY):\n💰 Free health cover of Rs. 5 Lakh/family/year\n👤 For: BPL families, SC/ST/OBC with low income\n🏨 Covers: 1,500+ medical procedures at empaneled hospitals\n📝 Apply: pmjay.gov.in or call 14555\n📄 Documents: Aadhaar, Ration Card, BPL Certificate"
+        "🏥 Ayushman Bharat (PM-JAY):\n💰 Free health cover of Rs. 5 Lakh/family/year\n👤 For: BPL families (identified from SECC data)\n🏨 Covers: 1,500+ medical procedures including:\n   • Surgeries, Cancer treatment, Dialysis\n   • Heart bypass, Knee replacement\n   • All pre-existing diseases covered\n📝 Apply: pmjay.gov.in or Ayushman Mitra at hospital\n📞 Helpline: 14555\n📄 Documents: Aadhaar, Ration Card, SECC data\n\n💡 Check eligibility: mera.pmjay.gov.in",
+        "🏥 Ayushman Bharat Details:\n\n✅ Rs. 5 Lakh cashless treatment per family\n✅ No age limit, no family size limit\n✅ Covers 3 days pre and 15 days post hospitalization\n✅ Available at 25,000+ empaneled hospitals\n\n📋 How to get card:\n1. Visit mera.pmjay.gov.in\n2. Enter mobile/ration card number\n3. If eligible, visit nearest CSC/hospital\n4. Get Ayushman card (free of cost)\n\n📞 Helpline: 14555"
       ]
     },
     {
@@ -83,10 +160,18 @@
         "ujjwala yojana", "free gas connection",
         "lpg scheme", "cooking gas scheme",
         "ujjwala apply", "free cylinder",
-        "gas for bpl", "pm ujjwala"
+        "gas for bpl", "pm ujjwala",
+        "ujjwala 2.0", "free lpg connection",
+        "gas connection for women", "cooking gas for poor",
+        "ujjwala yojana eligibility", "ujjwala apply online",
+        "free gas for poor family",
+        "mahila gas yojana", "lpg subsidy scheme",
+        "pradhan mantri ujjwala yojana",
+        "ujjwala documents", "how to get free gas",
+        "ujjwala beneficiary"
       ],
       "responses": [
-        "🔥 PM Ujjwala Yojana:\n💰 Free LPG connection + Rs. 1,600 support\n👤 For: Women from BPL households\n📝 Apply: Visit nearest LPG distributor\n📄 Documents: BPL Card, Aadhaar, Bank Account, Photo\n⚠️ Connection in woman's name only"
+        "🔥 PM Ujjwala Yojana 2.0:\n💰 Free LPG connection + first refill + stove\n👤 For: Women from BPL households, SC/ST, PMAY beneficiaries\n📝 Apply: Visit nearest LPG distributor with documents\n📄 Documents: BPL Card/Aadhaar, Bank Account, Passport Photo, Address Proof\n⚠️ Connection in woman's name only\n\n💡 Ujjwala 2.0: No address proof needed, self-declaration accepted\n📞 Contact nearest HP/Bharat/Indane distributor"
       ]
     },
     {
@@ -95,10 +180,20 @@
         "mudra loan", "pm mudra yojana", "business loan",
         "mudra scheme", "small business loan",
         "startup loan", "loan without collateral",
-        "shishu kishor tarun loan", "self employment loan"
+        "shishu kishor tarun loan", "self employment loan",
+        "mudra loan eligibility", "mudra loan apply",
+        "how to get mudra loan", "mudra loan interest rate",
+        "mudra loan for women", "mudra bank loan",
+        "business ke liye loan", "vyapar loan",
+        "rozgar ke liye loan", "entrepreneurship loan",
+        "msme loan", "shop ke liye loan",
+        "mudra loan documents", "mudra loan amount",
+        "mudra loan online apply", "pradhan mantri mudra",
+        "small scale industry loan", "cottage industry loan",
+        "mudra card", "loan for small business without collateral"
       ],
       "responses": [
-        "💼 PM Mudra Yojana:\n💰 Loans without collateral:\n  • Shishu: Up to Rs. 50,000\n  • Kishor: Rs. 50,000 - 5 Lakh\n  • Tarun: Rs. 5 Lakh - 10 Lakh\n👤 For: Small business owners, self-employed\n📝 Apply: Any bank, NBFC, or MFI branch\n📄 Documents: Aadhaar, PAN, Business Plan"
+        "💼 PM Mudra Yojana:\n💰 Loans without collateral:\n  • Shishu: Up to Rs. 50,000 (for startups)\n  • Kishor: Rs. 50,000 - 5 Lakh (growing business)\n  • Tarun: Rs. 5 Lakh - 10 Lakh (established business)\n\n👤 For: Small business owners, vendors, artisans, self-employed\n📊 Interest: 8-12% (varies by bank)\n📝 Apply: Any bank, NBFC, or MFI branch\n📄 Documents: Aadhaar, PAN, Business Plan, Address Proof\n🌐 mudra.org.in\n\n💡 Women & SC/ST get priority processing"
       ]
     },
     {
@@ -108,10 +203,23 @@
         "education scheme", "national scholarship",
         "sc st scholarship", "obc scholarship",
         "post matric scholarship", "free education",
-        "study scheme", "scholarship for poor"
+        "study scheme", "scholarship for poor",
+        "scholarship apply", "scholarship eligibility",
+        "scholarship kaise milega", "padhai ke liye paisa",
+        "government scholarship", "central scholarship",
+        "merit scholarship", "minority scholarship",
+        "national scholarship portal", "nsp scholarship",
+        "pre matric scholarship", "college scholarship",
+        "scholarship for girls", "scholarship for engineering",
+        "scholarship for medical", "phd scholarship",
+        "research fellowship", "inspire scholarship",
+        "scholarship last date", "scholarship status check",
+        "how to apply scholarship online",
+        "vidyalakshmi education loan", "student loan scheme"
       ],
       "responses": [
-        "🎓 National Scholarship Portal:\n💰 Full tuition fee + Rs. 1,200-3,000/month allowance\n👤 For: SC/ST/OBC students (post-matric level)\n💵 Income limit: Rs. 2.5 Lakh/year\n📝 Apply: scholarships.gov.in\n📄 Documents: Marksheet, Caste Certificate, Income Certificate, Aadhaar\n📅 Apply before deadline each academic year"
+        "🎓 Scholarship Schemes:\n\n1️⃣ Post-Matric Scholarship (SC/ST/OBC):\n   💰 Full tuition + Rs. 1,200-3,000/month\n   💵 Income limit: Rs. 2.5 Lakh/year\n\n2️⃣ Central Sector Scholarship:\n   💰 Rs. 10,000-20,000/year for top students\n\n3️⃣ INSPIRE Scholarship:\n   💰 Rs. 80,000/year for science students\n\n4️⃣ PM Vidyalakshmi:\n   📚 Education loans from multiple banks\n\n5️⃣ Minority Scholarship:\n   💰 For religious minority students\n\n📝 Apply at: scholarships.gov.in\n📅 Check deadlines each academic year\n📄 Documents: Marksheet, Income/Caste Certificate, Aadhaar, Bank Account",
+        "🎓 National Scholarship Portal (NSP):\n\nAll scholarships on one portal: scholarships.gov.in\n\n📋 Available scholarships:\n• Pre-Matric (Class 1-10)\n• Post-Matric (Class 11+)\n• Merit-cum-Means\n• National Means-cum-Merit (NMMS)\n• Top Class Education (SC/ST)\n• Minority scholarships\n\n📝 Steps to apply:\n1. Register at scholarships.gov.in\n2. Fill application with details\n3. Upload documents\n4. Get verified by institute\n5. Money transferred to bank\n\n📞 Helpline: 0120-6619540"
       ]
     },
     {
@@ -120,10 +228,22 @@
         "pension scheme", "atal pension", "old age pension",
         "retirement scheme", "monthly pension",
         "pension for poor", "apy scheme",
-        "shram yogi pension", "unorganized worker pension"
+        "shram yogi pension", "unorganized worker pension",
+        "pension yojana", "pension kaise milegi",
+        "pension apply", "vridha pension",
+        "senior citizen pension", "widow pension",
+        "vidhwa pension", "disability pension",
+        "pm shram yogi maandhan", "atal pension yojana details",
+        "pension 3000", "pension 5000",
+        "national pension scheme", "nps scheme",
+        "pension ke liye kaise apply kare",
+        "pension beneficiary status", "pension kitni milegi",
+        "old age support scheme", "budhapa pension",
+        "vridhavastha pension", "ignoaps"
       ],
       "responses": [
-        "👴 Pension Schemes:\n\n1️⃣ Atal Pension Yojana (APY):\n💰 Rs. 1,000-5,000/month after age 60\n👤 Age: 18-40 years\n\n2️⃣ PM Shram Yogi Maandhan:\n💰 Rs. 3,000/month after age 60\n👤 For: Unorganized workers, income < Rs. 15,000/month\n\n📝 Apply at any bank branch with Aadhaar"
+        "👴 Pension Schemes:\n\n1️⃣ Atal Pension Yojana (APY):\n   💰 Rs. 1,000-5,000/month after age 60\n   👤 Age: 18-40 | Premium: Rs. 42-1,454/month\n   📝 Apply at any bank branch\n\n2️⃣ PM Shram Yogi Maandhan:\n   💰 Rs. 3,000/month after age 60\n   👤 For: Unorganized workers (income < Rs.15K/month)\n   💵 Premium: Rs. 55-200/month\n\n3️⃣ IGNOAPS (Old Age Pension):\n   💰 Rs. 200-500/month for BPL (60+ years)\n\n4️⃣ NPS (National Pension):\n   💰 Market-linked returns, tax benefits\n   👤 For: All citizens (18-65 years)\n\n📝 Apply at bank/post office with Aadhaar",
+        "👴 Pension Options Summary:\n\n| Scheme | Amount | Who Can Apply |\n| APY | Rs.1K-5K/month | Age 18-40 |\n| Shram Yogi | Rs.3K/month | Workers <15K income |\n| IGNOAPS | Rs.200-500/month | BPL 60+ |\n| Widow Pension | Rs.300-500/month | BPL widows |\n| Disability | Rs.300-500/month | BPL disabled |\n\n📝 All need: Aadhaar + Bank Account\n📞 Contact your bank branch or post office"
       ]
     },
     {
@@ -132,10 +252,24 @@
         "schemes for women", "women welfare scheme",
         "mahila yojana", "girl child scheme",
         "sukanya samriddhi", "women empowerment",
-        "scheme for daughter", "beti bachao"
+        "scheme for daughter", "beti bachao",
+        "women loan scheme", "mahila loan",
+        "ladies scheme", "stri yojana",
+        "sukanya samriddhi yojana", "beti bachao beti padhao",
+        "ladki ke liye yojana", "women self help group",
+        "mahila udyam scheme", "women entrepreneur loan",
+        "free sewing machine scheme", "mahila samridhi yojana",
+        "kanya sumangala", "women scholarship",
+        "girl education scheme", "maternity benefit",
+        "pregnancy scheme", "janani suraksha",
+        "schemes for single mother", "widow scheme",
+        "working women hostel", "one stop centre scheme",
+        "sakhi centre", "mahila shakti kendra",
+        "nari shakti puraskar", "swadhar greh"
       ],
       "responses": [
-        "👩 Schemes for Women:\n\n1️⃣ Sukanya Samriddhi Yojana:\n💰 8.2% interest for girl child (0-10 years)\n\n2️⃣ PM Ujjwala: Free LPG for BPL women\n\n3️⃣ Mahila Shakti Kendra: Skill training\n\n4️⃣ Stand Up India: Loans Rs.10L-1Cr for women entrepreneurs\n\n5️⃣ State schemes like Kanya Sumangala (UP), Bhagyashree (MH)"
+        "👩 Schemes for Women:\n\n💰 Financial Schemes:\n1️⃣ Sukanya Samriddhi: 8.2% interest for girl child (0-10 yrs)\n2️⃣ Stand Up India: Loans Rs.10L-1Cr for women entrepreneurs\n3️⃣ Mudra for Women: Priority business loans\n4️⃣ Mahila Samridhi Yojana: Savings scheme for women\n\n👶 Maternity & Health:\n5️⃣ Janani Suraksha: Rs.1,400 for institutional delivery\n6️⃣ PMMVY: Rs.5,000 maternity benefit (first child)\n\n🎓 Education:\n7️⃣ CBSE Udaan: Free coaching for engineering\n8️⃣ Beti Bachao Beti Padhao: Girl child awareness\n\n🏠 Safety:\n9️⃣ One Stop Centre: Support for violence victims\n🔟 Swadhar Greh: Shelter for women in distress\n\n📞 Women Helpline: 181",
+        "👩 Top Women Schemes State-wise:\n\n• UP: Kanya Sumangala (Rs.15,000 for girls)\n• Rajasthan: Indira Mahila Shakti Udyam\n• Maharashtra: Majhi Kanya Bhagyashree\n• Tamil Nadu: Moovalur Scheme\n• Karnataka: Bhagya Lakshmi (Rs.1L for girl child)\n• MP: Ladli Laxmi Yojana (Rs.1.18L)\n• Bihar: Mukhyamantri Kanya Utthan (Rs.50K)\n• West Bengal: Kanyashree Prakalpa (Rs.25K)\n\n💡 Fill the form with your state for personalized results!"
       ]
     },
     {
@@ -144,10 +278,23 @@
         "schemes for farmers", "farmer yojana",
         "kisan scheme", "agriculture scheme",
         "crop insurance", "farmer loan",
-        "farming help", "kisano ke liye yojana"
+        "farming help", "kisano ke liye yojana",
+        "fasal bima", "kisan credit card",
+        "krishi yojana", "kheti ke liye scheme",
+        "farmer subsidy", "agriculture loan",
+        "tractor subsidy", "drip irrigation scheme",
+        "seed subsidy", "fertilizer subsidy",
+        "msp scheme", "minimum support price",
+        "farmer welfare scheme", "pm fasal bima",
+        "soil health card", "organic farming scheme",
+        "dairy farming scheme", "fishery scheme",
+        "animal husbandry scheme", "poultry scheme",
+        "cold storage scheme", "food processing scheme",
+        "farmer market scheme", "enam portal"
       ],
       "responses": [
-        "🌾 Schemes for Farmers:\n\n1️⃣ PM-KISAN: Rs. 6,000/year direct transfer\n\n2️⃣ PM Fasal Bima Yojana: Crop insurance at 2% premium\n\n3️⃣ Kisan Credit Card: Easy farm loans\n\n4️⃣ Soil Health Card: Free soil testing\n\n5️⃣ PM Krishi Sinchai Yojana: Irrigation support\n\n📝 Visit nearest Krishi Vigyan Kendra for help"
+        "🌾 Schemes for Farmers:\n\n💰 Income Support:\n1️⃣ PM-KISAN: Rs. 6,000/year direct transfer\n2️⃣ PM Annadata Aay Sanrakshan: Price deficiency payment\n\n🛡️ Insurance & Credit:\n3️⃣ PM Fasal Bima: Crop insurance at 2% premium (Kharif), 1.5% (Rabi)\n4️⃣ Kisan Credit Card: Easy loans at 4% interest\n\n🌱 Farming Support:\n5️⃣ Soil Health Card: Free soil testing\n6️⃣ PM Krishi Sinchai: Irrigation - per drop more crop\n7️⃣ Paramparagat Krishi: Organic farming support\n\n🐄 Allied Activities:\n8️⃣ National Livestock Mission\n9️⃣ Blue Revolution: Fisheries\n🔟 Dairy Entrepreneurship Scheme\n\n📝 Visit nearest Krishi Vigyan Kendra\n📞 Kisan Call Centre: 1800-180-1551",
+        "🌾 Key Farmer Benefits:\n\n• PM-KISAN: Rs.6,000/year → pmkisan.gov.in\n• KCC: Crop loan at 4% → Any bank\n• Fasal Bima: 2% premium → pmfby.gov.in\n• Soil Health: Free testing → soilhealth.dac.gov.in\n• eNAM: Online crop selling → enam.gov.in\n\n📞 Kisan Helpline: 1800-180-1551 (toll-free)"
       ]
     },
     {
@@ -156,10 +303,20 @@
         "disability scheme", "handicapped scheme",
         "divyang yojana", "disabled person scheme",
         "disability pension", "scheme for disabled",
-        "pwd scheme", "physically challenged"
+        "pwd scheme", "physically challenged",
+        "divyang pension", "disability certificate scheme",
+        "scheme for blind", "scheme for deaf",
+        "disability loan", "disability scholarship",
+        "viklang yojana", "disability benefit",
+        "sugamya bharat", "accessible india",
+        "disability job quota", "disability reservation",
+        "adip scheme", "assistive devices scheme",
+        "wheelchair scheme", "prosthetic scheme",
+        "mental disability scheme", "autism scheme",
+        "cerebral palsy scheme", "disability card benefits"
       ],
       "responses": [
-        "♿ Schemes for Persons with Disabilities:\n\n1️⃣ IGNDPS: Monthly pension Rs. 300-500 for BPL disabled\n\n2️⃣ ADIP Scheme: Free aids and appliances\n\n3️⃣ Scholarship for disabled students\n\n4️⃣ NHFDC Loans: Easy loans for self-employment\n\n📝 Get Disability Certificate (40%+) from govt hospital first\n📄 Apply through District Social Welfare Office"
+        "♿ Schemes for Persons with Disabilities:\n\n💰 Financial Support:\n1️⃣ IGNDPS: Monthly pension Rs. 300-500 for BPL disabled (80%+)\n2️⃣ NHFDC Loans: Up to Rs. 25 Lakh for self-employment\n\n🦽 Aids & Equipment:\n3️⃣ ADIP Scheme: Free aids (wheelchair, hearing aid, prosthetics)\n4️⃣ Sugamya Bharat: Accessible infrastructure\n\n🎓 Education:\n5️⃣ Scholarship for disabled students (pre & post matric)\n6️⃣ Free coaching for competitive exams\n\n💼 Employment:\n7️⃣ 4% reservation in government jobs\n8️⃣ Skill training under DDRS scheme\n\n📋 First Step: Get Disability Certificate (40%+) from government hospital\n📝 Apply through District Social Welfare Office\n📞 Helpline: 1800-572-6012\n🌐 disabilityaffairs.gov.in"
       ]
     },
     {
@@ -168,10 +325,23 @@
         "how to apply", "where to apply",
         "application process", "how to register",
         "apply kaise kare", "registration process",
-        "how can i apply", "application method"
+        "how can i apply", "application method",
+        "online apply", "offline apply",
+        "apply online kaise kare", "form kaise bhare",
+        "scheme registration", "where to submit form",
+        "application form", "how to fill form",
+        "kahan se apply kare", "apply karne ka tarika",
+        "step by step apply", "application procedure",
+        "online registration process", "form submission",
+        "where is the nearest office", "csc center near me",
+        "common service center", "jan seva kendra",
+        "how to use umang app", "digilocker for schemes",
+        "e district portal", "online form kaise bhare",
+        "can i apply from mobile", "apply from phone"
       ],
       "responses": [
-        "📝 How to Apply for Government Schemes:\n\n1️⃣ Online: Visit scheme's official website\n2️⃣ CSC Center: Go to nearest Common Service Center\n3️⃣ Bank: Visit any nationalized bank branch\n4️⃣ UMANG App: Download from Play Store/App Store\n5️⃣ Government Office: District Collector / BDO office\n\n💡 Tip: Keep Aadhaar Card, Income Certificate, and Bank Passbook ready!"
+        "📝 How to Apply for Government Schemes:\n\n🌐 Online Methods:\n1️⃣ Official Website: Each scheme has its own portal\n2️⃣ UMANG App: 1,000+ services (Download from Play Store)\n3️⃣ DigiLocker: Store & share documents digitally\n4️⃣ e-District Portal: State-level services\n\n🏢 Offline Methods:\n5️⃣ CSC Center: 4 Lakh+ Common Service Centers across India\n6️⃣ Bank Branch: For financial schemes (Mudra, KCC, APY)\n7️⃣ Post Office: For savings & pension schemes\n8️⃣ Block/District Office: For welfare schemes\n\n📱 Mobile Apply:\n• Download UMANG app\n• Use mPassport, mAadhaar apps\n• Many scheme websites are mobile-friendly\n\n💡 Tips:\n• Keep Aadhaar linked to mobile number\n• Have bank account with IFSC code ready\n• Keep scanned copies of all documents\n• Note down application/reference number",
+        "📝 Step-by-Step Application Guide:\n\n1️⃣ Choose scheme → Check eligibility\n2️⃣ Gather documents (Aadhaar, Income Cert, etc.)\n3️⃣ Visit official website or CSC center\n4️⃣ Fill application form carefully\n5️⃣ Upload/attach required documents\n6️⃣ Submit & save reference number\n7️⃣ Track status online\n\n🔍 Find nearest CSC: locator.csccloud.in\n📱 UMANG App: umang.gov.in\n📞 CSC Helpline: 1800-121-3468"
       ]
     },
     {
@@ -180,10 +350,23 @@
         "what documents needed", "required documents",
         "papers needed", "documents for scheme",
         "kya documents chahiye", "which documents",
-        "document list", "paperwork needed"
+        "document list", "paperwork needed",
+        "dastavez kya chahiye", "kaun se documents",
+        "document requirement", "papers required",
+        "what papers do i need", "documents for application",
+        "where to get documents", "how to get certificates",
+        "how to get income certificate",
+        "how to get caste certificate",
+        "how to get domicile certificate",
+        "document preparation", "certificates needed",
+        "documents list for government scheme",
+        "tehsil se kya milega", "e district certificate",
+        "how to get bpl certificate",
+        "ration card kaise banaye", "aadhaar update"
       ],
       "responses": [
-        "📄 Common Documents Required:\n\n✅ Aadhaar Card (mandatory for most)\n✅ Income Certificate\n✅ Caste Certificate (SC/ST/OBC)\n✅ Bank Account Passbook\n✅ Passport Size Photos\n✅ Ration Card / BPL Card\n✅ Address Proof\n✅ Age Proof / Birth Certificate\n\n💡 Get certificates from Tehsil / District office or through DigiLocker app"
+        "📄 Common Documents Required:\n\n🔴 Mandatory for Almost All Schemes:\n✅ Aadhaar Card\n✅ Bank Account Passbook (with IFSC)\n✅ Passport Size Photos (recent)\n✅ Mobile Number (linked to Aadhaar)\n\n🟡 Frequently Required:\n✅ Income Certificate\n✅ Caste Certificate (SC/ST/OBC)\n✅ Domicile / Residence Proof\n✅ Ration Card / BPL Card\n✅ Age Proof / Birth Certificate\n✅ PAN Card (for loans)\n\n🟢 Scheme-Specific:\n✅ Land Records (farmer schemes)\n✅ Marksheet (scholarships)\n✅ Disability Certificate (PwD schemes)\n✅ Business Plan (loan schemes)\n\n🏢 Where to Get Certificates:\n• Income/Caste/Domicile → Tehsil/SDM Office or e-District portal\n• BPL Certificate → Block Development Office\n• Disability Certificate → Government Hospital\n• Birth Certificate → Municipal Corporation\n\n💡 Use DigiLocker (digilocker.gov.in) to store documents digitally!",
+        "📄 Quick Document Checklist:\n\n For every scheme, keep ready:\n☑️ Aadhaar Card\n☑️ Bank Passbook (linked to Aadhaar)\n☑️ 4 Passport Photos\n☑️ Income Certificate (from Tehsildar)\n☑️ Address Proof\n\n📱 Get certificates online:\n• e-District portal of your state\n• CSC center\n• UMANG app\n\n📞 For document help, contact: Tehsil/Block office"
       ]
     },
     {
@@ -192,10 +375,22 @@
         "am i eligible", "eligibility check",
         "can i apply", "who is eligible",
         "eligibility criteria", "qualification needed",
-        "kya main eligible hun", "who can apply"
+        "kya main eligible hun", "who can apply",
+        "check my eligibility", "do i qualify",
+        "eligibility rules", "eligibility conditions",
+        "what are the requirements", "selection criteria",
+        "main apply kar sakta hun kya",
+        "kya mujhe milega", "am i qualified",
+        "can i get this scheme", "who is not eligible",
+        "exclusion criteria", "who cannot apply",
+        "eligibility for bpl", "income limit for schemes",
+        "age limit for schemes", "category wise eligibility",
+        "which schemes can i get", "eligible schemes for me",
+        "check eligibility for all schemes"
       ],
       "responses": [
-        "To check your eligibility:\n\n1️⃣ Fill the form on our homepage with your details\n2️⃣ Our AI will automatically match you with eligible schemes\n3️⃣ Each scheme shows a match percentage\n\nOr tell me:\n• Your age\n• Your state\n• Your occupation\n• Your annual income\n\nAnd I'll suggest schemes for you! 😊"
+        "To check your eligibility:\n\n1️⃣ Fill the form on our homepage with your details\n2️⃣ Our AI will automatically match you with eligible schemes\n3️⃣ Each scheme shows a match percentage\n\nOr tell me:\n• Your age\n• Your state\n• Your occupation\n• Your annual income\n• Your category (SC/ST/OBC/General)\n\nAnd I'll suggest schemes for you! 😊\n\n💡 Common eligibility factors:\n• Age range\n• Income limit\n• Social category\n• State of residence\n• Occupation\n• BPL status",
+        "🔍 Eligibility depends on:\n\n📊 Most schemes check:\n• Age (many have 18-40 or 18-60 range)\n• Annual Income (varies Rs.1L to Rs.8L)\n• Social Category (SC/ST/OBC/General/EWS)\n• State (some are state-specific)\n• Occupation (farmer/student/worker)\n• Gender (some women-only)\n• BPL status\n\n💡 Fill our recommendation form for instant matching!\nOr type: 'I am a 25 year old farmer from Bihar'"
       ]
     },
     {
@@ -204,10 +399,21 @@
         "schemes for sc", "schemes for st",
         "dalit schemes", "tribal schemes",
         "sc st yojana", "scheduled caste scheme",
-        "scheduled tribe scheme", "reserved category scheme"
+        "scheduled tribe scheme", "reserved category scheme",
+        "sc st scholarship", "sc st loan",
+        "sc st business loan", "sc st education",
+        "adivasi yojana", "dalit yojana",
+        "stand up india sc", "venture capital sc st",
+        "sc st free coaching", "sc st hostel scheme",
+        "ambedkar scheme", "sc st pension",
+        "post matric sc st", "pre matric sc st",
+        "national fellowship sc st",
+        "tribal welfare scheme", "forest rights act",
+        "van bandhu kalyan yojana"
       ],
       "responses": [
-        "📋 Schemes for SC/ST:\n\n1️⃣ Post-Matric Scholarship: Free education\n2️⃣ Stand Up India: Business loans Rs.10L-1Cr\n3️⃣ Venture Capital Fund for SC: Startup support\n4️⃣ National Fellowship: Research scholarships\n5️⃣ Free Coaching: For competitive exams\n6️⃣ NSFDC/NSTFDC: Easy loans for self-employment\n\n📝 Apply at scholarships.gov.in or standupmitra.in"
+        "📋 Schemes for SC/ST:\n\n🎓 Education:\n1️⃣ Post-Matric Scholarship: Full fee + allowance\n2️⃣ National Fellowship: Rs.25,000-28,000/month for PhD\n3️⃣ Free Coaching: For IAS, IIT, Medical preparation\n4️⃣ Top Class Education: Full support at premier institutes\n\n💰 Financial:\n5️⃣ Stand Up India: Business loans Rs.10L-1Cr\n6️⃣ Venture Capital Fund: Startup support for SC\n7️⃣ NSFDC/NSTFDC: Self-employment loans at 4% interest\n8️⃣ Mudra priority: Business loans with priority processing\n\n🏠 Welfare:\n9️⃣ PM Awas: Housing priority for SC/ST\n🔟 Scholarship for dependents of ex-servicemen\n\n📝 Apply: scholarships.gov.in | standupmitra.in\n📄 Key document: Valid Caste Certificate from Tehsildar",
+        "📋 SC/ST Benefits at a Glance:\n\n• Free education till PhD level\n• Business loans at lower interest\n• Government job reservation (15% SC, 7.5% ST)\n• Housing priority under PMAY\n• Stand Up India: Min 1 SC/ST loan per bank branch\n• Free coaching for competitive exams\n\n📞 SC Commission: 011-23389584\n📞 ST Commission: 011-23073530\n🌐 socialjustice.gov.in | tribal.gov.in"
       ]
     },
     {
@@ -215,10 +421,21 @@
       "patterns": [
         "state schemes", "state government scheme",
         "rajya yojana", "my state schemes",
-        "schemes in my state", "state welfare scheme"
+        "schemes in my state", "state welfare scheme",
+        "UP schemes", "Bihar schemes", "MP schemes",
+        "Rajasthan schemes", "Maharashtra schemes",
+        "Tamil Nadu schemes", "Karnataka schemes",
+        "Kerala schemes", "Gujarat schemes",
+        "West Bengal schemes", "Odisha schemes",
+        "Jharkhand schemes", "Chhattisgarh schemes",
+        "Haryana schemes", "Punjab schemes",
+        "Delhi schemes", "Telangana schemes",
+        "Andhra Pradesh schemes", "Assam schemes",
+        "state specific scheme", "mukhyamantri yojana",
+        "chief minister scheme"
       ],
       "responses": [
-        "🏛️ Popular State Schemes:\n\n• UP: Kanya Sumangala Yojana (Rs.15K for girls)\n• Rajasthan: Chiranjeevi Health Insurance (Rs.25L cover)\n• Maharashtra: Majhi Kanya Bhagyashree\n• Tamil Nadu: Amma Two Wheeler Scheme\n• Karnataka: Bhagya Lakshmi (Rs.1L for girl child)\n• MP: Ladli Laxmi Yojana\n• Bihar: Mukhyamantri Kanya Utthan Yojana\n\n📝 Fill the form with your state to see matching state schemes!"
+        "🏛️ Popular State Schemes:\n\n📍 North India:\n• UP: Kanya Sumangala (Rs.15K), Family ID Scheme\n• Rajasthan: Chiranjeevi (Rs.25L health), Indira Rasoi\n• Haryana: Mukhyamantri Parivahan Yojana\n• MP: Ladli Laxmi (Rs.1.18L), Mukhyamantri Yuva Internship\n• Delhi: Ladli Scheme, Delhi Rozgar Bazaar\n\n📍 South India:\n• Tamil Nadu: Amma Two Wheeler, Kalaignar Insurance\n• Karnataka: Bhagya Lakshmi (Rs.1L), Yashasvini Health\n• Kerala: LIFE Housing Mission\n• Telangana: Rythu Bandhu (Rs.10K/acre)\n• AP: Amma Vodi (Rs.15K), YSR Cheyutha\n\n📍 East India:\n• Bihar: Mukhyamantri Kanya Utthan (Rs.50K)\n• West Bengal: Kanyashree (Rs.25K), Swasthya Sathi\n• Odisha: KALIA (Rs.10K/farmer), Biju Swasthya\n• Jharkhand: Mukhyamantri Sukanya Yojana\n\n📝 Fill the form with your state for personalized results!"
       ]
     },
     {
@@ -227,10 +444,468 @@
         "bpl schemes", "below poverty line",
         "scheme for poor", "poor family scheme",
         "garib yojana", "bpl card schemes",
-        "poverty scheme", "low income scheme"
+        "poverty scheme", "low income scheme",
+        "bpl ration card", "bpl benefits",
+        "antyodaya yojana", "garib kalyan yojana",
+        "poor people scheme", "economically weak scheme",
+        "ews scheme", "bpl family benefits",
+        "free food scheme", "free ration scheme",
+        "one nation one ration card",
+        "national food security act", "ration card scheme",
+        "garib ke liye sarkari yojana",
+        "bpl certificate benefits",
+        "subsidy for poor", "welfare for poor"
       ],
       "responses": [
-        "📋 Schemes for BPL Families:\n\n1️⃣ Ayushman Bharat: Rs. 5L free health insurance\n2️⃣ PM Ujjwala: Free LPG connection\n3️⃣ PM Awas Yojana: Free/subsidized housing\n4️⃣ Antyodaya Anna Yojana: 35kg food grains at Rs.2-3/kg\n5️⃣ National Family Benefit: Rs.20,000 on breadwinner's death\n6️⃣ Free education scholarships for children\n\n💡 Get BPL certificate from Block Development Office"
+        "📋 Schemes for BPL/Low Income Families:\n\n🍚 Food Security:\n1️⃣ National Food Security: 5kg grain/person at Rs.1-3/kg\n2️⃣ Antyodaya Anna: 35kg grain/family at Rs.2-3/kg\n3️⃣ PM Garib Kalyan Anna: Free ration (extended)\n\n🏥 Health:\n4️⃣ Ayushman Bharat: Rs. 5L free health insurance\n5️⃣ Jan Aushadhi: Medicines at 50-90% discount\n\n🏠 Housing & Utilities:\n6️⃣ PM Awas: Free/subsidized pucca house\n7️⃣ PM Ujjwala: Free LPG connection\n8️⃣ Saubhagya: Free electricity connection\n\n💰 Financial:\n9️⃣ Jan Dhan: Zero-balance bank account + insurance\n🔟 National Family Benefit: Rs.20,000 on breadwinner's death\n\n🎓 Education:\n• Free scholarships for children\n• Mid-Day Meal at schools\n\n💡 Get BPL certificate from Block Development Office\n📞 Ration Helpline: 1967 | 1800-11-0841"
+      ]
+    },
+    {
+      "tag": "insurance_schemes",
+      "patterns": [
+        "insurance scheme", "government insurance",
+        "pm jeevan jyoti", "pm suraksha bima",
+        "life insurance scheme", "accident insurance",
+        "bima yojana", "cheap insurance",
+        "rs 12 insurance", "rs 330 insurance",
+        "pmjjby", "pmsby",
+        "insurance for poor", "government life cover",
+        "2 lakh insurance scheme", "death insurance",
+        "crop insurance", "health insurance government",
+        "pradhan mantri bima yojana",
+        "sasta insurance", "free insurance",
+        "jan suraksha scheme", "social security scheme"
+      ],
+      "responses": [
+        "🛡️ Government Insurance Schemes:\n\n1️⃣ PM Jeevan Jyoti Bima (PMJJBY):\n   💰 Rs. 2 Lakh life cover\n   💵 Premium: Just Rs. 436/year\n   👤 Age: 18-55 years\n   📝 Apply at any bank\n\n2️⃣ PM Suraksha Bima (PMSBY):\n   💰 Rs. 2 Lakh accidental death cover\n   💰 Rs. 1 Lakh partial disability\n   💵 Premium: Just Rs. 20/year\n   👤 Age: 18-70 years\n\n3️⃣ PM Fasal Bima (PMFBY):\n   🌾 Crop insurance for farmers\n   💵 Premium: 2% Kharif, 1.5% Rabi\n\n4️⃣ Ayushman Bharat:\n   🏥 Rs. 5 Lakh health insurance (for BPL)\n\n💡 PMJJBY + PMSBY = Rs. 4 Lakh cover for just Rs. 456/year!\n📝 Auto-debit from Jan Dhan or savings account"
+      ]
+    },
+    {
+      "tag": "jan_dhan",
+      "patterns": [
+        "jan dhan yojana", "zero balance account",
+        "free bank account", "jan dhan account",
+        "pmjdy", "jan dhan benefits",
+        "bank account for poor", "financial inclusion",
+        "jan dhan overdraft", "rupay card scheme",
+        "pradhan mantri jan dhan", "basic savings account",
+        "jan dhan insurance", "jan dhan overdraft facility",
+        "how to open jan dhan account",
+        "jan dhan se kya milta hai"
+      ],
+      "responses": [
+        "🏦 PM Jan Dhan Yojana (PMJDY):\n\n✅ Benefits:\n• Zero-balance bank account\n• Free RuPay Debit Card\n• Rs. 2 Lakh accident insurance (free)\n• Rs. 30,000 life insurance cover\n• Overdraft facility up to Rs. 10,000\n• Direct Benefit Transfer (DBT) to this account\n\n👤 Who can open: Any Indian citizen (no minimum balance)\n\n📝 How to open:\n1. Visit any bank branch\n2. Carry Aadhaar Card + Photo\n3. Fill simplified KYC form\n4. Account opened same day!\n\n📊 48+ Crore Jan Dhan accounts opened so far\n🌐 pmjdy.gov.in\n\n💡 Many government benefits come directly to Jan Dhan accounts"
+      ]
+    },
+    {
+      "tag": "employment_schemes",
+      "patterns": [
+        "employment scheme", "job scheme", "rojgar yojana",
+        "skill development", "nrega", "mnrega",
+        "pm rozgar", "employment guarantee",
+        "100 days work", "mahatma gandhi rojgar",
+        "skill india", "kaushal vikas yojana",
+        "pmkvy", "job training scheme",
+        "unemployment scheme", "berojgari bhatta",
+        "apprenticeship scheme", "startup india",
+        "employment for youth", "yuva rojgar",
+        "self employment scheme", "deen dayal upadhyaya",
+        "ddu gky", "sgsy", "nrlm", "livelihood scheme",
+        "rozgar mela", "job fair scheme",
+        "internship scheme", "naps apprenticeship"
+      ],
+      "responses": [
+        "💼 Employment & Skill Schemes:\n\n🏗️ Direct Employment:\n1️⃣ MGNREGA: 100 days guaranteed work at Rs.200-300/day\n2️⃣ PM Rojgar Protsahan: Employer gets EPF contribution\n\n🎯 Skill Development:\n3️⃣ PM Kaushal Vikas (PMKVY): Free skill training + certificate\n4️⃣ DDU-GKY: Skill training for rural youth + placement\n5️⃣ NAPS: Apprenticeship with stipend\n\n🚀 Entrepreneurship:\n6️⃣ Startup India: Tax exemption + easy compliance\n7️⃣ PM Mudra: Business loans up to Rs.10 Lakh\n8️⃣ Stand Up India: Loans for SC/ST/Women entrepreneurs\n\n🌐 Self-Employment:\n9️⃣ PM SVANidhi: Rs.10K-50K for street vendors\n🔟 DAY-NRLM: Self-Help Group support\n\n📝 Register: ncs.gov.in (National Career Service)\n📞 Skill India Helpline: 1800-123-9626\n🌐 skillindia.gov.in | startupindia.gov.in"
+      ]
+    },
+    {
+      "tag": "senior_citizen_schemes",
+      "patterns": [
+        "senior citizen scheme", "scheme for elderly",
+        "old age scheme", "60 plus scheme",
+        "elderly care scheme", "vridha scheme",
+        "senior citizen benefits", "pension for old people",
+        "old age home scheme", "senior citizen health",
+        "senior citizen discount", "senior citizen rail",
+        "senior citizen savings scheme", "scss scheme",
+        "vayo vandana yojana", "pm vaya vandana",
+        "budhape ka scheme", "boodhe log ke liye",
+        "senior citizen pension scheme",
+        "annapurna scheme elderly",
+        "rashtriya vayoshri yojana"
+      ],
+      "responses": [
+        "👴 Schemes for Senior Citizens (60+):\n\n💰 Pension:\n1️⃣ IGNOAPS: Rs. 200-500/month for BPL seniors\n2️⃣ PM Vaya Vandana: 7.4% guaranteed return\n3️⃣ Senior Citizen Savings Scheme: 8.2% interest\n\n🏥 Health:\n4️⃣ Rashtriya Vayoshri: Free aids (walking stick, hearing aid)\n5️⃣ Ayushman Bharat: Rs. 5L health cover (if BPL)\n\n🍚 Food & Care:\n6️⃣ Annapurna Scheme: 10kg free food grains/month\n7️⃣ Maintenance & Welfare Act: Legal support from children\n\n🚂 Benefits:\n8️⃣ Railway: Up to 40% concession (male 60+, female 58+)\n9️⃣ Income Tax: Higher exemption limit (Rs. 3-5 Lakh)\n🔟 Bank FD: Extra 0.25-0.75% interest\n\n📞 Elder Helpline: 14567\n🌐 socialjustice.gov.in"
+      ]
+    },
+    {
+      "tag": "education_loan",
+      "patterns": [
+        "education loan", "study loan", "padhai ke liye loan",
+        "vidya lakshmi", "college loan", "student loan",
+        "higher education loan", "abroad study loan",
+        "education loan interest", "education loan subsidy",
+        "central sector education loan",
+        "education loan for poor",
+        "education loan without collateral",
+        "vidyalakshmi portal", "education loan apply",
+        "mbbs loan", "engineering loan", "mba loan",
+        "iit loan", "medical college loan"
+      ],
+      "responses": [
+        "📚 Education Loan Schemes:\n\n1️⃣ PM Vidyalakshmi:\n   💰 Education loans from 38+ banks on one portal\n   🌐 vidyalakshmi.co.in\n\n2️⃣ Central Sector Interest Subsidy:\n   💰 Full interest subsidy during study period\n   👤 For: Economically weaker sections (income < Rs.4.5L)\n   📝 Covers: Loans up to Rs.10 Lakh\n\n3️⃣ Padho Pardesh:\n   💰 Interest subsidy on overseas education loans\n   👤 For: Minority community students\n\n📊 Education Loan Details:\n• Up to Rs.4 Lakh: No collateral needed\n• Rs.4-7.5 Lakh: Third-party guarantee\n• Above Rs.7.5 Lakh: Collateral required\n• Interest: 8.5-11.5% (varies by bank)\n• Repayment: Starts 1 year after course completion\n\n💡 Apply through vidyalakshmi.co.in for best rates"
+      ]
+    },
+    {
+      "tag": "ration_card",
+      "patterns": [
+        "ration card", "ration card apply",
+        "ration card kaise banaye", "new ration card",
+        "ration card online", "ration card status",
+        "bpl ration card", "apl ration card",
+        "one nation one ration card", "onorc",
+        "ration card correction", "ration card update",
+        "add name ration card", "e ration card",
+        "ration card benefits", "ration card documents",
+        "free ration", "ration ka card",
+        "food security card", "antyodaya card"
+      ],
+      "responses": [
+        "🍚 Ration Card Information:\n\n📋 Types of Ration Cards:\n• AAY (Antyodaya): For poorest families (35kg grain)\n• BPL (Priority): Below poverty line (5kg/person)\n• APL (General): Above poverty line (limited quota)\n\n📝 How to Apply:\n1. Visit state food department website\n2. Fill application form online/offline\n3. Submit documents\n4. Inspection by food department\n5. Card issued within 15-30 days\n\n📄 Documents Needed:\n• Aadhaar of all family members\n• Address proof\n• Income certificate\n• Family photo\n• Gas connection details\n\n🔄 One Nation One Ration Card (ONORC):\n• Use ration card anywhere in India\n• Useful for migrant workers\n• Biometric verification at FPS\n\n📞 Food Helpline: 1967\n🌐 Visit your state's food department website"
+      ]
+    },
+    {
+      "tag": "startup_india",
+      "patterns": [
+        "startup india", "startup scheme",
+        "start business scheme", "new business help",
+        "startup registration", "startup tax benefit",
+        "startup loan", "startup funding",
+        "business registration scheme",
+        "entrepreneur scheme", "young entrepreneur",
+        "innovative business scheme",
+        "startup india benefits", "startup india apply",
+        "dpiit registration", "startup recognition",
+        "seed fund scheme", "startup india seed fund",
+        "incubator scheme", "accelerator scheme"
+      ],
+      "responses": [
+        "🚀 Startup India Scheme:\n\n✅ Benefits:\n1️⃣ Tax holiday for 3 years (income tax exemption)\n2️⃣ Self-certification for labour & environment laws\n3️⃣ Fast-track patent application (80% rebate on fees)\n4️⃣ Easy winding up within 90 days\n5️⃣ Fund of Funds: Rs.10,000 Cr corpus\n6️⃣ Startup India Seed Fund: Up to Rs.50 Lakh\n\n👤 Who is a Startup:\n• Company < 10 years old\n• Turnover < Rs. 100 Crore/year\n• Working on innovation/scalable model\n\n📝 How to Register:\n1. Register at startupindia.gov.in\n2. Get DPIIT recognition\n3. Apply for tax benefits\n4. Access mentorship & funding\n\n📄 Documents: PAN, Incorporation Certificate, Business Plan\n🌐 startupindia.gov.in\n📞 Helpline: 1800-115-565"
+      ]
+    },
+    {
+      "tag": "toilet_scheme",
+      "patterns": [
+        "toilet scheme", "swachh bharat",
+        "free toilet scheme", "shauchalay yojana",
+        "sanitation scheme", "toilet construction",
+        "swachh bharat mission", "sbm toilet",
+        "toilet subsidy", "latrine scheme",
+        "open defecation free", "odf",
+        "swachh bharat gramin", "toilet ke liye paisa",
+        "toilet banwane ka scheme"
+      ],
+      "responses": [
+        "🚽 Swachh Bharat Mission - Toilet Scheme:\n\n💰 Financial Assistance:\n• Rs. 12,000 per household for toilet construction\n• Additional support from state government\n\n👤 Who Can Apply:\n• BPL families without toilet\n• SC/ST/Small & marginal farmers\n• Physically handicapped persons\n• Women-headed households\n\n📝 How to Apply:\n1. Contact your Gram Panchayat/Ward office\n2. Apply online through SBMS portal\n3. Submit Aadhaar + Photo\n4. Toilet construction verified\n5. Money credited in installments\n\n🌐 swachhbharatmission.gov.in\n📞 Swachh Bharat Helpline: 1969\n\n💡 Some states give additional Rs.3,000-5,000 on top"
+      ]
+    },
+    {
+      "tag": "electricity_scheme",
+      "patterns": [
+        "free electricity", "electricity scheme",
+        "saubhagya yojana", "bijli yojana",
+        "electricity connection", "pm saubhagya",
+        "free bijli connection", "solar scheme",
+        "pm surya ghar", "rooftop solar",
+        "kusum yojana", "solar pump scheme",
+        "electricity subsidy", "bijli subsidy",
+        "solar panel scheme", "free solar panel"
+      ],
+      "responses": [
+        "⚡ Electricity & Energy Schemes:\n\n1️⃣ PM Saubhagya:\n   💡 Free electricity connection for all unelectrified households\n   📝 Apply at nearest electricity office with Aadhaar\n\n2️⃣ PM Surya Ghar (Rooftop Solar):\n   ☀️ Subsidy up to Rs.78,000 for rooftop solar\n   💰 Get free electricity + sell surplus to grid\n   🌐 pmsuryaghar.gov.in\n\n3️⃣ PM KUSUM:\n   🌾 Solar pumps for farmers\n   💰 60% subsidy on solar pump installation\n   💡 Sell extra power to DISCOM\n\n4️⃣ UJALA Scheme:\n   💡 LED bulbs at Rs.70-80 (market price Rs.300+)\n   🌐 ujala.gov.in\n\n📞 Contact your state electricity board for details"
+      ]
+    },
+    {
+      "tag": "water_scheme",
+      "patterns": [
+        "water scheme", "jal jeevan", "tap water",
+        "piped water scheme", "drinking water",
+        "clean water scheme", "jal jeevan mission",
+        "nal se jal", "water connection scheme",
+        "free water connection", "swachh jal",
+        "water purification scheme", "bore well scheme",
+        "har ghar nal", "pani ka scheme"
+      ],
+      "responses": [
+        "💧 Jal Jeevan Mission (Har Ghar Nal Se Jal):\n\n✅ Objective: Piped drinking water to every rural household by 2024\n\n💰 Benefits:\n• Free tap water connection\n• 55 liters per person per day\n• Quality tested drinking water\n\n👤 Priority: SC/ST households, BPL families, drought-prone areas\n\n📝 How to Get Connection:\n1. Contact your Gram Panchayat\n2. Apply through Jal Jeevan Mission office\n3. Connection provided free of cost\n4. Village Water & Sanitation Committee manages it\n\n📊 11+ Crore tap connections provided so far\n🌐 jaljeevanmission.gov.in\n📞 Helpline: 1800-180-2244"
+      ]
+    },
+    {
+      "tag": "marriage_scheme",
+      "patterns": [
+        "marriage scheme", "shadi anudan",
+        "marriage assistance", "vivah yojana",
+        "daughter marriage scheme", "shadi ka paisa",
+        "marriage grant", "marriage help scheme",
+        "beti ki shadi scheme", "wedding assistance",
+        "mass marriage scheme", "samuhik vivah",
+        "marriage loan", "shadi ke liye yojana",
+        "kanya vivah yojana", "girl marriage scheme"
+      ],
+      "responses": [
+        "💒 Marriage Assistance Schemes:\n\n📋 Central Schemes:\n1️⃣ PM Cares for Children: Rs.10 Lakh for COVID orphan girls' marriage\n\n🏛️ State Schemes:\n2️⃣ UP Shadi Anudan: Rs.20,000-35,000 for BPL girls\n3️⃣ MP Kanya Vivah: Rs.51,000 assistance\n4️⃣ Bihar Mukhyamantri Vivah Yojana: Rs.5,000\n5️⃣ Rajasthan Shubh Shakti: Rs.55,000 for labour families\n6️⃣ Maharashtra Shubh Mangal: Rs.25,000 for SC/ST\n7️⃣ Haryana Vivah Shagun: Rs.51,000 for BPL\n\n📄 Common Documents:\n• Bride's Aadhaar + Age proof (must be 18+)\n• Income Certificate (BPL)\n• Marriage Certificate\n• Bank Account details\n\n📝 Apply through District Social Welfare Office or e-District portal"
+      ]
+    },
+    {
+      "tag": "obc_schemes",
+      "patterns": [
+        "obc scheme", "other backward class scheme",
+        "obc scholarship", "obc loan",
+        "obc reservation", "obc benefits",
+        "backward class scheme", "obc yojana",
+        "obc certificate benefits",
+        "scheme for backward class",
+        "pichda varg yojana",
+        "obc creamy layer", "non creamy layer scheme",
+        "obc education scheme", "obc business loan"
+      ],
+      "responses": [
+        "📋 Schemes for OBC (Other Backward Classes):\n\n🎓 Education:\n1️⃣ Post-Matric Scholarship: Full fee reimbursement\n   💵 Income limit: Rs. 1-3 Lakh/year\n2️⃣ Pre-Matric Scholarship: Rs. 150-750/month\n3️⃣ Free coaching for competitive exams\n4️⃣ Dr. Ambedkar Post-Matric: For EBC students\n\n💰 Financial:\n5️⃣ NBCFDC Loans: Self-employment at low interest\n6️⃣ Mudra Yojana: Business loans with priority\n7️⃣ Stand Up India: Rs.10L-1Cr for entrepreneurs\n\n💼 Employment:\n8️⃣ 27% reservation in central government jobs\n9️⃣ OBC reservation in promotions (some states)\n\n📄 Required: OBC Certificate (non-creamy layer) from Tehsildar\n💡 Income limit for non-creamy layer: Rs. 8 Lakh/year\n📝 Apply at: scholarships.gov.in\n🌐 ncbc.nic.in"
+      ]
+    },
+    {
+      "tag": "minority_schemes",
+      "patterns": [
+        "minority scheme", "minority scholarship",
+        "muslim scheme", "christian scheme",
+        "sikh scheme", "buddhist scheme",
+        "jain scheme", "parsi scheme",
+        "minority welfare", "alpsankhyak yojana",
+        "nai udaan scheme", "jiyo parsi",
+        "minority education scheme",
+        "begum hazrat mahal scholarship",
+        "maulana azad fellowship",
+        "minority loan scheme", "waqf scheme"
+      ],
+      "responses": [
+        "📋 Minority Community Schemes:\n\n🎓 Education:\n1️⃣ Pre-Matric Scholarship: Rs. 100-600/month\n2️⃣ Post-Matric Scholarship: Full fee + Rs.1,200/month\n3️⃣ Merit-cum-Means: For professional courses\n4️⃣ Begum Hazrat Mahal Scholarship: For girl students\n5️⃣ Maulana Azad National Fellowship: PhD fellowship\n6️⃣ Padho Pardesh: Interest subsidy for overseas study\n7️⃣ Nai Udaan: Free coaching for competitive exams\n\n💰 Financial:\n8️⃣ NMDFC Loans: Self-employment at low interest\n9️⃣ Seekho Aur Kamao: Skill training + placement\n\n🏛️ Special:\n🔟 Jiyo Parsi: Parsi population support\n• Nai Manzil: Education + skills for madrasa students\n\n📄 Required: Minority Certificate from District Magistrate\n📝 Apply: scholarships.gov.in\n🌐 minorityaffairs.gov.in\n📞 Helpline: 1800-110-2500"
+      ]
+    },
+    {
+      "tag": "labour_schemes",
+      "patterns": [
+        "labour scheme", "worker scheme", "mazdoor yojana",
+        "construction worker scheme", "building worker",
+        "unorganized worker scheme", "e shram card",
+        "eshram registration", "labour card",
+        "labour card benefits", "shramik card",
+        "worker insurance", "bocw scheme",
+        "building construction worker scheme",
+        "migrant worker scheme", "daily wage scheme",
+        "factory worker scheme", "domestic worker scheme",
+        "gig worker scheme", "platform worker"
+      ],
+      "responses": [
+        "👷 Schemes for Workers & Labourers:\n\n📋 e-Shram Card (Must Register):\n• Universal social security for unorganized workers\n• Rs. 2 Lakh accidental insurance (free)\n• 🌐 eshram.gov.in | Aadhaar + Mobile needed\n\n💰 Financial Support:\n1️⃣ PM SVANidhi: Rs.10K-50K for street vendors\n2️⃣ PM Shram Yogi Maandhan: Rs.3,000/month pension (60+)\n3️⃣ PM Jeevan Jyoti: Rs.2L life insurance at Rs.436/year\n4️⃣ PM Suraksha Bima: Rs.2L accident cover at Rs.20/year\n\n🏗️ Construction Workers (BOCW):\n5️⃣ Free medical treatment\n6️⃣ Children's education support (Rs.8K-25K)\n7️⃣ Marriage assistance (Rs.25K-50K)\n8️⃣ Tool purchase subsidy\n9️⃣ Maternity benefit (Rs.15K-30K)\n🔟 Funeral assistance\n\n📝 Register: e-Shram portal or labour department\n📄 Documents: Aadhaar, Bank Account, Photo\n📞 e-Shram Helpline: 14434"
+      ]
+    },
+    {
+      "tag": "digital_india",
+      "patterns": [
+        "digital india", "aadhar card",
+        "aadhaar update", "aadhaar correction",
+        "digilocker", "umang app",
+        "digital services", "online government services",
+        "e governance", "digital payment scheme",
+        "bhim app", "upi scheme",
+        "common service center", "csc center",
+        "mygov", "e district",
+        "how to update aadhaar", "aadhaar card apply",
+        "pan aadhaar link", "aadhaar enrollment",
+        "digital certificate", "online certificate"
+      ],
+      "responses": [
+        "📱 Digital India - Useful Digital Services:\n\n📋 Key Platforms:\n1️⃣ DigiLocker: Store all documents digitally (digilocker.gov.in)\n2️⃣ UMANG App: 1,000+ government services\n3️⃣ mAadhaar: Aadhaar on your phone\n4️⃣ e-District: State certificates online\n5️⃣ CSC Center: 4L+ centers for digital access\n\n💳 Aadhaar Services:\n• New Aadhaar: Visit Aadhaar Enrolment Centre\n• Update: uidai.gov.in or nearest centre\n• Link PAN: incometax.gov.in\n• Link Bank: Visit bank branch\n\n💰 Digital Payments:\n• BHIM UPI: Cashless payments\n• RuPay Card: Through Jan Dhan account\n\n🌐 Important Websites:\n• services.india.gov.in - All services\n• mygov.in - Citizen participation\n• data.gov.in - Open government data\n\n📞 Aadhaar: 1947 | CSC: 1800-121-3468"
+      ]
+    },
+    {
+      "tag": "rural_schemes",
+      "patterns": [
+        "rural scheme", "village scheme", "gaon ka scheme",
+        "gram panchayat scheme", "rural development",
+        "gramin yojana", "panchayat scheme",
+        "sansad adarsh gram", "rural road scheme",
+        "pm gram sadak", "rural employment",
+        "rural housing", "rural water",
+        "rural electrification", "village development scheme"
+      ],
+      "responses": [
+        "🏘️ Rural Development Schemes:\n\n🏗️ Infrastructure:\n1️⃣ PM Gram Sadak: All-weather roads to villages\n2️⃣ Deen Dayal Upadhyaya Gram Jyoti: Rural electrification\n3️⃣ Jal Jeevan Mission: Tap water to every home\n\n🏠 Housing & Sanitation:\n4️⃣ PM Awas Gramin: Pucca house (Rs.1.2L-1.3L)\n5️⃣ Swachh Bharat Gramin: Free toilet (Rs.12,000)\n\n💼 Livelihood:\n6️⃣ MGNREGA: 100 days guaranteed employment\n7️⃣ DAY-NRLM: Self-Help Group support + credit\n8️⃣ DDU-GKY: Skill training + job placement\n\n🌾 Agriculture:\n9️⃣ PM-KISAN: Rs.6,000/year for farmers\n🔟 Soil Health Card: Free soil testing\n\n📝 Contact your Gram Panchayat or Block Development Office\n🌐 rural.nic.in"
+      ]
+    },
+    {
+      "tag": "child_schemes",
+      "patterns": [
+        "child scheme", "child welfare",
+        "children scheme", "scheme for children",
+        "bal yojana", "child education scheme",
+        "child nutrition", "child health scheme",
+        "mid day meal", "icds scheme",
+        "anganwadi scheme", "child protection",
+        "orphan scheme", "bal suraksha",
+        "pm cares children", "child adoption scheme",
+        "poshan abhiyan", "nutrition scheme"
+      ],
+      "responses": [
+        "👶 Schemes for Children:\n\n🍚 Nutrition:\n1️⃣ ICDS (Anganwadi): Free nutrition for 0-6 years\n2️⃣ Mid-Day Meal (PM POSHAN): Free lunch at school\n3️⃣ POSHAN Abhiyaan: Nutrition mission\n\n🎓 Education:\n4️⃣ Samagra Shiksha: Free education (1-12 class)\n5️⃣ RTE Act: Free education in private schools (25% EWS quota)\n6️⃣ National Means-cum-Merit: Rs.12,000/year (Class 9-12)\n\n🏥 Health:\n7️⃣ Universal Immunization: Free vaccination\n8️⃣ Rashtriya Bal Swasthya: Health screening at schools\n9️⃣ Janani Shishu Suraksha: Free delivery + newborn care\n\n🛡️ Protection:\n🔟 PM CARES for Children: Support for COVID orphans\n• Integrated Child Protection: For children in need\n• Childline: 1098 (24/7 helpline)\n\n📞 Childline: 1098\n🌐 wcd.nic.in | icds-wcd.nic.in"
+      ]
+    },
+    {
+      "tag": "helplines",
+      "patterns": [
+        "helpline number", "toll free number",
+        "government helpline", "complaint number",
+        "customer care", "support number",
+        "kahan phone kare", "helpline kya hai",
+        "scheme helpline", "government contact number",
+        "where to call", "whom to contact",
+        "toll free helpline", "emergency number",
+        "grievance number", "shikayat number"
+      ],
+      "responses": [
+        "📞 Important Government Helplines:\n\n🏛️ General:\n• Government Scheme: 1800-111-555\n• PM Helpline: 1800-11-7600\n• Grievance: 011-23385399\n\n🌾 Agriculture:\n• Kisan Call Centre: 1800-180-1551\n• PM-KISAN: 155261\n\n🏥 Health:\n• Ayushman Bharat: 14555\n• Health Helpline: 1800-180-1104\n• COVID: 1075\n\n👩 Women & Children:\n• Women Helpline: 181\n• Childline: 1098\n• Domestic Violence: 181\n\n👴 Senior & Disability:\n• Elder Helpline: 14567\n• Disability: 1800-572-6012\n\n💰 Financial:\n• Banking Ombudsman: 14440\n• Consumer: 1800-114-000\n\n📱 Digital:\n• Aadhaar: 1947\n• CSC: 1800-121-3468\n• DigiLocker: 011-24303714\n\n🚔 Emergency: 112\n🔥 Fire: 101\n🚑 Ambulance: 102/108"
+      ]
+    },
+    {
+      "tag": "ews_schemes",
+      "patterns": [
+        "ews scheme", "economically weaker section",
+        "ews certificate", "ews reservation",
+        "ews benefits", "ews quota",
+        "10 percent reservation general",
+        "general category poor scheme",
+        "ews income limit", "ews eligibility",
+        "general category scheme", "unreserved poor scheme"
+      ],
+      "responses": [
+        "📋 EWS (Economically Weaker Section) Benefits:\n\n📊 Eligibility:\n• Annual family income < Rs. 8 Lakh\n• No agricultural land > 5 acres\n• No residential flat > 1,000 sq ft\n• No residential plot > 100/200 sq yards\n\n✅ Benefits:\n1️⃣ 10% reservation in government jobs\n2️⃣ 10% reservation in educational institutions\n3️⃣ PM Awas Yojana: Housing with subsidy\n4️⃣ Fee waiver in many colleges/universities\n5️⃣ Scholarship for EWS students\n\n📄 How to Get EWS Certificate:\n1. Visit Tehsil/SDM office\n2. Submit income proof, property documents\n3. Certificate issued (valid for 1 year)\n\n💡 EWS certificate is for General category candidates only\n📝 Apply for schemes through respective portals"
+      ]
+    },
+    {
+      "tag": "loan_waiver",
+      "patterns": [
+        "loan waiver", "loan maafi",
+        "debt relief", "farmer loan waiver",
+        "kisan karz maafi", "loan forgiveness",
+        "debt waiver scheme", "loan relief scheme",
+        "moratorium scheme", "emi relief",
+        "loan restructuring", "one time settlement"
+      ],
+      "responses": [
+        "📋 Loan Relief & Debt Schemes:\n\n🌾 For Farmers:\n1️⃣ State-level farm loan waivers (varies by state)\n2️⃣ Kisan Credit Card restructuring\n3️⃣ Interest subvention scheme (3% for timely repayment)\n\n💰 General:\n4️⃣ PM SVANidhi: No collateral street vendor loans\n5️⃣ One Time Settlement (OTS) schemes by banks\n6️⃣ SARFAESI Act protection for small borrowers\n\n📊 If you have loan problems:\n1. Contact your bank branch first\n2. Apply for loan restructuring\n3. Contact Banking Ombudsman: 14440\n4. File complaint at RBI CMS portal\n5. Visit free legal aid center (DLSA)\n\n⚠️ Important:\n• Loan waivers are state-specific and periodic\n• Keep paying EMIs until officially waived\n• Check your state government's latest announcements\n\n📞 Banking Ombudsman: 14440\n🌐 cms.rbi.org.in"
+      ]
+    },
+    {
+      "tag": "complaint_grievance",
+      "patterns": [
+        "complaint", "grievance", "shikayat",
+        "how to file complaint", "scheme complaint",
+        "money not received", "payment pending",
+        "application rejected", "not getting benefit",
+        "corruption complaint", "scheme not working",
+        "where to complain", "grievance portal",
+        "pgportal", "public grievance",
+        "right to information", "rti",
+        "how to file rti", "rti application",
+        "scheme ka paisa nahi aaya",
+        "application ka status nahi pata"
+      ],
+      "responses": [
+        "📋 How to File Complaints & Grievances:\n\n🌐 Online Portals:\n1️⃣ CPGRAMS: pgportal.gov.in (Central Government)\n2️⃣ State Grievance Portal: Your state's portal\n3️⃣ CM Helpline: State-specific number\n\n📝 Steps:\n1. Visit pgportal.gov.in\n2. Register with mobile/email\n3. Select ministry/department\n4. Describe complaint with details\n5. Upload supporting documents\n6. Get tracking number\n7. Track status online\n\n📋 RTI (Right to Information):\n• File RTI for information about your application\n• Fee: Rs. 10 (online) or postal order\n• Portal: rtionline.gov.in\n• Reply within 30 days (mandatory)\n\n📞 Helplines:\n• PM Helpline: 1800-11-7600\n• Anti-Corruption: 1800-110-062\n• Consumer: 1800-114-000\n• RTI: 1800-110-001\n\n💡 Always keep your application number and documents as proof"
+      ]
+    },
+    {
+      "tag": "subsidy_schemes",
+      "patterns": [
+        "subsidy scheme", "government subsidy",
+        "lpg subsidy", "fertilizer subsidy",
+        "food subsidy", "agriculture subsidy",
+        "interest subsidy", "housing subsidy",
+        "subsidy kaise milti hai", "direct benefit transfer",
+        "dbt scheme", "subsidy to bank account",
+        "pahal scheme", "subsidy check",
+        "electric vehicle subsidy", "ev subsidy",
+        "solar subsidy", "msme subsidy"
+      ],
+      "responses": [
+        "💰 Government Subsidies:\n\n⛽ LPG Subsidy (PAHAL):\n• Directly to bank account via DBT\n• Check status: mylpg.in\n\n🌾 Agriculture Subsidies:\n• Fertilizer: Subsidized rates at fair price shops\n• Seeds: 50% subsidy on certified seeds\n• Equipment: 50-80% through PM-KISAN & state schemes\n• Solar Pump: 60% under KUSUM\n\n🏠 Housing:\n• PMAY: Up to Rs.2.67L subsidy on home loan\n• Interest subsidy: 3-6.5% for EWS/LIG\n\n📚 Education:\n• Interest subsidy on education loans (EWS)\n• Fee reimbursement for SC/ST\n\n🔋 Electric Vehicle:\n• FAME II: Up to Rs.1.5L on electric 2-wheelers\n• State EV policies: Additional subsidies\n\n☀️ Solar:\n• PM Surya Ghar: Up to Rs.78,000 subsidy\n\n💡 Most subsidies come via DBT to Aadhaar-linked bank account\n📞 DBT Helpline: 1800-200-7122"
+      ]
+    },
+    {
+      "tag": "covid_schemes",
+      "patterns": [
+        "covid scheme", "corona scheme",
+        "covid relief", "pandemic scheme",
+        "covid loan", "covid insurance",
+        "aatmanirbhar bharat", "covid orphan scheme",
+        "pm cares", "covid health scheme",
+        "free vaccine", "vaccination scheme",
+        "post covid scheme", "covid recovery scheme"
+      ],
+      "responses": [
+        "🦠 COVID-19 Related Schemes:\n\n🏥 Health:\n1️⃣ Free Vaccination: CoWIN portal (cowin.gov.in)\n2️⃣ Ayushman Bharat: Covers COVID treatment\n\n💰 Financial Relief:\n3️⃣ PM Garib Kalyan Anna: Free ration (extended)\n4️⃣ ECLGS: Emergency credit for businesses\n5️⃣ EPF withdrawal: Advance for COVID needs\n\n👶 PM CARES for Children:\n6️⃣ Rs.10 Lakh at age 23 for COVID orphans\n7️⃣ Free education till graduation\n8️⃣ Monthly stipend for needs\n9️⃣ Free health insurance (Ayushman)\n\n💼 Business:\n🔟 Aatmanirbhar Bharat: Collateral-free loans\n• MSME support packages\n• EPF support for employers\n\n📞 COVID Helpline: 1075\n🌐 cowin.gov.in | pmcares.gov.in"
+      ]
+    },
+    {
+      "tag": "ex_servicemen",
+      "patterns": [
+        "ex servicemen scheme", "veteran scheme",
+        "military pension", "army scheme",
+        "soldier scheme", "defense scheme",
+        "ex army welfare", "echs scheme",
+        "canteen smart card", "orop scheme",
+        "one rank one pension", "sainik welfare",
+        "war widow scheme", "martyr family scheme",
+        "agnipath scheme", "agniveer scheme"
+      ],
+      "responses": [
+        "🎖️ Schemes for Ex-Servicemen & Veterans:\n\n💰 Pension & Financial:\n1️⃣ OROP: One Rank One Pension\n2️⃣ Armed Forces Personnel welfare\n3️⃣ Liberalized family pension for war widows\n\n🏥 Health:\n4️⃣ ECHS: Ex-Servicemen Health Scheme (free treatment)\n5️⃣ Empaneled hospitals across India\n\n🎓 Education:\n6️⃣ PM Scholarship: Rs.2,500-3,000/month for dependents\n7️⃣ Ward quota in schools (Kendriya/Navodaya)\n\n💼 Re-Employment:\n8️⃣ DGR: Resettlement training + job placement\n9️⃣ CSD Canteen facilities\n\n🔥 Agnipath/Agniveer:\n🔟 4-year military service with corpus fund\n• 25% retained after 4 years get permanent commission\n• 75% get Rs.11.71 Lakh seva nidhi package\n\n📞 Sainik Helpline: 1800-180-7123\n🌐 desw.gov.in | dgrindia.com"
+      ]
+    },
+    {
+      "tag": "compare_schemes",
+      "patterns": [
+        "compare schemes", "difference between schemes",
+        "which scheme is better", "best scheme for me",
+        "compare pm kisan and pm awas",
+        "ayushman vs state health scheme",
+        "which loan scheme is best",
+        "mudra vs bank loan", "apy vs nps",
+        "which pension is better",
+        "best scheme for farmers",
+        "best scheme for students",
+        "top government schemes",
+        "most popular schemes", "best schemes 2024"
+      ],
+      "responses": [
+        "⚖️ Scheme Comparison Tips:\n\nI can compare any two schemes! Just say:\n• 'Compare PM-KISAN and PM Awas'\n• 'Compare APY and NPS'\n• 'Compare Mudra and Stand Up India'\n\n📊 Top Schemes by Category:\n\n🌾 Farmers: PM-KISAN (income) vs Fasal Bima (insurance)\n🏥 Health: Ayushman Bharat (BPL) vs State schemes (all)\n🎓 Students: NSP Scholarship vs Vidyalakshmi (loans)\n💼 Business: Mudra (small) vs Stand Up India (SC/ST/Women)\n👴 Pension: APY (all) vs Shram Yogi (unorganized)\n🏠 Housing: PMAY Urban vs PMAY Gramin\n\n💡 Fill the form above for AI-powered personalized comparison!\nOr ask me about specific schemes."
+      ]
+    },
+    {
+      "tag": "scheme_status",
+      "patterns": [
+        "check status", "application status",
+        "track application", "scheme status check",
+        "status kaise dekhe", "application track",
+        "mera application ka status",
+        "how to check status", "status check online",
+        "where to check application status",
+        "pending application", "application approved or not",
+        "beneficiary status", "payment status",
+        "paise aaye ya nahi", "amount credited or not"
+      ],
+      "responses": [
+        "🔍 How to Check Application/Payment Status:\n\n📋 Scheme-wise Status Check:\n\n🌾 PM-KISAN: pmkisan.gov.in → Beneficiary Status\n🏥 Ayushman: mera.pmjay.gov.in\n🏠 PMAY: pmaymis.gov.in → Track Assessment\n🎓 Scholarship: scholarships.gov.in → Check Status\n💼 Mudra: Track through your bank\n👴 APY: Through your bank's net banking\n📋 e-Shram: eshram.gov.in\n💧 Jal Jeevan: ejalshakti.gov.in\n\n📝 General Steps:\n1. Visit the scheme's official website\n2. Go to 'Status' or 'Beneficiary' section\n3. Enter application/reference number or Aadhaar\n4. View current status\n\n💡 Tips:\n• Always save your application/reference number\n• Link Aadhaar to bank account for DBT\n• Check PFMS (pfms.nic.in) for DBT payment status\n\n📞 If payment delayed, contact:\n• Scheme helpline number\n• District/Block office\n• File grievance at pgportal.gov.in"
       ]
     },
     {
@@ -238,10 +913,65 @@
       "patterns": [
         "i dont know", "confused", "help me",
         "what should i do", "guide me", "tell me more",
-        "information", "details"
+        "information", "details", "kuch bhi batao",
+        "what can you do", "what do you know",
+        "random", "something", "anything",
+        "i need help", "please help",
+        "mujhe kuch batao", "kuch bolo",
+        "suggest something", "give me options"
       ],
       "responses": [
-        "I can help you with:\n\n🔍 Finding eligible schemes - fill the form above\n📋 Information about specific schemes - just ask!\n📝 How to apply for schemes\n📄 Documents required\n👩 Women/Farmer/Student specific schemes\n\nWhat would you like to know? 😊"
+        "I can help you with:\n\n🔍 Finding eligible schemes - fill the form above\n📋 Information about specific schemes - just ask!\n📝 How to apply for schemes\n📄 Documents required\n👩 Women/Farmer/Student/Senior specific schemes\n🏥 Health insurance schemes\n💰 Loan and subsidy schemes\n📞 Government helpline numbers\n\nTry asking:\n• 'Schemes for farmers'\n• 'How to apply for Ayushman Bharat'\n• 'Scholarship for students'\n• 'Pension schemes'\n\nOr tell me about yourself: 'I am a 25 year old farmer from Bihar' 😊",
+        "Here's what I can help with:\n\n1️⃣ Type a scheme name → I'll give you full details\n2️⃣ Tell me your profile → I'll find matching schemes\n3️⃣ Ask about a category → farmers, women, students, etc.\n4️⃣ Ask 'how to apply' → Step-by-step guidance\n5️⃣ Ask about documents → Complete checklist\n6️⃣ Type 'helplines' → All important numbers\n\nWhat would you like to know? 😊"
+      ]
+    },
+    {
+      "tag": "bot_identity",
+      "patterns": [
+        "who are you", "what are you",
+        "are you a bot", "are you human",
+        "what is your name", "tum kaun ho",
+        "your name", "tell me about yourself",
+        "what is govscheme ai", "about this bot",
+        "who made you", "who created you",
+        "kya tum robot ho", "aap kaun hain",
+        "what can you do for me",
+        "how does this work", "what is this app"
+      ],
+      "responses": [
+        "🤖 I'm GovScheme AI!\n\nI'm an intelligent assistant that helps Indian citizens find government schemes they're eligible for.\n\n📊 What I can do:\n• Match you with 100+ government schemes\n• Provide details about any specific scheme\n• Guide you on how to apply\n• Tell you about required documents\n• Answer questions in multiple languages\n\n💡 How to use:\n• Fill the form above for personalized recommendations\n• Or chat with me about any scheme!\n\n🏛️ I cover Central + State government schemes across:\n🌾 Agriculture, 🏥 Health, 🎓 Education, 🏠 Housing,\n💰 Finance, 👩 Women, 👴 Senior Citizens, ♿ Disability,\n💼 Employment, and more!\n\n🇮🇳 Jai Hind!",
+        "I'm GovScheme AI - your digital guide to Indian government schemes! 🤖\n\nI was created to make government schemes accessible to every citizen.\n\nAsk me anything about schemes or fill the form above! 😊"
+      ]
+    },
+    {
+      "tag": "negative_sentiment",
+      "patterns": [
+        "this is useless", "not helpful",
+        "waste of time", "doesn't work",
+        "bad app", "wrong information",
+        "galat information", "kaam nahi karta",
+        "bekaar hai", "time waste",
+        "not working properly", "giving wrong answers",
+        "frustrated", "angry", "disappointed",
+        "kuch kaam ka nahi", "paisa barbaad"
+      ],
+      "responses": [
+        "I'm sorry you're not satisfied. 😔 Let me try to help better:\n\n1️⃣ Tell me exactly what you're looking for\n2️⃣ Try filling the recommendation form for accurate results\n3️⃣ Ask about a specific scheme by name\n\nIf you have a complaint about a government scheme, contact:\n📞 PM Helpline: 1800-11-7600\n🌐 Grievance Portal: pgportal.gov.in\n\nI'm constantly improving and want to help you! 🙏",
+        "Sorry to hear that! 😟 Here's how I can help better:\n\n• Be specific: 'Schemes for 25-year-old farmer in Bihar'\n• Ask directly: 'Tell me about PM-KISAN'\n• Use the form above for best results\n\nYour feedback helps me improve! 🙏"
+      ]
+    },
+    {
+      "tag": "joke_fun",
+      "patterns": [
+        "tell me a joke", "joke sunao",
+        "make me laugh", "something funny",
+        "entertainment", "mazaak karo",
+        "fun fact", "interesting fact",
+        "bored", "bore ho raha hun"
+      ],
+      "responses": [
+        "😄 Here's a fun fact about Indian government schemes:\n\nDid you know? India has 750+ government schemes running simultaneously! That's why GovScheme AI exists - to help you find the right ones! 🎯\n\n🤓 Another fact: PM Jan Dhan Yojana holds the Guinness World Record for most bank accounts opened in one week (18 million)!\n\nNow, shall we find some schemes for you? 😊",
+        "😄 Government scheme joke:\n\nFriend: I know all government schemes!\nMe: Really? Name them.\nFriend: PM... PM... okay there are too many! 😅\n\nThat's exactly why I'm here! Ask me about any scheme. 🤖\n\n💡 Fun fact: MGNREGA is the largest employment guarantee program in the WORLD!"
       ]
     }
   ]
