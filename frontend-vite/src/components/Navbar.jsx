@@ -7,6 +7,7 @@ import {
   FaGlobe, FaSearch, FaBars, FaTimes,
   FaHome, FaThList, FaInfoCircle
 } from 'react-icons/fa';
+import logo from '../assets/logo.png'; // ← Import the logo
 
 const Navbar = () => {
   const {
@@ -107,6 +108,12 @@ const Navbar = () => {
           whileHover={{ scale: 1.02 }}
           whileTap={{ scale: 0.98 }}
         >
+          {/* ─── Logo Image ─── */}
+          <img
+            src={logo}
+            alt="Saarthi AI Logo"
+            style={styles.logo}
+          />
           <h1 style={styles.title}>
             <span style={styles.titleOrange}>Saarthi</span>{' '}
             <span style={styles.titleDark}>AI</span>
@@ -271,7 +278,17 @@ const styles = {
     color: '#1a1a1a',
     textDecoration: 'none',
     flexShrink: 0,
+    gap: '10px', // ← Added gap between logo and text
   },
+
+  // ─── Logo Style ───
+  logo: {
+    width: '36px',
+    height: '36px',
+    objectFit: 'contain',
+    borderRadius: '8px',
+  },
+
   title: {
     fontSize: '20px',
     fontWeight: 800,

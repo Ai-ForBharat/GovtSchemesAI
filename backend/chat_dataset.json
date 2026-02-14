@@ -20,11 +20,11 @@
         "hey i have a question", "hi i want to ask something"
       ],
       "responses": [
-        "Namaste! 🙏 I'm Saarthi AI. I can help you find government schemes. Ask me anything!",
+        "Namaste! I'm Saarthi AI. I can help you find government schemes. Ask me anything!",
         "Hello! Welcome to Saarthi AI. How can I help you find the right government scheme?",
         "Hey there! I'm here to help you discover government schemes you're eligible for.",
-        "Hi! 😊 Ask me about any government scheme or tell me about yourself and I'll find matching schemes!",
-        "Namaste! 🙏 I can help with PM-KISAN, Ayushman Bharat, scholarships, and 100+ more schemes. What do you need?"
+        "Hi! Ask me about any government scheme or tell me about yourself and I'll find matching schemes!",
+        "Namaste! I can help with PM-KISAN, Ayushman Bharat, scholarships, and 100+ more schemes. What do you need?"
       ]
     },
     {
@@ -43,11 +43,11 @@
         "ok im done thank you", "no thanks bye"
       ],
       "responses": [
-        "Goodbye! 🙏 Hope I helped you find useful schemes. Visit official websites to apply!",
+        "Goodbye! Hope I helped you find useful schemes. Visit official websites to apply!",
         "Thank you for using Saarthi AI! Good luck with your applications! 🇮🇳",
-        "Bye! Remember to check official portals for the latest scheme updates. Jai Hind! 🙏",
-        "Take care! Don't forget to apply before the deadlines. Feel free to come back anytime! 😊",
-        "Alvida! 🙏 Share Saarthi AI with friends and family who might benefit. Good luck!"
+        "Bye! Remember to check official portals for the latest scheme updates. Jai Hind! ",
+        "Take care! Don't forget to apply before the deadlines. Feel free to come back anytime! ",
+        "Alvida! Share Saarthi AI with friends and family who might benefit. Good luck!"
       ]
     },
     {
@@ -68,10 +68,10 @@
         "god bless you", "thank you very much"
       ],
       "responses": [
-        "You're welcome! 😊 Let me know if you need anything else.",
+        "You're welcome! Let me know if you need anything else.",
         "Happy to help! Don't forget to apply before deadlines. 📅",
         "Glad I could help! Share this tool with others who might benefit. 🙏",
-        "Thank you! 😊 Remember to keep all your documents ready before applying.",
+        "Thank you! Remember to keep all your documents ready before applying.",
         "You're welcome! I'm always here to help. Feel free to ask more questions anytime!"
       ]
     },
