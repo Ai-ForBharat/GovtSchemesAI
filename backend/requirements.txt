@@ -4,3 +4,4 @@ deep-translator==1.11.4
 scikit-learn==1.6.1
 numpy==2.2.3
 python-dotenv==1.0.0
+gunicorn==22.0.0
